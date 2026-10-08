@@ -16,7 +16,7 @@ export function StoryBand() {
               alt={`Inside the ${store.name} store in ${placeLine}, racks of shirts and kurtas`}
               fill
               sizes="(min-width: 1024px) 46vw, 92vw"
-              className="media-moody object-cover"
+              className="object-cover"
             />
           </div>
           <p className="label mt-4 text-silver-300">{placeLine}</p>

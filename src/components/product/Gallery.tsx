@@ -65,7 +65,7 @@ export function Gallery({ images, name }: GalleryProps) {
                   alt=""
                   fill
                   sizes="84px"
-                  className="media-moody object-cover"
+                  className="object-cover"
                 />
               </button>
             </li>
@@ -81,12 +81,12 @@ export function Gallery({ images, name }: GalleryProps) {
           <Image
             key={current.src}
             src={current.src}
-            alt={current.alt}
+            alt=""
             fill
             preload
             sizes="(min-width: 1024px) 40vw, 92vw"
             style={{ transformOrigin: "var(--zoom-x, 50%) var(--zoom-y, 50%)" }}
-            className="media-moody object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.7]"
+            className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.7]"
           />
           <p className="label absolute right-4 bottom-4 z-[2] text-silver-300 mix-blend-difference">
             Hover to zoom
@@ -97,21 +97,25 @@ export function Gallery({ images, name }: GalleryProps) {
       {/* Mobile: swipeable strip */}
       <div className="lg:hidden">
         <ul className="flex snap-x snap-mandatory gap-3 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-          {images.map((image) => (
+          {images.map((image, index) => (
             <li key={image.src} className="w-[86vw] shrink-0 snap-center">
+              {/* The photograph is decorative here — the product name is
+                  already the page heading — so the button carries its own
+                  name rather than borrowing the image's alt text. */}
               <button
                 type="button"
                 onClick={() => setLightbox(true)}
+                aria-label={`Enlarge photograph ${index + 1} of ${images.length}`}
                 className="media-frame block aspect-[4/5] w-full"
               >
                 <span className="skeleton" aria-hidden="true" />
                 <Image
                   src={image.src}
-                  alt={image.alt}
+                  alt=""
                   fill
                   preload={image.src === images[0].src}
                   sizes="86vw"
-                  className="media-moody object-cover"
+                  className="object-cover"
                 />
               </button>
             </li>
@@ -158,10 +162,10 @@ export function Gallery({ images, name }: GalleryProps) {
                   <div className="media-frame relative h-full w-full">
                     <Image
                       src={image.src}
-                      alt={image.alt}
+                      alt=""
                       fill
                       sizes="100vw"
-                      className="media-moody object-contain"
+                      className="object-contain"
                     />
                   </div>
                 </li>

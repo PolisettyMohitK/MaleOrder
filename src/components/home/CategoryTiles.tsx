@@ -47,10 +47,10 @@ export function CategoryTiles() {
                 <span className="skeleton" aria-hidden="true" />
                 <Image
                   src={categoryImage(category)}
-                  alt={category.imageAlt}
+                  alt=""
                   fill
                   sizes="(min-width: 768px) 46vw, 92vw"
-                  className="zoom-slow media-moody object-cover"
+                  className="zoom-slow object-cover"
                 />
                 <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(10,10,10,0.9)_0%,rgba(10,10,10,0.62)_45%,rgba(10,10,10,0.55)_100%)]" />
               </div>

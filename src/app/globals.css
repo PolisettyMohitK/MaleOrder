@@ -518,11 +518,6 @@
     background-color: #ececea;
   }
 
-  /* Subtle desaturation so placeholders read as one consistent series. */
-  .media-moody {
-    filter: grayscale(1) contrast(1.04) brightness(0.96);
-  }
-
   /* The photograph sits above this, so the moment it decodes the
      shimmer is covered. That is the whole loading placeholder — no JS. */
   .media-frame > img {
@@ -727,10 +722,6 @@
   .draw-border::after {
     clip-path: inset(0 0 0 0) !important;
     opacity: 0.6;
-  }
-
-  .media-moody {
-    filter: grayscale(1) contrast(1.02);
   }
 }
 

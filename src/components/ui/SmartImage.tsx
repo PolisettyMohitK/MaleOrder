@@ -9,17 +9,19 @@ interface SmartImageProps {
   sizes: string;
   /** Preload instead of lazy-loading. Use only for above-the-fold images. */
   preload?: boolean;
-  /** Apply the desaturated editorial treatment. */
-  moody?: boolean;
   className?: string;
   imgClassName?: string;
 }
 
 /**
- * Every image on the site goes through here, which is what keeps the
- * photography consistent and gives us the grey loading state for free:
- * the shimmer sits behind the <img>, so it is covered the moment the
- * photograph arrives. No JavaScript involved.
+ * Every image on the site goes through here, which gives us the grey loading
+ * state for free: the shimmer sits behind the <img>, so it is covered the
+ * moment the photograph arrives. No JavaScript involved.
+ *
+ * Photographs render in their own colour. They used to pass through a
+ * `grayscale(1)` filter, which made a set of unrelated placeholder images read
+ * as one deliberate series. Now that the catalogue has real, coherent
+ * photography, desaturating it only threw the colour away.
  */
 export function SmartImage({
   src,
@@ -27,7 +29,6 @@ export function SmartImage({
   ratio = "aspect-[3/4]",
   sizes,
   preload = false,
-  moody = true,
   className = "",
   imgClassName = "",
 }: SmartImageProps) {
@@ -40,7 +41,7 @@ export function SmartImage({
         fill
         sizes={sizes}
         preload={preload}
-        className={`object-cover ${moody ? "media-moody" : ""} ${imgClassName}`}
+        className={`object-cover ${imgClassName}`}
       />
     </div>
   );

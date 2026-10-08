@@ -46,11 +46,11 @@ export function ProductCard({
 
         <Image
           src={photo(primary.seed, CROP.product.w, CROP.product.h)}
-          alt={primary.alt}
+          alt=""
           fill
           sizes={sizes}
           preload={preload}
-          className="base-image media-moody zoom-slow object-cover"
+          className="base-image zoom-slow object-cover"
         />
 
         {secondary.seed !== primary.seed ? (
@@ -59,12 +59,12 @@ export function ProductCard({
              fetching it, which halves the images on a phone. */
           <Image
             src={photo(secondary.seed, CROP.product.w, CROP.product.h)}
-            alt={secondary.alt}
+            alt=""
             fill
             sizes={sizes}
             loading="lazy"
             aria-hidden="true"
-            className="swap-image media-moody zoom-slow max-md:hidden object-cover"
+            className="swap-image zoom-slow max-md:hidden object-cover"
           />
         ) : null}
 

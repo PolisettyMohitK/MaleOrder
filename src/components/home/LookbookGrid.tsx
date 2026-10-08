@@ -46,10 +46,10 @@ export function LookbookGrid() {
                       <span className="skeleton" aria-hidden="true" />
                       <Image
                         src={productImage(product)}
-                        alt={product.images[0].alt}
+                        alt=""
                         fill
                         sizes="(min-width: 1024px) 42vw, (min-width: 768px) 48vw, 92vw"
-                        className="zoom-slow media-moody object-cover"
+                        className="zoom-slow object-cover"
                       />
                     </div>
                     <div className="mt-3 flex items-baseline justify-between gap-3">

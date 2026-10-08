@@ -190,10 +190,10 @@ export function SearchOverlay({ onClose }: { onClose: () => void }) {
                       <span className="skeleton" aria-hidden="true" />
                       <Image
                         src={productImage(product)}
-                        alt={product.images[0].alt}
+                        alt=""
                         fill
                         sizes="(min-width: 1024px) 22vw, (min-width: 640px) 30vw, 45vw"
-                        className="media-moody object-cover"
+                        className="object-cover"
                       />
                     </div>
                     <p className="mt-3 text-sm text-bone">{product.name}</p>

@@ -133,12 +133,12 @@ export function HeroCarousel() {
             <span className="skeleton" aria-hidden="true" />
             <Image
               src={photo(product.images[0].seed, CROP.slide.w, CROP.slide.h)}
-              alt={product.images[0].alt}
+              alt=""
               fill
               preload={i === 0}
               loading={i === 0 ? undefined : "lazy"}
               sizes="100vw"
-              className="media-moody object-cover"
+              className="object-cover"
             />
           </div>
         ))}

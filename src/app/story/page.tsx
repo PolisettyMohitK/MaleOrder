@@ -82,7 +82,7 @@ export default function StoryPage() {
                 fill
                 preload
                 sizes="100vw"
-                className="media-moody object-cover"
+                className="object-cover"
               />
             </div>
           </div>
@@ -216,7 +216,7 @@ export default function StoryPage() {
                   alt={shot.alt}
                   fill
                   sizes="(min-width: 1024px) 22vw, (min-width: 640px) 40vw, 68vw"
-                  className="media-moody object-cover"
+                  className="object-cover"
                 />
               </div>
             </li>
