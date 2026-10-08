@@ -111,13 +111,27 @@ export function HeroCarousel() {
         }
       }}
     >
-      {/* Slides */}
+      {/* Slides
+
+          Only the current slide and the next one are actually rendered. Every
+          slide is `absolute inset-0`, so they all intersect the viewport and
+          `loading="lazy"` does nothing for them — the browser downloads all
+          six at once, which was around 480KB of photography before the first
+          byte of text. Keeping the rest out of the DOM until the carousel
+          approaches them cuts that to two images.
+
+          A one-slide runway is deliberate: autoplay holds a slide for six
+          seconds, which is far longer than the next image takes to arrive,
+          so a transition never waits on the network. */}
       <div
         className="absolute inset-0"
         aria-live={playing ? "off" : "polite"}
         aria-atomic="true"
       >
-        {slides.map((product, i) => (
+        {slides.map((product, i) => {
+          const rendered = i <= index + 1;
+
+          return (
           <div
             key={product.slug}
             ref={(node) => {
@@ -131,17 +145,20 @@ export function HeroCarousel() {
             aria-label={`${i + 1} of ${slides.length}`}
           >
             <span className="skeleton" aria-hidden="true" />
-            <Image
-              src={photo(product.images[0].seed, CROP.slide.w, CROP.slide.h)}
-              alt=""
-              fill
-              preload={i === 0}
-              loading={i === 0 ? undefined : "lazy"}
-              sizes="100vw"
-              className="object-cover"
-            />
+            {rendered ? (
+              <Image
+                src={photo(product.images[0].seed, CROP.slide.w, CROP.slide.h)}
+                alt=""
+                fill
+                preload={i === 0}
+                loading={i === 0 ? undefined : "lazy"}
+                sizes="100vw"
+                className="object-cover"
+              />
+            ) : null}
           </div>
-        ))}
+          );
+        })}
 
         {/* Scrim. Two stacked gradients so white type stays legible over any
             photograph without flattening the image. */}

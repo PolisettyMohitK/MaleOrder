@@ -17,6 +17,11 @@
 /.next/
 /out/
 
+# Generated responsive image variants. The committed masters live in
+# assets/photos/; scripts/generate-image-variants.mjs turns them into these
+# on every build, so they must not be tracked.
+/public/photos/
+
 # production
 /build
 

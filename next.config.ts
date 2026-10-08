@@ -27,10 +27,20 @@ const nextConfig: NextConfig = {
      Workers with the OpenNext adapter instead, which does support PPR. */
 
   images: {
-    /* There is no image optimisation server behind a static export. Every
-       photograph is a local file in /public, already exported at the sizes
-       noted in src/lib/images.ts, so next/image passes them through as-is. */
-    unoptimized: true,
+    /* There is no image-optimisation server behind a static export, so Next
+       cannot resize on request. Instead the build pre-renders a set of widths
+       (scripts/generate-image-variants.mjs) and this loader points at the
+       right one. Dropping `unoptimized` is what re-enables srcset output. */
+    loader: "custom",
+    loaderFile: "./src/lib/image-loader.ts",
+
+    /* Only widths the build actually emits. This is what stops the browser
+       asking for a file that does not exist, and keeping 320 out of
+       imageSizes avoids a duplicated entry in the generated srcset. */
+    deviceSizes: [320, 480, 640, 800, 1024, 1200],
+    imageSizes: [200],
+
+    qualities: [75],
   },
 
   turbopack: {
