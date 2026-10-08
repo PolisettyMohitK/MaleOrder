@@ -56,9 +56,10 @@ const QUALITY = 74;
 async function build() {
   if (!fs.existsSync(SOURCE)) {
     console.error(
-      `[images] no source directory at ${SOURCE} — nothing to do.`,
+      `[images] no source directory at ${SOURCE}. Refusing to build: every ` +
+        `photograph on the site would 404.`,
     );
-    return;
+    process.exit(1);
   }
 
   const masters = fs
@@ -67,8 +68,11 @@ async function build() {
     .sort();
 
   if (masters.length === 0) {
-    console.warn("[images] assets/photos is empty — no variants written.");
-    return;
+    console.error(
+      "[images] assets/photos is empty. Refusing to build: every photograph " +
+        "on the site would 404.",
+    );
+    process.exit(1);
   }
 
   fs.mkdirSync(OUTPUT, { recursive: true });
