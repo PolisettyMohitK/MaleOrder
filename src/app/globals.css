@@ -1,0 +1,749 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   DESIGN TOKENS
+   Edit these to re-theme the whole site.
+------------------------------------------------------------------- */
+@theme {
+  /* Base */
+  --color-ink: #0a0a0a;
+  --color-ink-2: #131313;
+  --color-paper: #ffffff;
+  --color-bone: #f5f5f3;
+
+  /* Metallic silver ramp */
+  --color-silver-100: #e8e8e8;
+  --color-silver-200: #d5d7d9;
+  --color-silver-300: #a9abae;
+  --color-silver-400: #8a8c90;
+  --color-silver-500: #6e7074;
+
+  /* Muted TEXT colour.
+     The silver ramp is for rules, borders and icons, where it looks right.
+     Small text needs a touch more depth or it fails contrast on the off-white
+     sections: #6e7074 on #f5f5f3 is only 4.20:1, this is 5.96:1. */
+  --color-muted: #5c5e61;
+  --color-muted-dark: #a9abae;
+
+  /* Type */
+  --font-display: var(--font-cormorant), "Times New Roman", serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  /* Motion */
+  --ease-silk: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --spacing-header: 4.5rem;
+}
+
+/* Registered so the sheen can be transitioned and tweened smoothly.
+   GSAP animates this same custom property for scroll-driven shine. */
+@property --sheen-x {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    /* Clip on the ROOT, not just body. The header and announcement bar are
+       position:fixed, so their containing block is the initial containing
+       block — body{overflow-x:hidden} cannot clip them. Without this, a
+       horizontal rail on a page (e.g. the related-products strip) widens the
+       mobile layout viewport, the fixed header stretches to match, and the
+       centred wordmark and right-hand icons are pushed off screen.
+       `clip` rather than `hidden` so no scroll container is created. */
+    overflow-x: clip;
+  }
+
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-feature-settings: "kern", "liga";
+    overflow-x: clip;
+  }
+
+  ::selection {
+    background-color: var(--color-ink);
+    color: var(--color-paper);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-silver-500);
+    outline-offset: 3px;
+    border-radius: 1px;
+  }
+
+  /* Never let a stray horizontal overflow break the fixed furniture. */
+  img,
+  video {
+    max-width: 100%;
+  }
+}
+
+@layer components {
+  /* ---------- layout ---------- */
+  .shell {
+    width: 100%;
+    margin-inline: auto;
+    max-width: 84rem;
+    padding-inline: 1.25rem;
+  }
+
+  @media (min-width: 768px) {
+    .shell {
+      padding-inline: 2.5rem;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .shell {
+      padding-inline: 3.5rem;
+    }
+  }
+
+  .section-y {
+    padding-block: 5.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .section-y {
+      padding-block: 8rem;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .section-y {
+      padding-block: 10rem;
+    }
+  }
+
+  /* ---------- type ---------- */
+
+  /* One big headline size */
+  .t-display {
+    font-family: var(--font-display);
+    font-weight: 300;
+    line-height: 0.98;
+    letter-spacing: -0.015em;
+    font-size: clamp(2.75rem, 9vw, 7.5rem);
+  }
+
+  /* One medium headline size */
+  .t-head {
+    font-family: var(--font-display);
+    font-weight: 300;
+    line-height: 1.08;
+    letter-spacing: -0.005em;
+    font-size: clamp(1.875rem, 4.2vw, 3.5rem);
+  }
+
+  /* One body size */
+  .t-body {
+    font-size: 0.9375rem;
+    line-height: 1.75;
+    letter-spacing: 0.01em;
+  }
+
+  /* Small uppercase label — menus, buttons, eyebrows */
+  .label {
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    line-height: 1.4;
+  }
+
+  .t-quote {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.25;
+    font-size: clamp(1.5rem, 3.4vw, 2.75rem);
+  }
+
+  /* ---------- silver ---------- */
+
+  /* METALLIC SILVER AS TYPOGRAPHY.
+     Two stacked background layers, both clipped to the glyphs:
+       layer 1 — a narrow specular highlight that is transparent everywhere
+                 else, parked off-canvas at rest and swept across by GSAP
+                 (it animates the --sheen-x custom property)
+       layer 2 — the brushed base ramp, always fully legible
+
+     CONTRAST NOTE: measured against the off-white sections (#f5f5f3) this ramp
+     runs from 6.2:1 at its darkest stop (#5f6165) down to 1.8:1 at its lightest
+     (#b4b8bc). It is used for display type only — .t-display and .t-head — so
+     it clears the 3:1 large-text bar across most of its width but not all of
+     it. That is the deliberate "shiny" end of the range.
+
+     To trade some shine for full compliance, cap the light stop at #8a8c90
+     (3.4:1) — change #b4b8bc below to #8a8c90 and the whole ramp passes 3:1.
+     Anything under 44px uses the solid --color-muted instead, which is a flat
+     6.2:1 and never affected by this. */
+  .type-silver {
+    --sheen-x: 100%;
+    background-image:
+      linear-gradient(
+        100deg,
+        transparent 42%,
+        rgba(255, 255, 255, 0.92) 50%,
+        transparent 58%
+      ),
+      linear-gradient(
+        100deg,
+        #5f6165 0%,
+        #7e8286 20%,
+        #9da1a5 42%,
+        #b4b8bc 58%,
+        #9da1a5 74%,
+        #6e7074 100%
+      );
+    background-size:
+      260% 100%,
+      100% 100%;
+    background-position: var(--sheen-x) 0, 0 0;
+    background-repeat: repeat, no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* The same treatment inverted for dark surfaces, where silver reads bright. */
+  .type-silver-dark {
+    --sheen-x: 100%;
+    background-image:
+      linear-gradient(
+        100deg,
+        transparent 42%,
+        rgba(255, 255, 255, 0.95) 50%,
+        transparent 58%
+      ),
+      linear-gradient(
+        100deg,
+        #8a8c90 0%,
+        #c6c9cc 24%,
+        #e8e8e8 44%,
+        #ffffff 54%,
+        #d5d7d9 70%,
+        #9da1a5 100%
+      );
+    background-size:
+      260% 100%,
+      100% 100%;
+    background-position: var(--sheen-x) 0, 0 0;
+    background-repeat: repeat, no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Solid metallic fill, for small silver marks where a gradient would blur. */
+  .silver-text {
+    background-image: linear-gradient(
+      155deg,
+      #f2f2f3 0%,
+      #d5d7d9 22%,
+      #8a8c90 46%,
+      #a9abae 62%,
+      #e8e8e8 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .silver-rule {
+    height: 1px;
+    border: 0;
+    background-image: linear-gradient(
+      90deg,
+      transparent,
+      var(--color-silver-500) 18%,
+      var(--color-silver-200) 50%,
+      var(--color-silver-500) 82%,
+      transparent
+    );
+  }
+
+  .silver-hairline {
+    border: 0;
+    height: 1px;
+    background-color: color-mix(in srgb, var(--color-silver-500) 34%, transparent);
+  }
+
+  /* Active-state underline for the navigation. */
+  .silver-underline {
+    background-image: linear-gradient(
+      90deg,
+      var(--color-silver-500),
+      var(--color-silver-100) 50%,
+      var(--color-silver-500)
+    );
+  }
+
+  /* Vertical counterpart, for the hairline that splits the hero. */
+  .silver-underline-v {
+    background-image: linear-gradient(
+      180deg,
+      transparent,
+      var(--color-silver-500) 22%,
+      var(--color-silver-100) 50%,
+      var(--color-silver-500) 78%,
+      transparent
+    );
+  }
+
+  /* Scroll cue: a silver line that draws itself, lifts away, repeats. */
+  .scroll-cue {
+    transform-origin: top;
+    animation: scroll-cue 2.6s var(--ease-silk) infinite;
+  }
+
+  @keyframes scroll-cue {
+    0% {
+      transform: scaleY(0);
+      transform-origin: top;
+    }
+    42% {
+      transform: scaleY(1);
+      transform-origin: top;
+    }
+    58% {
+      transform: scaleY(1);
+      transform-origin: bottom;
+    }
+    100% {
+      transform: scaleY(0);
+      transform-origin: bottom;
+    }
+  }
+
+  /* Heading treatment: solid legible tone plus a moving highlight clipped to
+     the glyphs. The highlight sits off-canvas at rest and sweeps across on
+     hover, or when GSAP scrubs --sheen-x against scroll position. */
+  .shine {
+    --sheen-x: 100%;
+    color: var(--color-ink);
+    background-image: linear-gradient(
+      100deg,
+      transparent 42%,
+      rgba(255, 255, 255, 0.85) 50%,
+      transparent 58%
+    );
+    background-size: 260% 100%;
+    background-position: var(--sheen-x) 0;
+    background-repeat: repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    transition: --sheen-x 1.1s var(--ease-silk);
+  }
+
+  .on-dark .shine {
+    color: var(--color-bone);
+    background-image: linear-gradient(
+      100deg,
+      transparent 42%,
+      rgba(255, 255, 255, 0.95) 50%,
+      transparent 58%
+    );
+  }
+
+  .shine:hover,
+  .shine:focus-visible {
+    --sheen-x: 0%;
+  }
+
+  /* ---------- surfaces ---------- */
+
+  .paper-grain {
+    background-color: var(--color-bone);
+  }
+
+  /* ---------- interactive ---------- */
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.625rem;
+    min-height: 3rem;
+    padding: 0.875rem 1.75rem;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    line-height: 1;
+    text-align: center;
+    cursor: pointer;
+    transition:
+      background-color 0.45s var(--ease-silk),
+      color 0.45s var(--ease-silk),
+      border-color 0.45s var(--ease-silk),
+      transform 0.45s var(--ease-silk),
+      box-shadow 0.45s var(--ease-silk);
+  }
+
+  .btn:active {
+    transform: translateY(1px);
+  }
+
+  /* Primary on a light background */
+  .btn-ink {
+    background-color: var(--color-ink);
+    color: var(--color-paper);
+    border-color: var(--color-ink);
+  }
+
+  .btn-ink:hover {
+    background-color: transparent;
+    color: var(--color-ink);
+    border-color: var(--color-silver-500);
+  }
+
+  /* Primary on a dark background */
+  .on-dark .btn-ink,
+  .btn-paper {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    border-color: var(--color-paper);
+  }
+
+  .on-dark .btn-ink:hover,
+  .btn-paper:hover {
+    background-color: transparent;
+    color: var(--color-paper);
+    border-color: var(--color-silver-300);
+  }
+
+  /* Quiet / secondary */
+  .btn-ghost {
+    background-color: transparent;
+    color: var(--color-ink);
+    border-color: color-mix(in srgb, var(--color-silver-500) 55%, transparent);
+  }
+
+  .btn-ghost:hover {
+    border-color: var(--color-ink);
+    background-color: color-mix(in srgb, var(--color-ink) 4%, transparent);
+  }
+
+  .on-dark .btn-ghost {
+    color: var(--color-bone);
+    border-color: color-mix(in srgb, var(--color-silver-300) 45%, transparent);
+  }
+
+  .on-dark .btn-ghost:hover {
+    border-color: var(--color-silver-100);
+    background-color: color-mix(in srgb, #ffffff 8%, transparent);
+  }
+
+  /* Text link with a silver underline that draws in */
+  .link-draw {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 0.3rem;
+  }
+
+  .link-draw::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 1px;
+    width: 100%;
+    background-color: currentColor;
+    opacity: 0.35;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.6s var(--ease-silk);
+  }
+
+  .link-draw:hover::after,
+  .link-draw:focus-visible::after {
+    transform: scaleX(1);
+  }
+
+  /* ---------- tiles & cards ---------- */
+
+  /* Silver border that draws itself around a tile on hover. */
+  .draw-border {
+    position: relative;
+  }
+
+  .draw-border::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    pointer-events: none;
+    background-image: linear-gradient(
+      150deg,
+      var(--color-silver-100),
+      var(--color-silver-500) 45%,
+      var(--color-silver-200) 70%,
+      var(--color-silver-100)
+    );
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    clip-path: inset(0 100% 0 0);
+    opacity: 0;
+    transition:
+      clip-path 0.85s var(--ease-silk),
+      opacity 0.4s ease;
+  }
+
+  .draw-border:hover::after,
+  .draw-border:focus-within::after {
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+  }
+
+  /* ---------- media treatment ---------- */
+
+  .media-frame {
+    position: relative;
+    overflow: hidden;
+    background-color: #ececea;
+  }
+
+  /* Subtle desaturation so placeholders read as one consistent series. */
+  .media-moody {
+    filter: grayscale(1) contrast(1.04) brightness(0.96);
+  }
+
+  /* The photograph sits above this, so the moment it decodes the
+     shimmer is covered. That is the whole loading placeholder — no JS. */
+  .media-frame > img {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+
+  .skeleton {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-image: linear-gradient(
+      100deg,
+      #e9e9e7 0%,
+      #f4f4f2 45%,
+      #e9e9e7 90%
+    );
+    background-size: 300% 100%;
+    background-position: 150% 0;
+    animation: skeleton-sweep 2s ease-in-out infinite;
+  }
+
+  .on-dark .skeleton {
+    background-image: linear-gradient(
+      100deg,
+      #191919 0%,
+      #252525 45%,
+      #191919 90%
+    );
+    background-size: 300% 100%;
+  }
+
+  @keyframes skeleton-sweep {
+    0% {
+      background-position: 150% 0;
+    }
+    100% {
+      background-position: -50% 0;
+    }
+  }
+
+  /* Second-angle image on product cards. Fades in on hover / focus. */
+  .swap-image {
+    opacity: 0;
+    transition: opacity 0.85s var(--ease-silk);
+  }
+
+  .group:hover .swap-image,
+  .group:focus-visible .swap-image {
+    opacity: 1;
+  }
+
+  .group:hover .base-image,
+  .group:focus-visible .base-image {
+    opacity: 0;
+  }
+
+  .base-image,
+  .swap-image {
+    transition:
+      opacity 0.85s var(--ease-silk),
+      transform 1.4s var(--ease-silk);
+  }
+
+  /* Very slow zoom on the photograph while hovering a tile. */
+  .zoom-slow {
+    transform: scale(1);
+    transition: transform 1.6s var(--ease-silk);
+  }
+
+  .group:hover .zoom-slow,
+  .group:focus-visible .zoom-slow {
+    transform: scale(1.06);
+  }
+
+  .on-dark .media-frame {
+    background-color: #1c1c1c;
+  }
+
+  /* ---------- marquee ---------- */
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee-scroll var(--marquee-duration, 42s) linear infinite;
+    will-change: transform;
+  }
+
+  .marquee:hover .marquee-track {
+    animation-play-state: paused;
+  }
+
+  @keyframes marquee-scroll {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(-50%, 0, 0);
+    }
+  }
+
+  /* ---------- floating whatsapp ---------- */
+  .wa-pulse::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 999px;
+    border: 1px solid var(--color-silver-300);
+    animation: wa-ping 3.4s var(--ease-silk) infinite;
+    pointer-events: none;
+  }
+
+  @keyframes wa-ping {
+    0% {
+      transform: scale(1);
+      opacity: 0.7;
+    }
+    70%,
+    100% {
+      transform: scale(1.7);
+      opacity: 0;
+    }
+  }
+
+  /* ---------- utility ---------- */
+  .tap {
+    min-height: 2.75rem;
+    min-width: 2.75rem;
+  }
+}
+
+/* Reveal start states.
+   Applied from the stylesheet, so they take effect before the first paint and
+   GSAP can animate them in without a flash of already-visible content.
+   Scoped to no-preference so reduced-motion visitors get a complete, static
+   page.
+
+   Notes on what is deliberately NOT hidden:
+     - `up data-reveal-stagger` — GSAP animates the children, so hiding the
+       parent would hide everything with nothing to un-hide it.
+     - `lines` — SplitText's line masks do the hiding.
+     - `scrub` / `sheen` — these elements stay visible and only move. */
+@media (prefers-reduced-motion: no-preference) {
+  [data-reveal="up"]:not([data-reveal-stagger]) {
+    opacity: 0;
+  }
+
+  /* Stagger hides the children instead, because GSAP animates those. */
+  [data-reveal="up"][data-reveal-stagger] > * {
+    opacity: 0;
+  }
+
+  [data-reveal="clip"] {
+    opacity: 0;
+    clip-path: inset(0% 0% 100% 0%);
+  }
+
+  /* GSAP reveals the wrapper immediately; the line masks do the rest. */
+  [data-lines] {
+    opacity: 0;
+  }
+}
+
+/* ---------- route transitions ---------- */
+
+/* The captured snapshot layer swallows clicks unless told otherwise. */
+  ::view-transition {
+    pointer-events: none;
+  }
+
+  ::view-transition-old(page-fade) {
+    animation: page-fade-out 260ms cubic-bezier(0.4, 0, 1, 1) both;
+  }
+
+  ::view-transition-new(page-fade) {
+    animation: page-fade-in 420ms cubic-bezier(0.22, 1, 0.36, 1) 90ms both;
+  }
+
+  @keyframes page-fade-out {
+    to {
+      opacity: 0;
+    }
+  }
+
+  @keyframes page-fade-in {
+    from {
+      opacity: 0;
+    }
+  }
+
+/* Respect the OS setting. Kills every animation and transition. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .draw-border::after {
+    clip-path: inset(0 0 0 0) !important;
+    opacity: 0.6;
+  }
+
+  .media-moody {
+    filter: grayscale(1) contrast(1.02);
+  }
+}
+
+/* Lenis: Lenis manages scrolling, keep the browser out of it. */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}

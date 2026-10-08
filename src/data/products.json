@@ -1,0 +1,606 @@
+{
+  "categories": [
+    {
+      "slug": "office-casuals",
+      "name": "Office Casuals",
+      "shortName": "Casuals",
+      "description": "Shirts, polos and knitwear cut for a working day that runs long.",
+      "bannerLine": "Smart enough for the boardroom, soft enough for the drive home.",
+      "imageSeed": "mob-category-office-casuals",
+      "imageAlt": "Man in a charcoal blazer over an open collar shirt",
+      "lookbookCaption": "The weekday wardrobe",
+      "blurb": "Our office casuals are built around breathable cottons and lightweight wools. They hold a crease through a nine-hour day and still look right at a family dinner."
+    },
+    {
+      "slug": "kurta-pajama",
+      "name": "Kurta Pajama",
+      "shortName": "Kurtas",
+      "description": "Occasion sets in cotton, linen and silk blends. Made to be worn often.",
+      "bannerLine": "For the wedding season, the festivals and every quiet evening in between.",
+      "imageSeed": "mob-category-kurta-pajama",
+      "imageAlt": "Man wearing an off-white kurta pajama set",
+      "lookbookCaption": "The celebration wardrobe",
+      "blurb": "Our kurta pajamas are finished by hand in our Erise workshop. Every set is pressed, checked and ready to wear, so nothing arrives needing work."
+    }
+  ],
+  "products": [
+    {
+      "slug": "charcoal-wool-blend-blazer",
+      "name": "Charcoal Wool-Blend Blazer",
+      "category": "office-casuals",
+      "fabric": "Wool Blend",
+      "fabricNote": "70% wool, 30% polyester. Half-canvas construction with a soft shoulder.",
+      "description": "A single-breasted blazer with a gentle shoulder and a clean, slightly shorter hem. It sits well over both a formal shirt and a plain tee.",
+      "details": [
+        "Two-button front closure",
+        "Notch lapel, working cuffs",
+        "Double side vents",
+        "Unstructured half-canvas chest"
+      ],
+      "care": "Dry clean only. Steam lightly between wears and store on a broad wooden hanger.",
+      "sizes": ["S", "M", "L", "XL", "XXL"],
+      "colours": [
+        { "name": "Charcoal", "hex": "#3B3D40" },
+        { "name": "Midnight", "hex": "#1C2333" },
+        { "name": "Stone", "hex": "#B8B2A6" }
+      ],
+      "images": [
+        { "seed": "mob-p01-a", "alt": "Charcoal wool-blend blazer worn open over a white shirt, front view" },
+        { "seed": "mob-p01-b", "alt": "Charcoal wool-blend blazer shown from the side, sleeve and lapel detail" },
+        { "seed": "mob-p01-c", "alt": "Charcoal wool-blend blazer laid flat, showing the internal half-canvas chest" }
+      ],
+      "featured": true,
+      "isNew": false,
+      "addedAt": "2026-01-14"
+    },
+    {
+      "slug": "oxford-cotton-shirt",
+      "name": "Oxford Cotton Shirt",
+      "category": "office-casuals",
+      "fabric": "Cotton Oxford",
+      "fabricNote": "100% long-staple cotton, 140 gsm. Garment washed for softness.",
+      "description": "The everyday shirt. Enough structure for the office, soft enough that you forget you have it on.",
+      "details": [
+        "Button-down collar",
+        "Single patch pocket",
+        "Split back yoke with centre pleat",
+        "Mother-of-pearl style buttons"
+      ],
+      "care": "Machine wash cold on a gentle cycle. Hang dry and iron damp for the sharpest finish.",
+      "sizes": ["S", "M", "L", "XL", "XXL"],
+      "colours": [
+        { "name": "White", "hex": "#F4F4F2" },
+        { "name": "Sky", "hex": "#C9D6E0" },
+        { "name": "Slate", "hex": "#6E7480" }
+      ],
+      "images": [
+        { "seed": "mob-p02-a", "alt": "White oxford cotton shirt worn with sleeves buttoned at the wrist" },
+        { "seed": "mob-p02-b", "alt": "Oxford cotton shirt collar and placket shown close up" },
+        { "seed": "mob-p02-c", "alt": "Oxford cotton shirt folded, showing the garment-washed texture" }
+      ],
+      "featured": true,
+      "isNew": false,
+      "addedAt": "2026-01-28"
+    },
+    {
+      "slug": "slim-washed-chinos",
+      "name": "Slim Washed Chinos",
+      "category": "office-casuals",
+      "fabric": "Cotton Twill",
+      "fabricNote": "98% cotton, 2% elastane. 240 gsm with a light stone wash.",
+      "description": "A straight-through slim chino with just enough give to sit through a full day. Holds its shape without feeling stiff.",
+      "details": [
+        "Mid rise, slim through the thigh",
+        "YKK zip and hook-bar closure",
+        "Two front pockets, two welt back pockets",
+        "Unhemmed inseam available in store"
+      ],
+      "care": "Machine wash cold, inside out. Tumble dry low. Warm iron on the reverse.",
+      "sizes": ["S", "M", "L", "XL", "XXL"],
+      "colours": [
+        { "name": "Sand", "hex": "#C6BBA4" },
+        { "name": "Navy", "hex": "#2B3444" },
+        { "name": "Olive", "hex": "#6B6E52" }
+      ],
+      "images": [
+        { "seed": "mob-p03-a", "alt": "Sand slim washed chinos worn with an untucked shirt" },
+        { "seed": "mob-p03-b", "alt": "Slim chinos shown from the side to show the taper" },
+        { "seed": "mob-p03-c", "alt": "Slim chinos folded showing the cotton twill weave" }
+      ],
+      "featured": true,
+      "isNew": false,
+      "addedAt": "2026-02-02"
+    },
+    {
+      "slug": "linen-half-sleeve-shirt",
+      "name": "Linen Half-Sleeve Shirt",
+      "category": "office-casuals",
+      "fabric": "Pure Linen",
+      "fabricNote": "100% European flax linen, 165 gsm. Stone washed.",
+      "description": "Our best-selling piece through every Ahmedabad summer. Linen moves with you and pulls heat away as you go.",
+      "details": [
+        "Cuban collar, half sleeve",
+        "Single chest pocket",
+        "Shell buttons",
+        "Naturally soft creasing, intended"
+      ],
+      "care": "Machine wash cold on a gentle cycle. Do not bleach. Iron while damp.",
+      "sizes": ["S", "M", "L", "XL", "XXL"],
+      "colours": [
+        { "name": "Off White", "hex": "#EDEAE3" },
+        { "name": "Sage", "hex": "#9AA48F" },
+        { "name": "Faded Blue", "hex": "#8FA2B4" }
+      ],
+      "images": [
+        { "seed": "mob-p04-a", "alt": "Off-white linen half-sleeve shirt worn untucked" },
+        { "seed": "mob-p04-b", "alt": "Linen shirt collar and sleeve detail" },
+        { "seed": "mob-p04-c", "alt": "Linen shirt on a hanger showing natural creasing" }
+      ],
+      "featured": true,
+      "isNew": false,
+      "addedAt": "2026-02-11"
+    },
+    {
+      "slug": "textured-knit-polo",
+      "name": "Textured Knit Polo",
+      "category": "office-casuals",
+      "fabric": "Cotton Blend",
+      "fabricNote": "60% cotton, 40% modal. Fine-gauge textured knit.",
+      "description": "A polo with a real collar that holds its shape, and a knit body that stays smooth after a day of wear.",
+      "details": [
+        "Three-button placket",
+        "Ribbed collar and cuffs",
+        "Side splits at the hem",
+        "Regular fit"
+      ],
+      "care": "Machine wash cold, inside out. Reshape while damp and dry flat.",
+      "sizes": ["S", "M", "L", "XL"],
+      "colours": [
+        { "name": "Ecru", "hex": "#E5E0D4" },
+        { "name": "Charcoal", "hex": "#3B3D40" },
+        { "name": "Deep Teal", "hex": "#2F5158" }
+      ],
+      "images": [
+        { "seed": "mob-p05-a", "alt": "Ecru textured knit polo worn with chinos" },
+        { "seed": "mob-p05-b", "alt": "Textured knit polo collar and placket close up" },
+        { "seed": "mob-p05-c", "alt": "Textured knit polo showing the fine knit texture" }
+      ],
+      "featured": false,
+      "isNew": false,
+      "addedAt": "2026-02-18"
+    },
+    {
+      "slug": "straight-cut-indigo-denim",
+      "name": "Straight Cut Indigo Denim",
+      "category": "office-casuals",
+      "fabric": "Rigid Denim",
+      "fabricNote": "100% cotton, 13.5 oz. Sanforised, will soften with wear.",
+      "description": "A straight leg in honest, heavy denim. Buy it slightly long and let it break once over the shoe.",
+      "details": [
+        "Mid rise, straight leg",
+        "Rigid 13.5 oz cotton denim",
+        "Copper rivets, chain-stitched hem",
+        "Button fly"
+      ],
+      "care": "Wash sparingly, inside out, cold. Line dry. Expect the indigo to settle into your wear pattern.",
+      "sizes": ["S", "M", "L", "XL", "XXL"],
+      "colours": [
+        { "name": "Raw Indigo", "hex": "#28344A" },
+        { "name": "Washed Black", "hex": "#26262A" }
+      ],
+      "images": [
+        { "seed": "mob-p06-a", "alt": "Raw indigo straight cut denim worn full length" },
+        { "seed": "mob-p06-b", "alt": "Indigo denim showing the rivet and pocket detail" },
+        { "seed": "mob-p06-c", "alt": "Indigo denim folded showing the chain-stitched hem" }
+      ],
+      "featured": false,
+      "isNew": false,
+      "addedAt": "2026-02-24"
+    },
+    {
+      "slug": "herringbone-waistcoat",
+      "name": "Herringbone Waistcoat",
+      "category": "office-casuals",
+      "fabric": "Wool Herringbone",
+      "fabricNote": "80% wool, 20% nylon herringbone. 260 gsm.",
+      "description": "A single most useful thing in the collection. Wear it with denim on Friday or under a blazer on Monday.",
+      "details": [
+        "Five-button front",
+        "Deep welt pockets",
+        "Adjustable back tab",
+        "Fully lined"
+      ],
+      "care": "Dry clean. Steam rather than press to keep the herringbone depth.",
+      "sizes": ["S", "M", "L", "XL"],
+      "colours": [
+        { "name": "Grey Herringbone", "hex": "#7C7F83" },
+        { "name": "Navy Herringbone", "hex": "#2C3547" }
+      ],
+      "images": [
+        { "seed": "mob-p07-a", "alt": "Grey herringbone waistcoat worn over a white shirt" },
+        { "seed": "mob-p07-b", "alt": "Herringbone waistcoat showing the welt pocket detail" },
+        { "seed": "mob-p07-c", "alt": "Herringbone waistcoat flat, showing the weave" }
+      ],
+      "featured": false,
+      "isNew": true,
+      "addedAt": "2026-03-06"
+    },
+    {
+      "slug": "poplin-formal-shirt",
+      "name": "Poplin Formal Shirt",
+      "category": "office-casuals",
+      "fabric": "Cotton Poplin",
+      "fabricNote": "100% extra-long staple cotton, 120 gsm. Two-ply yarn.",
+      "description": "Crisp, cool and cut close without being tight. The shirt we keep a spare of at the counter.",
+      "details": [
+        "Spread collar with removable stays",
+        "Single-needle 18 stitches per inch",
+        "Mother-of-pearl style buttons",
+        "Slim through the body"
+      ],
+      "care": "Machine wash 40°C. Iron damp on the reverse for a crisp finish.",
+      "sizes": ["S", "M", "L", "XL", "XXL"],
+      "colours": [
+        { "name": "Bright White", "hex": "#FAFAF8" },
+        { "name": "Pale Blue", "hex": "#DCE5EE" },
+        { "name": "Lilac", "hex": "#B9B3C4" }
+      ],
+      "images": [
+        { "seed": "mob-p08-a", "alt": "Crisp white poplin formal shirt worn tucked" },
+        { "seed": "mob-p08-b", "alt": "Poplin shirt spread collar close up" },
+        { "seed": "mob-p08-c", "alt": "Poplin shirt showing the fine 18 stitches per inch seam" }
+      ],
+      "featured": true,
+      "isNew": false,
+      "addedAt": "2026-03-12"
+    },
+    {
+      "slug": "tapered-linen-trouser",
+      "name": "Tapered Linen Trouser",
+      "category": "office-casuals",
+      "fabric": "Cotton Linen",
+      "fabricNote": "55% linen, 45% cotton. 200 gsm with a dry handle.",
+      "description": "Tailored but easy. The texture reads relaxed while the line stays clean.",
+      "details": [
+        "Mid rise, tapered from the knee",
+        "Hook-bar closure with hidden zip",
+        "Slant front pockets, welt back pocket",
+        "Unfinished inseam for tailoring"
+      ],
+      "care": "Machine wash cold on a gentle cycle. Hang dry. Iron on the reverse.",
+      "sizes": ["S", "M", "L", "XL", "XXL"],
+      "colours": [
+        { "name": "Flax", "hex": "#D6CBB4" },
+        { "name": "Black", "hex": "#1A1A1A" },
+        { "name": "Warm Grey", "hex": "#8C8A85" }
+      ],
+      "images": [
+        { "seed": "mob-p09-a", "alt": "Flax tapered linen trouser worn with a tucked shirt" },
+        { "seed": "mob-p09-b", "alt": "Linen trouser showing the taper below the knee" },
+        { "seed": "mob-p09-c", "alt": "Linen trouser folded showing the cotton linen texture" }
+      ],
+      "featured": false,
+      "isNew": true,
+      "addedAt": "2026-03-19"
+    },
+    {
+      "slug": "cable-knit-sweater",
+      "name": "Cable Knit Sweater",
+      "category": "office-casuals",
+      "fabric": "Merino Wool",
+      "fabricNote": "100% extra-fine merino wool, 12 gauge. Fully fashioned.",
+      "description": "A proper cable knit in fine merino. Warm without bulk, and it layers cleanly under the blazer.",
+      "details": [
+        "Full cable and rib panel",
+        "Ribbed crew neck, cuffs and hem",
+        "Fully fashioned, set-in sleeve",
+        "Slim through the body"
+      ],
+      "care": "Hand wash cold or dry clean. Dry flat away from direct heat.",
+      "sizes": ["S", "M", "L", "XL"],
+      "colours": [
+        { "name": "Oatmeal", "hex": "#D3C9B6" },
+        { "name": "Charcoal", "hex": "#3B3D40" },
+        { "name": "Deep Navy", "hex": "#242F45" }
+      ],
+      "images": [
+        { "seed": "mob-p10-a", "alt": "Oatmeal cable knit sweater worn over a shirt" },
+        { "seed": "mob-p10-b", "alt": "Cable knit sweater showing the cable panel detail" },
+        { "seed": "mob-p10-c", "alt": "Cable knit sweater folded showing the ribbed hem" }
+      ],
+      "featured": false,
+      "isNew": false,
+      "addedAt": "2026-03-25"
+    },
+    {
+      "slug": "cotton-silk-kurta-pajama",
+      "name": "Cotton Silk Kurta Pajama",
+      "category": "kurta-pajama",
+      "fabric": "Cotton Silk",
+      "fabricNote": "70% cotton, 30% silk. Handloom woven with a soft sheen.",
+      "description": "Our signature set. A kurta with quiet drape over a drawstring pajama, finished with tone-on-tone plackets.",
+      "details": [
+        "Straight-cut kurta, 42 inch length",
+        "Mandarin collar with placket",
+        "Matching drawstring pajama with two pockets",
+        "Handloom woven, tone-on-tone placket"
+      ],
+      "care": "Hand wash separately in cold water for the first wash. Dry in shade, iron on low.",
+      "sizes": ["S", "M", "L", "XL", "XXL"],
+      "colours": [
+        { "name": "Off White", "hex": "#EFEBE1" },
+        { "name": "Deep Maroon", "hex": "#5C2A2F" },
+        { "name": "Emerald", "hex": "#1F4A3C" }
+      ],
+      "images": [
+        { "seed": "mob-p11-a", "alt": "Off-white cotton silk kurta pajama set worn full length" },
+        { "seed": "mob-p11-b", "alt": "Cotton silk kurta mandarin collar and placket detail" },
+        { "seed": "mob-p11-c", "alt": "Cotton silk kurta pajama folded showing the handloom texture" }
+      ],
+      "featured": true,
+      "isNew": false,
+      "addedAt": "2026-01-09"
+    },
+    {
+      "slug": "chikankari-kurta",
+      "name": "Chikankari Kurta",
+      "category": "kurta-pajama",
+      "fabric": "Cotton Chikankari",
+      "fabricNote": "100% cotton mul, hand-embroidered with cotton thread.",
+      "description": "Hand-embroidered in Lucknow on a fine cotton base. Every piece takes about nine days on the frame.",
+      "details": [
+        "Hand-embroidered yoke and cuffs",
+        "Straight cut with side slits",
+        "Matching plain pyjama",
+        "Roughly nine days of hand work per kurta"
+      ],
+      "care": "Hand wash cold. Dry flat in shade. Iron on the reverse over a cloth.",
+      "sizes": ["S", "M", "L", "XL", "XXL"],
+      "colours": [
+        { "name": "White", "hex": "#F6F4EF" },
+        { "name": "Powder Blue", "hex": "#B9C8D6" },
+        { "name": "Sage", "hex": "#9BA590" }
+      ],
+      "images": [
+        { "seed": "mob-p12-a", "alt": "White chikankari embroidered kurta worn with a plain pyjama" },
+        { "seed": "mob-p12-b", "alt": "Chikankari kurta showing the hand-embroidered yoke detail" },
+        { "seed": "mob-p12-c", "alt": "Chikankari embroidery shown close up on cotton" }
+      ],
+      "featured": true,
+      "isNew": false,
+      "addedAt": "2026-01-19"
+    },
+    {
+      "slug": "linen-kurta-set",
+      "name": "Linen Kurta Set",
+      "category": "kurta-pajama",
+      "fabric": "Pure Linen",
+      "fabricNote": "100% washed linen, 170 gsm. Gets softer with every wash.",
+      "description": "The everyday kurta. Cool, quiet and genuinely comfortable, with a straight pajama to match.",
+      "details": [
+        "Mandarin collar, three-button placket",
+        "Side slits with reinforced stitching",
+        "Matching straight pajama",
+        "Pre-washed for a soft hand"
+      ],
+      "care": "Machine wash cold on a gentle cycle. Do not bleach. Iron while damp.",
+      "sizes": ["S", "M", "L", "XL", "XXL"],
+      "colours": [
+        { "name": "Natural", "hex": "#E4DDCD" },
+        { "name": "Charcoal", "hex": "#3E4043" },
+        { "name": "Dusty Rose", "hex": "#C4A5A0" }
+      ],
+      "images": [
+        { "seed": "mob-p13-a", "alt": "Natural linen kurta set worn full length" },
+        { "seed": "mob-p13-b", "alt": "Linen kurta mandarin collar and placket detail" },
+        { "seed": "mob-p13-c", "alt": "Linen kurta fabric showing the washed slub texture" }
+      ],
+      "featured": true,
+      "isNew": false,
+      "addedAt": "2026-02-05"
+    },
+    {
+      "slug": "rayon-straight-kurta",
+      "name": "Rayon Straight Kurta",
+      "category": "kurta-pajama",
+      "fabric": "Viscose Rayon",
+      "fabricNote": "100% viscose. Fluid fall with a dry, matte finish.",
+      "description": "A clean straight kurta that falls well without clinging. The one our customers reorder most.",
+      "details": [
+        "Straight cut, 44 inch length",
+        "Round neck with piping detail",
+        "Full sleeve with turn-up cuff",
+        "Matching short pajama"
+      ],
+      "care": "Hand wash cold. Do not wring. Dry flat in shade. Cool iron.",
+      "sizes": ["S", "M", "L", "XL", "XXL"],
+      "colours": [
+        { "name": "Black", "hex": "#1B1B1B" },
+        { "name": "Teal", "hex": "#22504F" },
+        { "name": "Marigold", "hex": "#B98A2B" }
+      ],
+      "images": [
+        { "seed": "mob-p14-a", "alt": "Black rayon straight kurta worn with a matching short pajama" },
+        { "seed": "mob-p14-b", "alt": "Rayon kurta round neck and piping detail" },
+        { "seed": "mob-p14-c", "alt": "Rayon kurta showing the fluid matte fall of the fabric" }
+      ],
+      "featured": false,
+      "isNew": false,
+      "addedAt": "2026-02-14"
+    },
+    {
+      "slug": "bandhgala-kurta-set",
+      "name": "Bandhgala Kurta Set",
+      "category": "kurta-pajama",
+      "fabric": "Cotton Blend",
+      "fabricNote": "Silk-cotton blend, 220 gsm with a soft lustre.",
+      "description": "A closed-neck bandhgala cut for evening functions. Structured through the shoulder, comfortable everywhere else.",
+      "details": [
+        "Closed bandhgala collar",
+        "Structured shoulder with light padding",
+        "Matching tapered pajama",
+        "Hidden side seam pockets"
+      ],
+      "care": "Dry clean recommended. Steam lightly between wears.",
+      "sizes": ["S", "M", "L", "XL", "XXL"],
+      "colours": [
+        { "name": "Midnight Blue", "hex": "#1E2A44" },
+        { "name": "Wine", "hex": "#54222E" },
+        { "name": "Ivory", "hex": "#EFE9DC" }
+      ],
+      "images": [
+        { "seed": "mob-p15-a", "alt": "Midnight blue bandhgala kurta set worn to an evening function" },
+        { "seed": "mob-p15-b", "alt": "Bandhgala kurta closed collar and shoulder detail" },
+        { "seed": "mob-p15-c", "alt": "Bandhgala kurta showing the soft lustre of the silk-cotton blend" }
+      ],
+      "featured": true,
+      "isNew": false,
+      "addedAt": "2026-02-21"
+    },
+    {
+      "slug": "hand-block-print-kurta",
+      "name": "Hand Block Print Kurta",
+      "category": "kurta-pajama",
+      "fabric": "Cotton",
+      "fabricNote": "100% cotton, hand block printed with natural vegetable dyes.",
+      "description": "Printed by hand, so no two are identical. A relaxed kurta with a full-width block motif.",
+      "details": [
+        "Hand block printed front and back",
+        "Round neck, three-quarter sleeve",
+        "Matching drawstring pajama",
+        "Natural vegetable dye colour variation is expected"
+      ],
+      "care": "Hand wash separately in cold water for the first three washes. Dry in shade.",
+      "sizes": ["S", "M", "L", "XL", "XXL"],
+      "colours": [
+        { "name": "Indigo", "hex": "#2E4057" },
+        { "name": "Madder Red", "hex": "#8A4436" },
+        { "name": "Turmeric", "hex": "#B08A34" }
+      ],
+      "images": [
+        { "seed": "mob-p16-a", "alt": "Indigo hand block printed kurta worn with a drawstring pajama" },
+        { "seed": "mob-p16-b", "alt": "Hand block print motif shown close up on cotton" },
+        { "seed": "mob-p16-c", "alt": "Block printed kurta showing the natural dye finish" }
+      ],
+      "featured": false,
+      "isNew": true,
+      "addedAt": "2026-03-09"
+    },
+    {
+      "slug": "pathani-kurta-set",
+      "name": "Pathani Kurta Set",
+      "category": "kurta-pajama",
+      "fabric": "Cotton",
+      "fabricNote": "100% combed cotton, 180 gsm. Slightly sheer, deliberately.",
+      "description": "A long-sleeve Pathani cut for the wedding itself. Light enough for an afternoon function in May.",
+      "details": [
+        "Mandarin collar with five-button placket",
+        "Full sleeve with cuff buttons",
+        "Matching long pajama, 40 inch inseam",
+        "Reinforced side pockets"
+      ],
+      "care": "Machine wash cold on a gentle cycle. Iron on medium. Dry in shade.",
+      "sizes": ["S", "M", "L", "XL", "XXL"],
+      "colours": [
+        { "name": "Cream", "hex": "#F1EAD9" },
+        { "name": "Powder Blue", "hex": "#B4C3D1" },
+        { "name": "Charcoal", "hex": "#3B3D40" }
+      ],
+      "images": [
+        { "seed": "mob-p17-a", "alt": "Cream Pathani kurta set worn full length" },
+        { "seed": "mob-p17-b", "alt": "Pathani kurta collar and placket buttons detail" },
+        { "seed": "mob-p17-c", "alt": "Pathani kurta cuff and sleeve detail" }
+      ],
+      "featured": false,
+      "isNew": false,
+      "addedAt": "2026-02-27"
+    },
+    {
+      "slug": "silk-blend-wedding-kurta",
+      "name": "Silk Blend Wedding Kurta",
+      "category": "kurta-pajama",
+      "fabric": "Silk Blend",
+      "fabricNote": "55% silk, 45% cotton. Designed for long evenings under lights.",
+      "description": "Our most formal piece. A silk-blend kurta with tonal embroidery, cut for movement through a long evening.",
+      "details": [
+        "Tonal thread embroidery on the placket",
+        "Structured closed collar",
+        "Matching straight pajama",
+        "Lined yoke for a clean finish"
+      ],
+      "care": "Dry clean only. Store folded with tissue between wears.",
+      "sizes": ["S", "M", "L", "XL", "XXL"],
+      "colours": [
+        { "name": "Deep Gold", "hex": "#8A6A28" },
+        { "name": "Bottle Green", "hex": "#1F3B2E" },
+        { "name": "Antique Rose", "hex": "#9C6461" }
+      ],
+      "images": [
+        { "seed": "mob-p18-a", "alt": "Deep gold silk blend wedding kurta worn with a matching pajama" },
+        { "seed": "mob-p18-b", "alt": "Silk blend kurta tonal embroidery detail" },
+        { "seed": "mob-p18-c", "alt": "Silk blend kurta showing the sheen under light" }
+      ],
+      "featured": true,
+      "isNew": false,
+      "addedAt": "2026-01-22"
+    },
+    {
+      "slug": "slub-cotton-kurta",
+      "name": "Slub Cotton Kurta",
+      "category": "kurta-pajama",
+      "fabric": "Slub Cotton",
+      "fabricNote": "100% slub cotton. Irregular texture in the yarn, on purpose.",
+      "description": "Slightly uneven, completely soft. A kurta that looks effortless because it is.",
+      "details": [
+        "Mandarin collar with single button",
+        "Three-quarter sleeve",
+        "Matching short pajama with drawstring",
+        "Irregular slub texture throughout"
+      ],
+      "care": "Machine wash cold, inside out. Do not iron the seams flat. Dry in shade.",
+      "sizes": ["S", "M", "L", "XL", "XXL"],
+      "colours": [
+        { "name": "Undyed", "hex": "#E7E1D2" },
+        { "name": "Clay", "hex": "#A0705C" },
+        { "name": "Ink", "hex": "#2C3138" }
+      ],
+      "images": [
+        { "seed": "mob-p19-a", "alt": "Undyed slub cotton kurta worn with a matching short pajama" },
+        { "seed": "mob-p19-b", "alt": "Slub cotton kurta showing the irregular yarn texture" },
+        { "seed": "mob-p19-c", "alt": "Slub cotton kurta collar and single button detail" }
+      ],
+      "featured": false,
+      "isNew": true,
+      "addedAt": "2026-03-15"
+    },
+    {
+      "slug": "cotton-voile-short-kurta",
+      "name": "Cotton Voile Short Kurta",
+      "category": "kurta-pajama",
+      "fabric": "Cotton Voile",
+      "fabricNote": "100% cotton voile, 90 gsm. Extremely light, semi-sheer.",
+      "description": "Our lightest set. Made for Ahmedabad evenings when even linen feels heavy.",
+      "details": [
+        "Short kurta, 38 inch length",
+        "Round neck with piping",
+        "Matching short pajama",
+        "Finished with a hand-rolled hem"
+      ],
+      "care": "Hand wash cold. Do not wring. Dry flat in shade.",
+      "sizes": ["S", "M", "L", "XL"],
+      "colours": [
+        { "name": "White", "hex": "#F7F5F1" },
+        { "name": "Sky", "hex": "#C2D2DE" },
+        { "name": "Terracotta", "hex": "#9E6552" }
+      ],
+      "images": [
+        { "seed": "mob-p20-a", "alt": "White cotton voile short kurta worn with a matching short pajama" },
+        { "seed": "mob-p20-b", "alt": "Cotton voile short kurta neckline and piping detail" },
+        { "seed": "mob-p20-c", "alt": "Cotton voile showing the light semi-sheer weave" }
+      ],
+      "featured": false,
+      "isNew": false,
+      "addedAt": "2026-03-21"
+    }
+  ]
+}
