@@ -5,7 +5,7 @@ import { WhatsAppIcon } from "@/components/ui/Icons";
 const STEPS = [
   {
     title: "Pick what you like",
-    body: "Browse the two collections. Choose a size and a colour. Nothing is added to a basket, because there is no basket.",
+    body: "Browse the three collections. Choose a size and a colour. Nothing is added to a basket, because there is no basket.",
   },
   {
     title: "Message us on WhatsApp",

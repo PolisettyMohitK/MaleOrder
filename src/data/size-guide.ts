@@ -1,7 +1,7 @@
 /**
  * SIZE GUIDE — edit this file to change the measurements shown on the
  * product page. Sizes are chest measurements in inches, which is how we fit
- * in store in Erise.
+ * in store in Ahmedabad.
  */
 
 export interface SizeRow {

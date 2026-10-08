@@ -38,7 +38,6 @@ export default async function CollectionPage(props: PageProps<"/collections/[slu
   if (!category) notFound();
 
   const products = productsByCategory(slug);
-  const other = categories.find((c) => c.slug !== slug)!;
   const suggestions = completeTheLook(slug, 4);
 
   return (
@@ -99,9 +98,8 @@ export default async function CollectionPage(props: PageProps<"/collections/[slu
         <ProductRail
           products={suggestions}
           eyebrow="Complete the look"
-          title={`Wear it with ${other.name.toLowerCase()}`}
+          title="The rest of the rail"
           tone="dark"
-          link={{ href: `/collections/${other.slug}`, label: `Shop ${other.name}` }}
         />
       </section>
       </div>

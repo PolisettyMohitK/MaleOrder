@@ -273,7 +273,7 @@ export function ProductOrderPanel({ product }: { product: Product }) {
 
                 <p className="t-body mt-6 text-neutral-600">
                   Or come in and we will measure you properly. The shop is on{" "}
-                  {store.area} Main Road, {store.city}.
+                  {store.address.line2}, {store.city}.
                 </p>
               </div>
             </motion.div>

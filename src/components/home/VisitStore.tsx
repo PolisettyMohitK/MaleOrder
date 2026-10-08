@@ -22,7 +22,7 @@ export function VisitStore() {
             </h2>
             <p className="t-body mt-7 max-w-md text-neutral-600">
               Everything on this site is on the rail in store. If you are within
-              driving distance of {store.area}, come and see the fabric in person
+              driving distance of {store.city}, come and see the fabric in person
               before you order.
             </p>
           </div>

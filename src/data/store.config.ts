@@ -8,15 +8,22 @@
  */
 
 export const store = {
-  /** Wordmark. Rendered on one line, with `area` beneath it. */
+  /** Wordmark. Rendered on one line, with `tagline` beneath it. */
   name: "Male Order",
   shortName: "Male Order",
-  /** Shown under the wordmark, uppercased by the Logo component. */
-  area: "Erise",
+  /**
+   * TAGLINE, NOT A LOCATION.
+   * Set under the wordmark as a brand line. The shop is in Ahmedabad; "Erise"
+   * is the line we sit under the name, nothing more. Anything that tells a
+   * customer where we are must use `city`, not this.
+   */
+  tagline: "Erise",
+  /** The actual location. This is what customers are told. */
   city: "Ahmedabad",
   state: "Gujarat",
 
-  tagline: "Tailored for work. Made for celebrations.",
+  /** Brand promise. The one-line reason to shop us, used in metadata. */
+  promise: "Tailored for work. Made for celebrations.",
 
   /**
    * PLACEHOLDER — replace with the real shop number.
@@ -31,10 +38,10 @@ export const store = {
   /** PLACEHOLDER — real email. */
   email: "hello@maleorder.in",
 
-  /** PLACEHOLDER — confirm the street address in Erise. */
+  /** PLACEHOLDER — confirm the street address in Ahmedabad. */
   address: {
     line1: "Shop 3, Silver Arcade",
-    line2: "Erise Main Road",
+    line2: "Station Road",
     city: "Ahmedabad",
     state: "Gujarat",
     postcode: "380001",
@@ -54,7 +61,7 @@ export const store = {
   ],
 
   /** Free-text query used by the "Get directions" button. */
-  directionsQuery: "Erise, Ahmedabad, Gujarat",
+  directionsQuery: "Menswear shop, Ahmedabad, Gujarat",
 
   /**
    * Embedded map. No API key needed — OpenStreetMap.
@@ -77,11 +84,15 @@ export const store = {
   siteUrl: "https://maleorder.in",
 } as const;
 
-/** "Male Order Erise" — used in <title> and social tags. */
-export const fullName = `${store.name} ${store.area}`;
+/** The brand lockup, flattened. "Male Order Erise" — name plus tagline. */
+export const fullName = `${store.name} ${store.tagline}`;
 
-/** "Erise, Ahmedabad" — the short place line used in banners and the footer. */
-export const placeLine = `${store.area}, ${store.city}`;
+/**
+ * The location line. Built from the city, never from the tagline — "Erise" is
+ * a brand line and does not appear in anything that tells a customer where the
+ * shop is.
+ */
+export const placeLine = `${store.city}, ${store.state}`;
 
 export const addressLines: string[] = [
   store.address.line1,

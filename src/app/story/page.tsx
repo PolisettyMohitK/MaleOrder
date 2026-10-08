@@ -62,7 +62,7 @@ export default function StoryPage() {
               data-lines
               className="t-display type-silver mt-7 max-w-4xl"
             >
-              One shop in {store.area}, and now the same rail on your phone.
+              One shop in {store.city}, and now the same rail on your phone.
             </h1>
             <p className="t-body mt-7 max-w-xl text-neutral-600">
               A menswear shop that happens to have an online front now. Same

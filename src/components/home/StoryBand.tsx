@@ -38,7 +38,7 @@ export function StoryBand() {
           <div data-reveal="up">
             <div className="t-body mt-8 space-y-5 text-neutral-300">
               <p>
-                We have been fitting men on {placeLine} for years. Not a
+                We have been fitting men in {placeLine} for years. Not a
                 franchise, not a warehouse — one shop, a few people who know
                 every hanger in it, and a habit of telling customers the truth
                 about fit and fabric.

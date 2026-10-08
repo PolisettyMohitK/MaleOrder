@@ -173,17 +173,28 @@
                  (it animates the --sheen-x custom property)
        layer 2 — the brushed base ramp, always fully legible
 
-     CONTRAST NOTE: measured against the off-white sections (#f5f5f3) this ramp
-     runs from 6.2:1 at its darkest stop (#5f6165) down to 1.8:1 at its lightest
-     (#b4b8bc). It is used for display type only — .t-display and .t-head — so
-     it clears the 3:1 large-text bar across most of its width but not all of
-     it. That is the deliberate "shiny" end of the range.
+     CONTRAST NOTE: the ramp alone measures 6.2:1 at its darkest stop (#5f6165)
+     and falls to 1.8:1 at the lightest (#b4b8bc), so the bright end of the
+     gradient disappeared into the paper on the off-white sections.
 
-     To trade some shine for full compliance, cap the light stop at #8a8c90
-     (3.4:1) — change #b4b8bc below to #8a8c90 and the whole ramp passes 3:1.
-     Anything under 44px uses the solid --color-muted instead, which is a flat
-     6.2:1 and never affected by this. */
+     That is why the ramp is wrapped in a dark halo. Four zero-blur shadows at
+     1px build a hairline ring around every glyph, plus one soft drop shadow
+     for lift. It is thin enough to read as an edge rather than an outline, and
+     it holds the light end of the gradient together without changing the
+     metallic look. Anything under 44px uses the solid --color-muted instead,
+     which is a flat 6.2:1 and never affected by this.
+
+     Note the paint order: with background-clip: text and a transparent colour
+     the gradient is painted in the background phase, which is *before* the
+     text shadow. So the ring sits on top of the glyph edge as well as outside
+     it. At 1px on display type that reads as crispness rather than dirt. */
   .type-silver {
+    text-shadow:
+      1px 0 0 rgba(10, 10, 10, 0.55),
+      -1px 0 0 rgba(10, 10, 10, 0.55),
+      0 1px 0 rgba(10, 10, 10, 0.55),
+      0 -1px 0 rgba(10, 10, 10, 0.55),
+      0 2px 10px rgba(10, 10, 10, 0.35);
     --sheen-x: 100%;
     background-image:
       linear-gradient(
@@ -211,7 +222,14 @@
     color: transparent;
   }
 
-  /* The same treatment inverted for dark surfaces, where silver reads bright. */
+  /* The same treatment inverted for dark surfaces, where silver reads bright.
+
+     FROST WHITE. This used to peak at pure #ffffff, which glared against the
+     near-black sections and was the reason headings felt hard to read on
+     photographs. The ramp now tops out at a soft cool off-white and stays
+     neutral through the midtones, so it reads as lit metal rather than a
+     blown-out highlight. Peak #f4f8fb still sits around 18:1 on #0a0a0a, so
+     legibility went up even as brightness came down. */
   .type-silver-dark {
     --sheen-x: 100%;
     background-image:
@@ -223,12 +241,12 @@
       ),
       linear-gradient(
         100deg,
-        #8a8c90 0%,
-        #c6c9cc 24%,
-        #e8e8e8 44%,
-        #ffffff 54%,
-        #d5d7d9 70%,
-        #9da1a5 100%
+        #9aa3ae 0%,
+        #ccd3db 24%,
+        #e6ecf2 44%,
+        #f4f8fb 54%,
+        #dde5ec 70%,
+        #a4adb8 100%
       );
     background-size:
       260% 100%,
@@ -357,6 +375,55 @@
   }
 
   /* ---------- surfaces ---------- */
+
+  /* A blurred plate for text that sits on top of a photograph.
+     The hero and the category tiles both put a heading, an eyebrow and body
+     copy directly over imagery, where the only separation was a flat gradient
+     scrim. That kept the words legible but flattened the picture behind them.
+     This blurs the photograph under the text instead, so the type reads as
+     being behind frosted glass and the image still reads as a photograph.
+
+     The mask feathers the edges so there is no visible panel boundary, and the
+     tint is deliberately light: the existing gradient scrim underneath is what
+     guarantees contrast, so this only has to take the edge off.
+
+     Used twice, on purpose. backdrop-filter is the most expensive thing in the
+     stylesheet — one full-bleed instance on a mid-range Android costs real
+     frames — so it is not spread further than the two places that need it.
+
+     Declared unprefixed only. Writing the -webkit- prefix alongside it made
+     Lightning CSS treat the pair as a duplicate and keep the prefixed one,
+     which modern Chrome does not match at all (CSS.supports reports false for
+     -webkit-backdrop-filter), so the blur silently rendered nowhere. One
+     declaration lets the build add prefixes if a target actually needs one. */
+  .scrim-blur {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    backdrop-filter: blur(14px) saturate(0.85);
+    background: rgba(10, 10, 10, 0.28);
+    -webkit-mask-image: radial-gradient(
+      ellipse 78% 62% at 50% 50%,
+      #000 0%,
+      #000 42%,
+      transparent 100%
+    );
+    mask-image: radial-gradient(
+      ellipse 78% 62% at 50% 50%,
+      #000 0%,
+      #000 42%,
+      transparent 100%
+    );
+  }
+
+  /* Reduced motion does not affect the blur, but on a low-power device the
+     filter is the first thing worth dropping. */
+  @media (prefers-reduced-transparency: reduce) {
+    .scrim-blur {
+      backdrop-filter: none;
+      background: rgba(10, 10, 10, 0.62);
+    }
+  }
 
   .paper-grain {
     background-color: var(--color-bone);

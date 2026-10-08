@@ -1,7 +1,7 @@
 const ITEMS = [
   "Office Casuals",
   "Kurta Pajama",
-  "Erise, Ahmedabad",
+  "Ahmedabad, Gujarat",
   "Easy ordering on WhatsApp",
   "Honest fabrics",
   "Fits you properly",
@@ -16,7 +16,7 @@ export function MarqueeBand() {
   return (
     <div className="marquee overflow-hidden border-b border-black/8 bg-bone py-5 select-none">
       <p className="sr-only">
-        Office Casuals and Kurta Pajama from our store in Erise, Ahmedabad.
+        Office Casuals and Kurta Pajama from our store in Ahmedabad.
         Easy ordering on WhatsApp.
       </p>
 

@@ -40,7 +40,7 @@ export function Logo({ tone = "ink", size = "md", className = "" }: LogoProps) {
       </span>
       <span className={`silver-rule w-full ${s.gap} mb-[5px] opacity-70`} />
       <span className={`label ${s.sub} ${light ? "text-silver-200" : "text-muted"}`}>
-        {store.area}
+        {store.tagline}
       </span>
     </Link>
   );

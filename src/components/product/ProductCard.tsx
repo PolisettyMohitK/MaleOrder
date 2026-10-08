@@ -81,18 +81,22 @@ export function ProductCard({
         ) : null}
       </div>
 
-      <div className="mt-4 flex items-baseline justify-between gap-3">
-        <div className="min-w-0">
-          {caption ? (
-            <p className={`label ${muted}`}>{caption}</p>
-          ) : null}
-          <h3
-            className={`mt-0.5 truncate text-sm font-normal tracking-[0.01em] transition-colors duration-500 group-hover:text-muted ${name}`}
-          >
-            {product.name}
-          </h3>
-        </div>
-        <p className={`label shrink-0 text-right ${muted}`}>{product.fabric}</p>
+      {/* Name gets its own full-width line.
+
+          This was a single row with `truncate`, which meant anything longer
+          than roughly "Sandstone Check Blazer" was cut off mid-word — and half
+          the catalogue has two or three words in it. Fabric moves below the
+          name instead of competing for the same line, and the name clamps to
+          two lines so long names stay readable without letting one card grow
+          taller than the grid around it. */}
+      <div className="mt-4">
+        {caption ? <p className={`label ${muted}`}>{caption}</p> : null}
+        <h3
+          className={`mt-0.5 text-sm leading-snug font-normal tracking-[0.01em] transition-colors duration-500 group-hover:text-muted [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2] overflow-hidden ${name}`}
+        >
+          {product.name}
+        </h3>
+        <p className={`label mt-1.5 ${muted}`}>{product.fabric}</p>
       </div>
     </Link>
   );

@@ -94,11 +94,26 @@ export function featuredProducts(limit = 8): Product[] {
   return products.filter((p) => p.featured).slice(0, limit);
 }
 
-/** Items from the category the visitor is NOT currently browsing. */
+/**
+ * Items from the other collections.
+ *
+ * Round-robins across every category except the one being viewed, rather than
+ * taking the first match. That mattered as soon as there were three: picking a
+ * single "other" category made one collection permanently invisible on the
+ * pages of whichever collection happened to sort after it.
+ */
 export function completeTheLook(currentSlug: string, limit = 4): Product[] {
-  const other = categories.find((c) => c.slug !== currentSlug);
-  if (!other) return [];
-  return productsByCategory(other.slug).slice(0, limit);
+  const queues = categories
+    .filter((c) => c.slug !== currentSlug)
+    .map((c) => productsByCategory(c.slug));
+
+  const out: Product[] = [];
+  while (out.length < limit && queues.some((queue) => queue.length > 0)) {
+    for (const queue of queues) {
+      if (queue.length > 0 && out.length < limit) out.push(queue.shift()!);
+    }
+  }
+  return out;
 }
 
 /** "You may also like" — same category first, topped up from the other. */
@@ -187,8 +202,13 @@ export function applyFilters(
     return [...filtered].sort((a, b) => b.addedAt.localeCompare(a.addedAt));
   }
 
+  /* Default order: promoted pieces first, then newest, then alphabetical.
+     Uses the featured and addedAt fields that are already in the data, so
+     merchandising needs no schema change. The name tiebreak keeps the result
+     stable when two pieces share an addedAt date. */
   return [...filtered].sort((a, b) => {
     if (a.featured !== b.featured) return a.featured ? -1 : 1;
+    if (a.addedAt !== b.addedAt) return b.addedAt.localeCompare(a.addedAt);
     return a.name.localeCompare(b.name);
   });
 }

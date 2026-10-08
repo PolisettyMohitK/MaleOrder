@@ -12,6 +12,17 @@
       "blurb": "Our office casuals are built around breathable cottons and lightweight wools. They hold a crease through a nine-hour day and still look right at a family dinner."
     },
     {
+      "slug": "blazers",
+      "name": "Blazers",
+      "shortName": "Blazers",
+      "description": "Tailoring cut for the Indian climate. Half-canvas, soft shoulder, and a lapel that sits flat.",
+      "bannerLine": "The one thing worth tailoring properly, and the thing we alter most often.",
+      "imageSeed": "mob-p02-a",
+      "imageAlt": "A black wool-blend suit worn with a black shirt",
+      "lookbookCaption": "The tailoring collection",
+      "blurb": "Our blazers are half-canvased rather than fused, so they take a shoulder and let it go again instead of bubbling after a season. We keep four in stock and will sleeve-short or let out the back at no charge."
+    },
+    {
       "slug": "kurta-pajama",
       "name": "Kurta Pajama",
       "shortName": "Kurtas",
@@ -27,7 +38,7 @@
     {
       "slug": "camel-wool-blend-blazer",
       "name": "Camel Wool-Blend Blazer",
-      "category": "office-casuals",
+      "category": "blazers",
       "fabric": "Wool Blend",
       "fabricNote": "70% wool, 30% polyester. Half-canvas construction with a soft shoulder.",
       "description": "A single-breasted blazer in a warm camel wool blend, cut with a gentle shoulder and a clean, slightly shorter hem. Worn open over a white shirt, or buttoned with chinos.",
@@ -80,7 +91,7 @@
     {
       "slug": "black-wool-suit",
       "name": "Black Wool-Blend Suit",
-      "category": "office-casuals",
+      "category": "blazers",
       "fabric": "Wool Blend",
       "fabricNote": "70% wool, 30% polyester. Half-canvas construction with a clean notch lapel.",
       "description": "A two-piece suit in a deep black wool blend with a clean notch lapel and a slim flat-front trouser. Sharp enough for an evening function, plain enough to wear to work.",
@@ -133,7 +144,7 @@
     {
       "slug": "sandstone-check-blazer",
       "name": "Sandstone Check Blazer",
-      "category": "office-casuals",
+      "category": "blazers",
       "fabric": "Wool-Polyester Check",
       "fabricNote": "A soft wool-polyester blend in a sandstone check, half-lined so it drapes without bulk.",
       "description": "A soft-shouldered blazer in a sandstone check, worn here over a black shirt with black trousers. Cut to work over both a tee and a formal shirt.",
@@ -396,7 +407,7 @@
     {
       "slug": "grey-windowpane-blazer",
       "name": "Grey Windowpane Blazer",
-      "category": "office-casuals",
+      "category": "blazers",
       "fabric": "Wool Blend",
       "fabricNote": "70% wool, 30% polyester in a light grey windowpane check, half-canvas chest.",
       "description": "A single-breasted blazer in a light grey windowpane check, cut with a soft shoulder and worn here with navy trousers and a white shirt.",

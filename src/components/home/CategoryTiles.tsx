@@ -20,19 +20,19 @@ export function CategoryTiles() {
               data-lines
               className="t-head type-silver mt-5"
             >
-              Two wardrobes, kept tight.
+              Three collections, kept tight.
             </h2>
           </div>
           <p className="t-body max-w-sm text-neutral-600">
             We only make and stock what we can sell you properly. That is why
-            there are two collections and not forty.
+            there are three collections and not forty.
           </p>
         </div>
 
         <div
           data-reveal="up"
           data-reveal-stagger
-          className="mt-14 grid gap-5 md:mt-20 md:grid-cols-2 md:gap-6"
+          className="mt-14 grid gap-5 md:mt-20 md:grid-cols-2 md:gap-6 lg:grid-cols-3"
         >
           {categories.map((category) => (
             <Link
@@ -52,7 +52,16 @@ export function CategoryTiles() {
                   sizes="(min-width: 768px) 46vw, 92vw"
                   className="zoom-slow object-cover"
                 />
-                <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(10,10,10,0.9)_0%,rgba(10,10,10,0.62)_45%,rgba(10,10,10,0.55)_100%)]" />
+                {/* Heavier than the hero scrim, and deliberately shaped. A tile
+                    is a small crop of an arbitrary photograph, and the kurta
+                    tile is a pale pink garment against pale wood — at the old
+                    0.55-0.62 the frost white heading and the body copy
+                    vanished into it. So the bottom 40% is nearly opaque, where
+                    all the text lives, and it only lifts toward the top of the
+                    frame where the photograph is meant to be seen. */}
+                <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(10,10,10,0.96)_0%,rgba(10,10,10,0.93)_40%,rgba(10,10,10,0.58)_74%,rgba(10,10,10,0.38)_100%)]" />
+                {/* Frosted plate behind the caption block. See .scrim-blur. */}
+                <div className="scrim-blur" aria-hidden="true" />
               </div>
 
               <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-9">

@@ -3,7 +3,7 @@ import { waLink, GENERAL_ENQUIRY } from "@/lib/whatsapp";
 import { WhatsAppIcon } from "@/components/ui/Icons";
 
 const BULLETS = [
-  `Visit us in ${store.area}, ${store.city}`,
+  `Visit us in ${store.city}`,
   "Order easily on WhatsApp",
   "Free alterations in store",
 ];

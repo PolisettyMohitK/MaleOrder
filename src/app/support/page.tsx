@@ -34,7 +34,7 @@ const FAQ = [
   {
     question: "Do you deliver?",
     answer:
-      "Yes, across India. We will send you the shipping charge along with the confirmation, before anything is dispatched. If you would rather collect, the shop on Erise Main Road is open six days a week and we can have it pressed and ready for you.",
+      "Yes, across India. We will send you the shipping charge along with the confirmation, before anything is dispatched. If you would rather collect, the shop on Station Road is open six days a week and we can have it pressed and ready for you.",
   },
   {
     question: "Can I exchange something?",
@@ -102,7 +102,7 @@ export default function SupportPage() {
                   Open WhatsApp
                 </a>
                 <p className="label mt-6 text-muted">
-                  {store.phone} · {store.area}, {store.city}
+                  {store.phone} · {store.city}
                 </p>
               </div>
 
@@ -185,13 +185,13 @@ export default function SupportPage() {
           <div data-reveal="up">
             <p className="label text-muted">Find us</p>
             <h2 id="visit-heading" className="t-head shine mt-5">
-              {store.area} Main Road
+              {store.address.line2}
             </h2>
           </div>
           <div data-reveal="up">
             <div className="draw-border mt-10 overflow-hidden">
               <iframe
-                title={`Map showing ${store.name} in ${store.area}, ${store.city}`}
+                title={`Map showing ${store.name} in ${store.city}`}
                 src={store.mapEmbedUrl}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"

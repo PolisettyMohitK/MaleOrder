@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     template: `%s — ${fullName}`,
   },
   description:
-    "Office casuals and kurta pajama sets, made properly and sold from our shop in Erise, Ahmedabad. Browse the collection and order easily on WhatsApp.",
+    "Office casuals and kurta pajama sets, made properly and sold from our shop in Ahmedabad. Browse the collection and order easily on WhatsApp.",
   keywords: [
     "menswear Ahmedabad",
     "Office Casuals",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: `${fullName} — Menswear in ${placeLine}`,
-    description: store.tagline,
+    description: store.promise,
     type: "website",
     locale: "en_IN",
     siteName: fullName,

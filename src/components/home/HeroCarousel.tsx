@@ -170,9 +170,14 @@ export function HeroCarousel() {
 
       {/* Brand greeting */}
       <div className="relative z-[3] flex min-h-dvh flex-col justify-center px-5 pt-28 pb-40 text-center sm:px-8">
-        <div className="mx-auto w-full max-w-4xl">
+        {/* Frosted plate behind the greeting. The slide photograph runs the
+            full height of the hero, so this block of text sits on the image
+            and needs something more than a flat gradient to hold together. */}
+        <div className="scrim-blur" aria-hidden="true" />
+        <div className="relative mx-auto w-full max-w-4xl">
           <p className="label text-silver-200">
-            {categories[0].shortName} · {categories[1].shortName} · {placeLine}
+            {categories.map((category) => category.shortName).join(" · ")} ·{" "}
+            {placeLine}
           </p>
 
           <h1 className="type-silver-dark t-display mt-7">
