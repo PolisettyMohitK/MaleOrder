@@ -18,28 +18,37 @@ const base = {
 /* -------------------------------------------------- WhatsApp (official mark) */
 
 /**
- * The real WhatsApp mark, on the standard 24x24 grid: a speech bubble with a
- * telephone handset cut out of it, filled solid in `currentColor`.
+ * The official WhatsApp mark, on the standard 24x24 grid: a solid speech
+ * bubble with the telephone handset knocked out of the middle.
  *
- * Drawn rather than imported so it inherits the black-and-white palette exactly
- * like every other icon here — an official brand-colour asset would have been a
- * green square in the middle of a monochrome site. Because it is filled and
- * single-colour, `currentColor` covers the light, dark and hover states with no
- * extra work.
+ * The version this replaces was the Simple Icons *outline* variant — a thin
+ * bubble ring drawn separately from the handset. Rendered as a ladder from
+ * 16px to 96px, that ring breaks up and goes visibly jagged at the two sizes
+ * this site actually uses (16px in the order buttons, 20px in the header).
+ *
+ * A filled shape with one hole holds together at any size, because there is no
+ * hairline stroke to alias: at 16px the knocked-out handset still reads as a
+ * handset. `fill-rule="evenodd"` is what punches the hole — with the default
+ * nonzero winding the handset subpath would just fill back in.
+ *
+ * Still single-colour `currentColor`, so it stays monochrome across the ink,
+ * paper and silver states. The official brand asset is green-on-white, which
+ * would have been a coloured square in the middle of a greyscale site.
  */
 export function WhatsAppIcon(props: IconProps) {
   return (
     <svg
       viewBox="0 0 24 24"
       fill="currentColor"
+      fillRule="evenodd"
+      clipRule="evenodd"
       width={20}
       height={20}
       aria-hidden
       focusable="false"
       {...props}
     >
-      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a1.03 1.03 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347Z" />
-      <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 2.09.547 4.142 1.588 5.945L2 22l5.25-1.652a9.9 9.9 0 0 0 5.048 1.36h.004c5.455 0 9.89-5.335 9.89-11.892 0-3.18-1.24-6.165-3.495-8.41A11.82 11.82 0 0 0 12.04 2Zm0 18.63h-.003a9.79 9.79 0 0 1-4.99-1.37l-.36-.214-3.74.98.998-3.647-.235-.374a9.79 9.79 0 0 1-1.5-5.26c0-5.4 4.4-9.8 9.82-9.8 2.62 0 5.09 1.03 6.94 2.88a9.75 9.75 0 0 1 2.88 6.91c0 5.4-4.4 9.8-9.82 9.8Z" />
+      <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 2.09.547 4.142 1.588 5.945L2 22l5.25-1.652a9.9 9.9 0 0 0 5.048 1.36h.004c5.455 0 9.89-5.335 9.89-11.892 0-3.18-1.24-6.165-3.495-8.41A11.82 11.82 0 0 0 12.04 2Zm5.52 12.53c-.24.68-1.4 1.3-1.94 1.36-.5.06-1.15.1-1.86-.12-.43-.13-.98-.32-1.69-.63-2.97-1.28-4.9-4.28-5.05-4.48-.15-.2-1.2-1.6-1.2-3.05 0-1.45.76-2.16 1.03-2.46.27-.3.59-.37.79-.37.2 0 .4 0 .57.01.19.01.44-.07.68.52.24.58.81 2 .88 2.15.07.14.12.31.02.5-.1.2-.15.31-.29.48-.15.17-.31.38-.44.51-.15.14-.3.29-.13.57.17.29.75 1.24 1.61 2.01 1.11 1 2.04 1.31 2.33 1.45.29.15.46.12.63-.07.17-.2.72-.84.91-1.13.2-.29.39-.24.65-.14.26.09 1.66.78 1.94.92.29.15.48.22.55.34.07.12.07.7-.17 1.38Z" />
     </svg>
   );
 }

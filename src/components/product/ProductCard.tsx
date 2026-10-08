@@ -72,8 +72,8 @@ export function ProductCard({
           <span
             className={`label absolute top-3 left-3 z-[2] border px-2.5 py-1.5 backdrop-blur-sm ${
               tone === "dark"
-                ? "border-white/25 bg-ink/40 text-bone"
-                : "border-black/10 bg-white/70 text-ink"
+                ? "border-white/25 bg-ink/55 text-bone"
+                : "border-black/10 bg-paper/85 text-ink"
             }`}
           >
             New

@@ -2,6 +2,7 @@
 
 import type { SortOption } from "@/data/products";
 import { SORT_LABELS } from "@/data/products";
+import { FilterDropdown, type FilterOption } from "./FilterDropdown";
 
 type GroupKey = "sizes" | "colours" | "fabrics";
 
@@ -18,12 +19,15 @@ interface FilterBarProps {
   onClear: () => void;
 }
 
-const PILL =
-  "tap inline-flex items-center gap-2 rounded-full border px-4 py-2 text-xs tracking-[0.08em] transition-colors duration-500";
-
 /**
  * Filter and sort bar. Everything happens in memory on the client, so the
  * grid responds instantly with no navigation and no request.
+ *
+ * The four groups were inline pills, listing every value on the page — which
+ * across Size, Colour and Fabric pushed the actual grid well below the fold
+ * without a single filter being applied. They are now collapsed triggers that
+ * open a panel, styled to match the floating menu, which keeps the grid close
+ * to where you landed and still shows how many filters are live.
  */
 export function FilterBar({
   groups,
@@ -37,6 +41,15 @@ export function FilterBar({
   onClear,
 }: FilterBarProps) {
   const anyActive = groups.some((group) => active[group.key].length > 0);
+  const activeCount = groups.reduce(
+    (total, group) => total + active[group.key].length,
+    0,
+  );
+
+  const sortOptions = (Object.keys(SORT_LABELS) as SortOption[]).map((option) => ({
+    value: option,
+    label: SORT_LABELS[option],
+  }));
 
   return (
     <div className="border-y border-silver-500/20 py-6">
@@ -47,81 +60,41 @@ export function FilterBar({
             : `${resultCount} of ${totalCount} pieces`}
         </p>
 
-        <div className="flex items-center gap-3">
-          <span className="label text-muted">Sort</span>
-          <div
-            role="group"
-            aria-label="Sort products"
-            className="flex items-center gap-1 rounded-full border border-silver-500/35 p-1"
-          >
-            {(Object.keys(SORT_LABELS) as SortOption[]).map((option) => {
-              const selected = sort === option;
-              return (
-                <button
-                  key={option}
-                  type="button"
-                  onClick={() => onSort(option)}
-                  aria-pressed={selected}
-                  className={`tap rounded-full px-4 py-1.5 text-xs tracking-[0.08em] transition-colors duration-500 ${
-                    selected ? "bg-ink text-paper" : "text-neutral-600 hover:text-ink"
-                  }`}
-                >
-                  {SORT_LABELS[option]}
-                </button>
-              );
-            })}
-          </div>
-        </div>
+        <FilterDropdown
+          label="Sort"
+          single
+          prefix={null}
+          options={sortOptions}
+          selected={[sort]}
+          onToggle={(value) => onSort(value as SortOption)}
+        />
       </div>
 
-      <div className="mt-6 flex flex-col gap-5">
+      <div className="mt-6 flex flex-wrap items-start gap-3">
         {groups.map((group) => (
-          <div
+          <FilterDropdown
             key={group.key}
-            className="flex flex-col gap-3 sm:flex-row sm:items-start sm:gap-6"
-          >
-            <p className="label w-20 shrink-0 pt-3 text-muted">{group.label}</p>
-            <ul className="flex flex-wrap gap-2">
-              {group.values.map((value) => {
-                const selected = active[group.key].includes(value);
-                const hex = group.key === "colours" ? swatches[value] : undefined;
-
-                return (
-                  <li key={value}>
-                    <button
-                      type="button"
-                      onClick={() => onToggle(group.key, value)}
-                      aria-pressed={selected}
-                      className={`${PILL} ${
-                        selected
-                          ? "border-ink bg-ink text-paper"
-                          : "border-silver-500/40 text-neutral-600 hover:border-ink hover:text-ink"
-                      }`}
-                    >
-                      {hex ? (
-                        <span
-                          aria-hidden="true"
-                          className={`size-3 shrink-0 rounded-full border ${
-                            selected ? "border-paper/40" : "border-black/15"
-                          }`}
-                          style={{ backgroundColor: hex }}
-                        />
-                      ) : null}
-                      {value}
-                    </button>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
+            label={group.label}
+            options={group.values.map<FilterOption>((value) => ({
+              value,
+              label: value,
+              hex: group.key === "colours" ? swatches[value] : undefined,
+            }))}
+            selected={active[group.key]}
+            onToggle={(value) => onToggle(group.key, value)}
+          />
         ))}
-      </div>
 
-      {anyActive ? (
-        <button type="button" onClick={onClear} className="label link-draw mt-6 text-ink">
-          Clear all filters
-        </button>
-      ) : null}
+        {anyActive ? (
+          <button
+            type="button"
+            onClick={onClear}
+            className="tap label link-draw px-4 py-2.5 text-ink"
+          >
+            Clear all filters ({activeCount})
+          </button>
+        ) : null}
+      </div>
     </div>
   );
 }

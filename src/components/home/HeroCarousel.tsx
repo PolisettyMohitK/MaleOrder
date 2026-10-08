@@ -216,7 +216,13 @@ export function HeroCarousel() {
                 {current.name}
               </span>
             </span>
-            <span className="label flex items-center gap-2 rounded-full border border-white/30 px-4 py-2 text-bone backdrop-blur-sm transition-colors duration-500 hover:border-white/70">
+            {/* The fill is the point here. This badge had `backdrop-blur-sm`
+                with no background at all, so the blur had nothing to blur but
+                the photograph itself and the bone text sat directly on that
+                smear — over a bright part of the hero it read as blurred,
+                illegible type. Ink/45 gives the text a real surface while
+                keeping the hero visible through it. */}
+            <span className="label flex items-center gap-2 rounded-full border border-white/30 bg-ink/45 px-4 py-2 text-bone backdrop-blur-sm transition-colors duration-500 hover:border-white/70">
               View
               <ArrowUpRightIcon width={14} height={14} />
             </span>
