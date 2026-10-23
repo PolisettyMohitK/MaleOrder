@@ -25,6 +25,8 @@ export interface Product {
   sizes: string[];
   colours: Colour[];
   images: ProductImage[];
+  /** Rupees. null shows "Price on WhatsApp" instead of a number. */
+  price: number | null;
   featured: boolean;
   isNew: boolean;
   addedAt: string;
@@ -81,6 +83,12 @@ export function galleryImages(product: Product): string[] {
 
 export function categoryImage(category: Category): string {
   return photo(category.imageSeed, CROP.tile.w, CROP.tile.h);
+}
+
+export function formatPrice(product: Product): string {
+  return product.price === null
+    ? "Price on WhatsApp"
+    : `₹${product.price.toLocaleString("en-IN")}`;
 }
 
 /* ------------------------------------------------------------ collections */

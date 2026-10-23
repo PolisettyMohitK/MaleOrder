@@ -5,7 +5,7 @@ import { WhatsAppIcon } from "@/components/ui/Icons";
 const STEPS = [
   {
     title: "Pick what you like",
-    body: "Browse the three collections. Choose a size and a colour. Nothing is added to a basket, because there is no basket.",
+    body: "Browse the two collections. Choose a size and a colour. Nothing is added to a basket, because there is no basket.",
   },
   {
     title: "Message us on WhatsApp",
@@ -68,7 +68,7 @@ export function HowOrdering() {
         <div data-reveal="up">
           <p className="t-body mt-16 border-t border-silver-500/20 pt-8 text-neutral-600">
             Prefer to speak to someone? Call the shop on {store.phone} during
-            opening hours and we will take it from there. We are on{" "}
+            opening hours and we will take it from there. We are in{" "}
             {placeLine}.
           </p>
         </div>

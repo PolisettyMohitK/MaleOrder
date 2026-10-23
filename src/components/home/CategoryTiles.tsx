@@ -20,19 +20,19 @@ export function CategoryTiles() {
               data-lines
               className="t-head type-silver mt-5"
             >
-              Three collections, kept tight.
+              Two collections, kept tight.
             </h2>
           </div>
           <p className="t-body max-w-sm text-neutral-600">
             We only make and stock what we can sell you properly. That is why
-            there are three collections and not forty.
+            there are two collections and not forty.
           </p>
         </div>
 
         <div
           data-reveal="up"
           data-reveal-stagger
-          className="mt-14 grid gap-5 md:mt-20 md:grid-cols-2 md:gap-6 lg:grid-cols-3"
+          className="mt-14 grid gap-5 md:mt-20 md:grid-cols-2 md:gap-6"
         >
           {categories.map((category) => (
             <Link

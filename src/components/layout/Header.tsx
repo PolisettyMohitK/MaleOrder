@@ -20,11 +20,10 @@ const NAV = [
 ];
 
 /* Desktop splits the nav into two groups flanking the centred logo.
-   The cut falls after Blazers, which keeps the reading order intact — Home,
-   Office Casuals, Blazers on the left, Kurta Pajama, Our Story on the right —
-   and leaves roughly equal ink either side of the logo once the search and
-   WhatsApp buttons are counted on the right. */
-const SPLIT = 3;
+   The cut falls after Office Casuals, which keeps the reading order intact —
+   Home, Office Casuals on the left, Kurta Pajama, Our Story on the right —
+   and leaves roughly equal ink either side of the logo. */
+const SPLIT = 2;
 const LEFT_NAV = NAV.slice(0, SPLIT);
 const RIGHT_NAV = NAV.slice(SPLIT);
 

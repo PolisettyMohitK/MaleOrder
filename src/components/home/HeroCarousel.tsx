@@ -160,21 +160,21 @@ export function HeroCarousel() {
           );
         })}
 
-        {/* Scrim. Two stacked gradients so white type stays legible over any
-            photograph without flattening the image. */}
+        {/* Scrim. Dark at the top for the header and at the bottom for the
+            controls, light through the middle so the garment is visible. The
+            greeting gets its own frosted plate below. */}
         <div
           aria-hidden="true"
-          className="absolute inset-0 z-[2] bg-[linear-gradient(to_bottom,rgba(10,10,10,0.78)_0%,rgba(10,10,10,0.45)_38%,rgba(10,10,10,0.5)_66%,rgba(10,10,10,0.92)_100%)]"
+          className="absolute inset-0 z-[2] bg-[linear-gradient(to_bottom,rgba(10,10,10,0.6)_0%,rgba(10,10,10,0.2)_30%,rgba(10,10,10,0.25)_62%,rgba(10,10,10,0.85)_100%)]"
         />
       </div>
 
       {/* Brand greeting */}
       <div className="relative z-[3] flex min-h-dvh flex-col justify-center px-5 pt-28 pb-40 text-center sm:px-8">
-        {/* Frosted plate behind the greeting. The slide photograph runs the
-            full height of the hero, so this block of text sits on the image
-            and needs something more than a flat gradient to hold together. */}
-        <div className="scrim-blur" aria-hidden="true" />
         <div className="relative mx-auto w-full max-w-4xl">
+          {/* Frosted plate behind the greeting only. It used to fill the whole
+              hero, which blurred the garment the slide is there to show. */}
+          <div className="scrim-blur -inset-x-6 -inset-y-12 -z-10" aria-hidden="true" />
           <p className="label text-silver-200">
             {categories.map((category) => category.shortName).join(" · ")} ·{" "}
             {placeLine}
@@ -210,9 +210,9 @@ export function HeroCarousel() {
             href={`/products/${current.slug}`}
             className="pointer-events-auto flex items-center gap-4 transition-opacity duration-700"
           >
-            <span className="hidden text-left sm:block">
-              <span className="label block text-silver-200">{current.fabric}</span>
-              <span className="mt-1 block font-display text-lg text-bone">
+            <span className="block text-left">
+              <span className="label hidden text-silver-200 sm:block">{current.fabric}</span>
+              <span className="block font-display text-lg leading-tight text-bone sm:mt-1">
                 {current.name}
               </span>
             </span>
@@ -235,7 +235,9 @@ export function HeroCarousel() {
           WhatsApp button. */}
       <div className="absolute inset-x-0 bottom-24 z-[4] px-5 sm:bottom-6 sm:px-8">
         <div className="mx-auto flex max-w-6xl items-center justify-center gap-4 sm:justify-between sm:pr-24 lg:pr-28">
-          <p className="label hidden text-silver-300 sm:block">
+          {/* Phones get the counter instead of the dots: six 44px dot targets
+              plus the pause button are wider than a 375px screen. */}
+          <p className="label text-silver-300">
             <span className="tabular-nums">
               {String(index + 1).padStart(2, "0")}
             </span>
@@ -246,7 +248,7 @@ export function HeroCarousel() {
           </p>
 
           <div className="flex items-center gap-3">
-            <ul className="flex items-center gap-2">
+            <ul className="hidden items-center gap-2 sm:flex">
               {slides.map((product, i) => (
                 <li key={product.slug}>
                   <button

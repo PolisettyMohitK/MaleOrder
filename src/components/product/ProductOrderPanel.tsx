@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import type { Product } from "@/data/products";
 import { sizeGuide, sizeGuideNotes } from "@/data/size-guide";
@@ -27,7 +27,10 @@ const ORDER_STEPS = [
 export function ProductOrderPanel({ product }: { product: Product }) {
   const reduce = useReducedMotion();
   const [size, setSize] = useState<string | null>(null);
-  const [colour, setColour] = useState<string | null>(null);
+  /* One colourway means there is nothing to choose, so it starts selected. */
+  const [colour, setColour] = useState<string | null>(
+    product.colours.length === 1 ? product.colours[0].name : null,
+  );
   const [guideOpen, setGuideOpen] = useState(false);
 
   useEffect(() => {
@@ -43,6 +46,21 @@ export function ProductOrderPanel({ product }: { product: Product }) {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [guideOpen]);
+
+  /* Phones: the order button sits below the gallery, swatches and sizes, so a
+     bar pinned to the bottom carries it whenever the real one is off screen. */
+  const orderRef = useRef<HTMLAnchorElement>(null);
+  const [orderVisible, setOrderVisible] = useState(true);
+
+  useEffect(() => {
+    const node = orderRef.current;
+    if (!node) return;
+    const observer = new IntersectionObserver(([entry]) =>
+      setOrderVisible(entry.isIntersecting),
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
 
   const href = waLink(orderMessage(product.name, { size, colour }));
 
@@ -124,6 +142,7 @@ export function ProductOrderPanel({ product }: { product: Product }) {
 {/* Actions */}
       <div className="mt-10 flex flex-col gap-3">
         <a
+          ref={orderRef}
           href={href}
           target="_blank"
           rel="noopener noreferrer"
@@ -172,6 +191,34 @@ export function ProductOrderPanel({ product }: { product: Product }) {
           and you pay when it reaches you — or when you collect it in{" "}
           {placeLine}.
         </p>
+      </div>
+
+      {/* Pinned order bar, phones and tablets only. Sits above the floating
+          WhatsApp button, which would otherwise duplicate it. */}
+      <div
+        aria-hidden={orderVisible}
+        className={`fixed inset-x-0 bottom-0 z-[70] border-t border-black/10 bg-paper/95 px-5 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur-md transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] lg:hidden ${
+          orderVisible ? "pointer-events-none translate-y-full" : "translate-y-0"
+        }`}
+      >
+        <div className="flex items-center gap-4">
+          <div className="min-w-0 flex-1">
+            <p className="truncate text-sm text-ink">{product.name}</p>
+            <p className="label mt-0.5 text-muted">
+              {[size, colour].filter(Boolean).join(" · ") || "Size confirmed on chat"}
+            </p>
+          </div>
+          <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            tabIndex={orderVisible ? -1 : undefined}
+            className="btn btn-ink shrink-0"
+          >
+            <WhatsAppIcon width={15} height={15} />
+            Order
+          </a>
+        </div>
       </div>
 
       {/* Size guide side panel */}

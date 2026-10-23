@@ -8,6 +8,7 @@ import { ProductOrderPanel } from "@/components/product/ProductOrderPanel";
 import { ProductRail } from "@/components/product/ProductRail";
 import {
   categoryName,
+  formatPrice,
   galleryImages,
   getProduct,
   products,
@@ -73,12 +74,16 @@ export default async function ProductPage(props: PageProps<"/products/[slug]">) 
 
         <div className="mt-10 grid gap-12 lg:grid-cols-12 lg:gap-16">
           {/* Gallery */}
-          <div className="lg:col-span-7">
-            <Gallery images={images} name={product.name} />
+          {/* Sticky too, so the left column is not left empty while the
+              longer details column scrolls past it. */}
+          <div className="min-w-0 lg:col-span-7">
+            <div className="lg:sticky lg:top-32">
+              <Gallery images={images} name={product.name} />
+            </div>
           </div>
 
           {/* Details + order */}
-          <div className="lg:col-span-5">
+          <div className="min-w-0 lg:col-span-5">
             <div className="lg:sticky lg:top-32">
               <div data-reveal="up">
                 <p className="label text-muted">
@@ -86,7 +91,8 @@ export default async function ProductPage(props: PageProps<"/products/[slug]">) 
                   {product.isNew ? " · New in" : ""}
                 </p>
                 <h1 className="t-head shine mt-5">{product.name}</h1>
-                <p className="label mt-5 text-muted">{product.fabric}</p>
+                <p className="mt-4 text-lg text-ink">{formatPrice(product)}</p>
+                <p className="label mt-4 text-muted">{product.fabric}</p>
                 <p className="t-body mt-6 max-w-lg text-neutral-600">
                   {product.description}
                 </p>

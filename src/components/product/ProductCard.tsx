@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { CROP } from "@/lib/images";
 import { photo } from "@/lib/images";
-import type { Product } from "@/data/products";
+import { formatPrice, type Product } from "@/data/products";
 
 interface ProductCardProps {
   product: Product;
@@ -97,6 +97,7 @@ export function ProductCard({
           {product.name}
         </h3>
         <p className={`label mt-1.5 ${muted}`}>{product.fabric}</p>
+        <p className={`mt-1.5 text-sm ${name}`}>{formatPrice(product)}</p>
       </div>
     </Link>
   );

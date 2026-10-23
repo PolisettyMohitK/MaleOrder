@@ -3,1093 +3,203 @@
     {
       "slug": "office-casuals",
       "name": "Office Casuals",
-      "shortName": "Casuals",
-      "description": "Blazers, shirts and knitwear cut for a working day that runs long.",
+      "shortName": "Shirts",
+      "description": "Solid cotton shirts cut for a working day that runs long.",
       "bannerLine": "Smart enough for the boardroom, soft enough for the drive home.",
-      "imageSeed": "mob-category-office-casuals",
-      "imageAlt": "Man in a charcoal blazer over an open collar shirt",
+      "imageSeed": "mob-p06-a",
+      "imageAlt": "Man in a stone grey cotton shirt tucked into charcoal trousers",
       "lookbookCaption": "The weekday wardrobe",
-      "blurb": "Our office casuals are built around breathable cottons and lightweight wools. They hold a crease through a nine-hour day and still look right at a family dinner."
-    },
-    {
-      "slug": "blazers",
-      "name": "Blazers",
-      "shortName": "Blazers",
-      "description": "Tailoring cut for the Indian climate. Half-canvas, soft shoulder, and a lapel that sits flat.",
-      "bannerLine": "The one thing worth tailoring properly, and the thing we alter most often.",
-      "imageSeed": "mob-p02-a",
-      "imageAlt": "A black wool-blend suit worn with a black shirt",
-      "lookbookCaption": "The tailoring collection",
-      "blurb": "Our blazers are half-canvased rather than fused, so they take a shoulder and let it go again instead of bubbling after a season. We keep four in stock and will sleeve-short or let out the back at no charge."
+      "blurb": "Our office shirts are built around breathable cottons in colours that work with grey, beige and charcoal trousers. They hold a crease through a nine-hour day and still look right at a family dinner."
     },
     {
       "slug": "kurta-pajama",
       "name": "Kurta Pajama",
       "shortName": "Kurtas",
-      "description": "Occasion sets in cotton, linen and silk blends. Made to be worn often.",
+      "description": "Occasion sets with embroidery, print and jacquard. Made to be worn often.",
       "bannerLine": "For the wedding season, the festivals and every quiet evening in between.",
-      "imageSeed": "mob-category-kurta-pajama",
-      "imageAlt": "Man wearing an off-white kurta pajama set",
+      "imageSeed": "mob-p01-a",
+      "imageAlt": "Man wearing a royal blue embroidered kurta with white pajama",
       "lookbookCaption": "The celebration wardrobe",
       "blurb": "Our kurta pajamas are finished by hand in our Erise workshop. Every set is pressed, checked and ready to wear, so nothing arrives needing work."
     }
   ],
   "products": [
     {
-      "slug": "camel-wool-blend-blazer",
-      "name": "Camel Wool-Blend Blazer",
-      "category": "blazers",
-      "fabric": "Wool Blend",
-      "fabricNote": "70% wool, 30% polyester. Half-canvas construction with a soft shoulder.",
-      "description": "A single-breasted blazer in a warm camel wool blend, cut with a gentle shoulder and a clean, slightly shorter hem. Worn open over a white shirt, or buttoned with chinos.",
-      "details": [
-        "Two-button front closure",
-        "Notch lapel, working cuffs",
-        "Double side vents",
-        "Unstructured half-canvas chest"
-      ],
-      "care": "Dry clean only. Steam lightly between wears and store on a broad wooden hanger.",
-      "sizes": [
-        "S",
-        "M",
-        "L",
-        "XL",
-        "XXL"
-      ],
-      "colours": [
-        {
-          "name": "Camel",
-          "hex": "#B07E52"
-        },
-        {
-          "name": "Navy",
-          "hex": "#232B3C"
-        },
-        {
-          "name": "Charcoal",
-          "hex": "#3A3C40"
-        }
-      ],
-      "images": [
-        {
-          "seed": "mob-p01-a",
-          "alt": "Camel wool-blend blazer worn open over a white shirt, full length on city steps"
-        },
-        {
-          "seed": "mob-p01-b",
-          "alt": "Pale blue blazer worn with grey trousers, shown from the side"
-        },
-        {
-          "seed": "mob-p01-c",
-          "alt": "Navy blazer worn buttoned over a matching suit"
-        }
-      ],
-      "featured": true,
-      "isNew": false,
-      "addedAt": "2026-01-14"
-    },
-    {
-      "slug": "black-wool-suit",
-      "name": "Black Wool-Blend Suit",
-      "category": "blazers",
-      "fabric": "Wool Blend",
-      "fabricNote": "70% wool, 30% polyester. Half-canvas construction with a clean notch lapel.",
-      "description": "A two-piece suit in a deep black wool blend with a clean notch lapel and a slim flat-front trouser. Sharp enough for an evening function, plain enough to wear to work.",
-      "details": [
-        "Two-button jacket, single-vent back",
-        "Matching flat-front trouser",
-        "Notch lapel, working cuffs",
-        "Half-canvas construction"
-      ],
-      "care": "Machine wash cold on a gentle cycle. Hang dry and iron damp for the sharpest finish.",
-      "sizes": [
-        "S",
-        "M",
-        "L",
-        "XL",
-        "XXL"
-      ],
-      "colours": [
-        {
-          "name": "Black",
-          "hex": "#131316"
-        },
-        {
-          "name": "Charcoal",
-          "hex": "#33363A"
-        },
-        {
-          "name": "Midnight",
-          "hex": "#1C2333"
-        }
-      ],
-      "images": [
-        {
-          "seed": "mob-p02-a",
-          "alt": "Black two-piece suit worn with a black shirt"
-        },
-        {
-          "seed": "mob-p02-b",
-          "alt": "Charcoal suit worn with a white shirt and tie"
-        },
-        {
-          "seed": "mob-p02-c",
-          "alt": "Grey suit jacket worn over a white shirt"
-        }
-      ],
-      "featured": true,
-      "isNew": false,
-      "addedAt": "2026-01-28"
-    },
-    {
-      "slug": "sandstone-check-blazer",
-      "name": "Sandstone Check Blazer",
-      "category": "blazers",
-      "fabric": "Wool-Polyester Check",
-      "fabricNote": "A soft wool-polyester blend in a sandstone check, half-lined so it drapes without bulk.",
-      "description": "A soft-shouldered blazer in a sandstone check, worn here over a black shirt with black trousers. Cut to work over both a tee and a formal shirt.",
-      "details": [
-        "Two-button front closure",
-        "Notch lapel, patch pockets",
-        "Half-lined for a cleaner drape",
-        "Unstructured shoulder"
-      ],
-      "care": "Machine wash cold, inside out. Tumble dry low. Warm iron on the reverse.",
-      "sizes": [
-        "S",
-        "M",
-        "L",
-        "XL",
-        "XXL"
-      ],
-      "colours": [
-        {
-          "name": "Sandstone",
-          "hex": "#BCA075"
-        },
-        {
-          "name": "Charcoal",
-          "hex": "#3A3D41"
-        },
-        {
-          "name": "Olive",
-          "hex": "#5E6146"
-        }
-      ],
-      "images": [
-        {
-          "seed": "mob-p03-a",
-          "alt": "Sandstone check blazer worn over a black shirt"
-        },
-        {
-          "seed": "mob-p03-b",
-          "alt": "Black blazer worn with a white shirt and trousers"
-        },
-        {
-          "seed": "mob-p03-c",
-          "alt": "Black suit jacket worn buttoned, lapel detail"
-        }
-      ],
-      "featured": true,
-      "isNew": false,
-      "addedAt": "2026-02-02"
-    },
-    {
-      "slug": "navy-linen-half-sleeve-shirt",
-      "name": "Navy Linen Half-Sleeve Shirt",
-      "category": "office-casuals",
-      "fabric": "Pure Linen",
-      "fabricNote": "100% washed linen. Softens with every wash and breathes through a Gujarat summer.",
-      "description": "A camp-collared half-sleeve shirt in washed navy linen. The weave softens with every wash and it is cut to be worn open or buttoned.",
-      "details": [
-        "Camp collar, short sleeves",
-        "Single-piece placket",
-        "Corozo buttons",
-        "Relaxed fit through the body"
-      ],
-      "care": "Machine wash cold on a gentle cycle. Do not bleach. Iron while damp.",
-      "sizes": [
-        "S",
-        "M",
-        "L",
-        "XL",
-        "XXL"
-      ],
-      "colours": [
-        {
-          "name": "Navy",
-          "hex": "#2E3A52"
-        },
-        {
-          "name": "Sky",
-          "hex": "#B9C8D6"
-        },
-        {
-          "name": "Ecru",
-          "hex": "#E7E2D6"
-        }
-      ],
-      "images": [
-        {
-          "seed": "mob-p04-a",
-          "alt": "Navy linen half-sleeve shirt on a wooden hanger"
-        },
-        {
-          "seed": "mob-p04-b",
-          "alt": "Navy linen shirt collar and placket shown close up"
-        },
-        {
-          "seed": "mob-p04-c",
-          "alt": "Navy linen half-sleeve shirt worn untucked"
-        }
-      ],
-      "featured": true,
-      "isNew": false,
-      "addedAt": "2026-02-11"
-    },
-    {
-      "slug": "slate-blue-linen-shirt",
-      "name": "Slate Blue Linen Shirt",
-      "category": "office-casuals",
-      "fabric": "Linen",
-      "fabricNote": "Washed linen with a soft handle, garment-finished so it needs no ironing to look right.",
-      "description": "A long-sleeve shirt in slate blue linen, cut for heat with a relaxed body and a soft rolled cuff. Reads as smart or casual depending on what you put under it.",
-      "details": [
-        "Spread collar, long sleeves",
-        "Buttoned cuff with roll tab",
-        "Relaxed fit through the body",
-        "Garment-washed for softness"
-      ],
-      "care": "Machine wash cold, inside out. Reshape while damp and dry flat.",
-      "sizes": [
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
-      "colours": [
-        {
-          "name": "Slate Blue",
-          "hex": "#6E7C8C"
-        },
-        {
-          "name": "Ecru",
-          "hex": "#E6E1D6"
-        },
-        {
-          "name": "Charcoal",
-          "hex": "#3C3F43"
-        }
-      ],
-      "images": [
-        {
-          "seed": "mob-p05-a",
-          "alt": "Slate blue linen shirt worn with the sleeves rolled"
-        },
-        {
-          "seed": "mob-p05-b",
-          "alt": "Slate blue linen shirt shown on a hanger"
-        },
-        {
-          "seed": "mob-p05-c",
-          "alt": "Ecru linen shirt shown on a hanger"
-        }
-      ],
-      "featured": false,
-      "isNew": false,
-      "addedAt": "2026-02-18"
-    },
-    {
-      "slug": "grey-marl-cotton-tee",
-      "name": "Grey Marl Cotton T-Shirt",
-      "category": "office-casuals",
-      "fabric": "Cotton Jersey",
-      "fabricNote": "Mid-weight combed cotton jersey, pre-shrunk so the size you buy is the size you keep.",
-      "description": "A short-sleeve crew-neck tee in a marled grey cotton jersey, with a clean binding at the neck and a body that holds its shape wash after wash.",
-      "details": [
-        "Ribbed crew neck",
-        "Short set-in sleeves",
-        "Pre-shrunk cotton jersey",
-        "Regular fit"
-      ],
-      "care": "Wash sparingly, inside out, cold. Line dry. Expect the indigo to settle into your wear pattern.",
-      "sizes": [
-        "S",
-        "M",
-        "L",
-        "XL",
-        "XXL"
-      ],
-      "colours": [
-        {
-          "name": "Marl Grey",
-          "hex": "#A8A8A4"
-        },
-        {
-          "name": "Charcoal",
-          "hex": "#3A3D40"
-        },
-        {
-          "name": "Ecru",
-          "hex": "#E8E4DA"
-        }
-      ],
-      "images": [
-        {
-          "seed": "mob-p06-a",
-          "alt": "Grey marl cotton t-shirt on a wooden hanger"
-        },
-        {
-          "seed": "mob-p06-b",
-          "alt": "Cotton jersey shown on hangers, weave visible"
-        },
-        {
-          "seed": "mob-p06-c",
-          "alt": "Grey blue shirt worn with chinos"
-        }
-      ],
-      "featured": false,
-      "isNew": false,
-      "addedAt": "2026-02-24"
-    },
-    {
-      "slug": "pale-blue-camp-collar-shirt",
-      "name": "Pale Blue Camp-Collar Shirt",
-      "category": "office-casuals",
-      "fabric": "Cotton Linen",
-      "fabricNote": "A breathable cotton-linen with a dry hand, chosen for heat rather than for shine.",
-      "description": "A short-sleeve camp-collar shirt in a pale blue cotton-linen, cut with an open collar and a boxy body that sits well over a tee.",
-      "details": [
-        "Open camp collar",
-        "Short set-in sleeves",
-        "Corozo buttons",
-        "Boxy relaxed fit"
-      ],
-      "care": "Dry clean. Steam rather than press to keep the herringbone depth.",
-      "sizes": [
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
-      "colours": [
-        {
-          "name": "Pale Blue",
-          "hex": "#B9C7D4"
-        },
-        {
-          "name": "Ecru",
-          "hex": "#EAE6DC"
-        },
-        {
-          "name": "Slate",
-          "hex": "#6B7280"
-        }
-      ],
-      "images": [
-        {
-          "seed": "mob-p07-a",
-          "alt": "Pale blue camp-collar shirt on a wooden hanger"
-        },
-        {
-          "seed": "mob-p07-b",
-          "alt": "Grey suit worn with a white shirt"
-        },
-        {
-          "seed": "mob-p07-c",
-          "alt": "Light grey blazer worn over a black turtleneck"
-        }
-      ],
-      "featured": false,
-      "isNew": true,
-      "addedAt": "2026-03-06"
-    },
-    {
-      "slug": "grey-windowpane-blazer",
-      "name": "Grey Windowpane Blazer",
-      "category": "blazers",
-      "fabric": "Wool Blend",
-      "fabricNote": "70% wool, 30% polyester in a light grey windowpane check, half-canvas chest.",
-      "description": "A single-breasted blazer in a light grey windowpane check, cut with a soft shoulder and worn here with navy trousers and a white shirt.",
-      "details": [
-        "Two-button front closure",
-        "Notch lapel, working cuffs",
-        "Half-canvas chest",
-        "Full-length in grey windowpane check"
-      ],
-      "care": "Machine wash 40°C. Iron damp on the reverse for a crisp finish.",
-      "sizes": [
-        "S",
-        "M",
-        "L",
-        "XL",
-        "XXL"
-      ],
-      "colours": [
-        {
-          "name": "Grey Check",
-          "hex": "#A9AEB4"
-        },
-        {
-          "name": "Navy",
-          "hex": "#22304A"
-        },
-        {
-          "name": "Camel",
-          "hex": "#B08858"
-        }
-      ],
-      "images": [
-        {
-          "seed": "mob-p08-a",
-          "alt": "Grey windowpane blazer worn with navy trousers"
-        },
-        {
-          "seed": "mob-p08-b",
-          "alt": "Light grey blazer worn with a white shirt"
-        },
-        {
-          "seed": "mob-p08-c",
-          "alt": "Pale blue dress shirt worn with a tie"
-        }
-      ],
-      "featured": true,
-      "isNew": false,
-      "addedAt": "2026-03-12"
-    },
-    {
-      "slug": "rust-cotton-jacket",
-      "name": "Rust Cotton Jacket",
-      "category": "office-casuals",
-      "fabric": "Cotton Twill",
-      "fabricNote": "A dry cotton twill that softens with wear and holds its shape without lining.",
-      "description": "An open-front jacket in a rust cotton twill, worn here with jeans and boots. Cut short and easy, the kind of layer that works over almost anything.",
-      "details": [
-        "Open front, no closure",
-        "Notched collar",
-        "Two patch pockets",
-        "Unlined cotton twill"
-      ],
-      "care": "Machine wash cold on a gentle cycle. Hang dry. Iron on the reverse.",
-      "sizes": [
-        "S",
-        "M",
-        "L",
-        "XL",
-        "XXL"
-      ],
-      "colours": [
-        {
-          "name": "Rust",
-          "hex": "#A4552F"
-        },
-        {
-          "name": "Denim Blue",
-          "hex": "#3A4C6B"
-        },
-        {
-          "name": "Olive",
-          "hex": "#5F6349"
-        }
-      ],
-      "images": [
-        {
-          "seed": "mob-p09-a",
-          "alt": "Rust cotton jacket worn with jeans and boots"
-        },
-        {
-          "seed": "mob-p09-b",
-          "alt": "White shirt worn with black trousers"
-        },
-        {
-          "seed": "mob-p09-c",
-          "alt": "Pale blue shirt worn with black trousers"
-        }
-      ],
-      "featured": false,
-      "isNew": true,
-      "addedAt": "2026-03-19"
-    },
-    {
-      "slug": "burgundy-cable-knit-sweater",
-      "name": "Burgundy Cable Knit Sweater",
-      "category": "office-casuals",
-      "fabric": "Merino Wool",
-      "fabricNote": "Merino wool with a fine gauge, warm without the bulk of a heavier lambswool.",
-      "description": "A crew-neck sweater in a deep burgundy cable knit, with ribbed cuffs and hem and a body that sits clean over a shirt or on its own.",
-      "details": [
-        "Cable panel front and back",
-        "Ribbed crew neck, cuffs and hem",
-        "Fine-gauge merino wool",
-        "Regular fit"
-      ],
-      "care": "Hand wash cold or dry clean. Dry flat away from direct heat.",
-      "sizes": [
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
-      "colours": [
-        {
-          "name": "Burgundy",
-          "hex": "#6E2233"
-        },
-        {
-          "name": "Oatmeal",
-          "hex": "#D3C9B6"
-        },
-        {
-          "name": "Charcoal",
-          "hex": "#3A3D40"
-        }
-      ],
-      "images": [
-        {
-          "seed": "mob-p10-a",
-          "alt": "Burgundy cable knit sweater worn with black trousers"
-        },
-        {
-          "seed": "mob-p10-b",
-          "alt": "Navy patterned shirt worn with black trousers"
-        },
-        {
-          "seed": "mob-p10-c",
-          "alt": "Cream cable knit sweater worn with beige trousers"
-        }
-      ],
-      "featured": false,
-      "isNew": false,
-      "addedAt": "2026-03-25"
-    },
-    {
-      "slug": "turquoise-kurta-waistcoat-set",
-      "name": "Turquoise Kurta with Waistcoat",
+      "slug": "royal-blue-embroidered-kurta-set",
+      "name": "Royal Blue Embroidered Kurta Set",
       "category": "kurta-pajama",
       "fabric": "Cotton Silk",
-      "fabricNote": "A cotton-silk blend with a soft sheen, light enough for a daytime function.",
-      "description": "A turquoise kurta worn with an indigo printed waistcoat, cut with a mandarin collar and a straight hem.",
+      "fabricNote": "A cotton-silk blend with a soft sheen, with multicolour thread and mirror embroidery.",
+      "description": "A royal blue kurta with a band collar, an embroidered placket and a deep embroidered hem, worn with a white pajama. Made for weddings and festive evenings.",
       "details": [
-        "Mandarin collar",
-        "Straight-cut kurta body",
-        "Matching pajama",
-        "Printed Nehru waistcoat"
+        "Band collar with embroidered placket",
+        "Embroidered hem and cuffs",
+        "Scattered motif buttis across the body",
+        "Matching white pajama"
       ],
-      "care": "Hand wash separately in cold water for the first wash. Dry in shade, iron on low.",
-      "sizes": [
-        "S",
-        "M",
-        "L",
-        "XL",
-        "XXL"
-      ],
-      "colours": [
-        {
-          "name": "Turquoise",
-          "hex": "#2FA8C4"
-        },
-        {
-          "name": "Indigo",
-          "hex": "#2B4A6B"
-        },
-        {
-          "name": "White",
-          "hex": "#F4F2EE"
-        }
-      ],
+      "care": "Dry clean recommended. If hand washing, use cold water and turn inside out to protect the embroidery.",
+      "sizes": ["S", "M", "L", "XL", "XXL"],
+      "colours": [{ "name": "Royal Blue", "hex": "#1F3F7A" }],
       "images": [
-        {
-          "seed": "mob-p11-a",
-          "alt": "Turquoise kurta worn with an indigo printed waistcoat"
-        },
-        {
-          "seed": "mob-p11-b",
-          "alt": "White kurta seated in a cafe"
-        },
-        {
-          "seed": "mob-p11-c",
-          "alt": "White kurta worn outdoors"
-        }
+        { "seed": "mob-p01-a", "alt": "Royal blue embroidered kurta with white pajama, front view" },
+        { "seed": "mob-p01-b", "alt": "Royal blue embroidered kurta, seated in a palace courtyard" },
+        { "seed": "mob-p01-c", "alt": "Royal blue kurta from the back, plain body with embroidered collar" }
       ],
+      "price": null,
       "featured": true,
-      "isNew": false,
-      "addedAt": "2026-01-09"
+      "isNew": true,
+      "addedAt": "2026-10-22"
     },
     {
-      "slug": "rose-printed-chikankari-kurta",
-      "name": "Rose Printed Chikankari Kurta",
+      "slug": "midnight-navy-embroidered-kurta-set",
+      "name": "Midnight Navy Embroidered Kurta Set",
       "category": "kurta-pajama",
-      "fabric": "Cotton Chikankari",
-      "fabricNote": "Hand-embroidered cotton chikankari, which breathes better than anything else we stock.",
-      "description": "A rose-printed kurta in embroidered cotton, with a soft collarless neckline and a relaxed body. Light enough for a warm afternoon.",
+      "fabric": "Cotton Blend",
+      "fabricNote": "A soft cotton blend with tonal gold thread embroidery on the yoke.",
+      "description": "A midnight navy kurta with gold embroidery down the yoke and small buttis across the body, worn with a matching navy pajama. Quiet enough for a dinner, sharp enough for a sangeet.",
       "details": [
-        "Chikankari embroidered yoke",
-        "Collarless band neck",
-        "Straight hem",
-        "Matching pajama"
-      ],
-      "care": "Hand wash cold. Dry flat in shade. Iron on the reverse over a cloth.",
-      "sizes": [
-        "S",
-        "M",
-        "L",
-        "XL",
-        "XXL"
-      ],
-      "colours": [
-        {
-          "name": "Rose",
-          "hex": "#E0A8B4"
-        },
-        {
-          "name": "White",
-          "hex": "#F6F4EF"
-        },
-        {
-          "name": "Sage",
-          "hex": "#9BA590"
-        }
-      ],
-      "images": [
-        {
-          "seed": "mob-p12-a",
-          "alt": "Rose printed chikankari kurta worn seated at a table"
-        },
-        {
-          "seed": "mob-p12-b",
-          "alt": "White chikankari kurta worn with sunglasses"
-        },
-        {
-          "seed": "mob-p12-c",
-          "alt": "White kurta worn outdoors"
-        }
-      ],
-      "featured": true,
-      "isNew": false,
-      "addedAt": "2026-01-19"
-    },
-    {
-      "slug": "black-linen-kurta",
-      "name": "Black Linen Kurta",
-      "category": "kurta-pajama",
-      "fabric": "Pure Linen",
-      "fabricNote": "Heavyweight linen that creases honestly and softens for years.",
-      "description": "A plain black kurta in heavy linen, cut with a band collar and a straight body. The simplest thing we make and the one we wear most.",
-      "details": [
-        "Band collar, no buttons",
-        "Straight-cut body",
-        "Side vents",
-        "Heavyweight linen"
-      ],
-      "care": "Machine wash cold on a gentle cycle. Do not bleach. Iron while damp.",
-      "sizes": [
-        "S",
-        "M",
-        "L",
-        "XL",
-        "XXL"
-      ],
-      "colours": [
-        {
-          "name": "Black",
-          "hex": "#1B1B1D"
-        },
-        {
-          "name": "Charcoal",
-          "hex": "#33353A"
-        },
-        {
-          "name": "Natural",
-          "hex": "#E4DDCD"
-        }
-      ],
-      "images": [
-        {
-          "seed": "mob-p13-a",
-          "alt": "Black linen kurta worn seated"
-        },
-        {
-          "seed": "mob-p13-b",
-          "alt": "Charcoal linen kurta worn outdoors"
-        },
-        {
-          "seed": "mob-p13-c",
-          "alt": "Ecru linen kurta worn outdoors"
-        }
-      ],
-      "featured": true,
-      "isNew": false,
-      "addedAt": "2026-02-05"
-    },
-    {
-      "slug": "white-rayon-kurta",
-      "name": "White Rayon Kurta",
-      "category": "kurta-pajama",
-      "fabric": "Viscose Rayon",
-      "fabricNote": "Fluid viscose rayon with a matte finish that falls rather than clings.",
-      "description": "A clean white kurta in fluid viscose rayon, with a round neck and a straight fall that moves without clinging.",
-      "details": [
-        "Round neck with piping",
-        "Straight-cut body",
-        "Fluid matte drape",
-        "Matching pajama"
-      ],
-      "care": "Hand wash cold. Do not wring. Dry flat in shade. Cool iron.",
-      "sizes": [
-        "S",
-        "M",
-        "L",
-        "XL",
-        "XXL"
-      ],
-      "colours": [
-        {
-          "name": "White",
-          "hex": "#F5F3EF"
-        },
-        {
-          "name": "Ivory",
-          "hex": "#EDE6D6"
-        },
-        {
-          "name": "Sand",
-          "hex": "#D9C9AC"
-        }
-      ],
-      "images": [
-        {
-          "seed": "mob-p14-a",
-          "alt": "White rayon kurta worn seated outdoors"
-        },
-        {
-          "seed": "mob-p14-b",
-          "alt": "White rayon kurta neck and collar detail"
-        },
-        {
-          "seed": "mob-p14-c",
-          "alt": "White rayon kurta showing the drape"
-        }
-      ],
-      "featured": false,
-      "isNew": false,
-      "addedAt": "2026-02-14"
-    },
-    {
-      "slug": "ivory-bandhgala-kurta",
-      "name": "Ivory Bandhgala Kurta",
-      "category": "kurta-pajama",
-      "fabric": "Silk Cotton",
-      "fabricNote": "A silk-cotton blend with a soft lustre, chosen for evening rather than for day.",
-      "description": "An ivory bandhgala kurta in a silk-cotton blend, closed at the neck and cut close through the shoulder for an evening finish.",
-      "details": [
-        "Closed bandhgala collar",
-        "Tailored shoulder line",
-        "Hidden side fastening",
-        "Soft silk-cotton sheen"
-      ],
-      "care": "Dry clean recommended. Steam lightly between wears.",
-      "sizes": [
-        "S",
-        "M",
-        "L",
-        "XL",
-        "XXL"
-      ],
-      "colours": [
-        {
-          "name": "Ivory",
-          "hex": "#EFE9DC"
-        },
-        {
-          "name": "Gold",
-          "hex": "#C79A3C"
-        },
-        {
-          "name": "Wine",
-          "hex": "#54222E"
-        }
-      ],
-      "images": [
-        {
-          "seed": "mob-p15-a",
-          "alt": "Ivory bandhgala kurta worn close up"
-        },
-        {
-          "seed": "mob-p15-b",
-          "alt": "Gold bandhgala kurta worn with a red turban"
-        },
-        {
-          "seed": "mob-p15-c",
-          "alt": "Gold bandhgala kurta worn at a wedding"
-        }
-      ],
-      "featured": true,
-      "isNew": false,
-      "addedAt": "2026-02-21"
-    },
-    {
-      "slug": "indigo-embroidered-kurta",
-      "name": "Indigo Embroidered Kurta",
-      "category": "kurta-pajama",
-      "fabric": "Cotton Silk",
-      "fabricNote": "Cotton silk with tonal embroidery worked into the chest and shoulder panels.",
-      "description": "An indigo kurta with tonal embroidery across the chest and shoulder, cut with a band collar and a straight body.",
-      "details": [
-        "Tonal chest and shoulder embroidery",
         "Band collar",
-        "Straight-cut body",
-        "Matching pajama"
+        "Gold thread embroidery on the yoke",
+        "Side slits",
+        "Matching navy pajama"
       ],
-      "care": "Hand wash separately in cold water for the first three washes. Dry in shade.",
-      "sizes": [
-        "S",
-        "M",
-        "L",
-        "XL",
-        "XXL"
-      ],
-      "colours": [
-        {
-          "name": "Indigo",
-          "hex": "#2E4057"
-        },
-        {
-          "name": "Teal",
-          "hex": "#2A6B6B"
-        },
-        {
-          "name": "Maroon",
-          "hex": "#8A4436"
-        }
-      ],
+      "care": "Hand wash separately in cold water. Dry in shade and iron on the reverse.",
+      "sizes": ["S", "M", "L", "XL", "XXL"],
+      "colours": [{ "name": "Midnight Navy", "hex": "#1C2338" }],
       "images": [
-        {
-          "seed": "mob-p16-a",
-          "alt": "Indigo embroidered kurta worn with sunglasses"
-        },
-        {
-          "seed": "mob-p16-b",
-          "alt": "Two men in magenta and teal kurtas"
-        },
-        {
-          "seed": "mob-p16-c",
-          "alt": "Cream kurta worn seated outdoors"
-        }
+        { "seed": "mob-p02-a", "alt": "Midnight navy kurta set with gold yoke embroidery, three-quarter view" },
+        { "seed": "mob-p02-b", "alt": "Midnight navy kurta set, front view against a peach wall" },
+        { "seed": "mob-p02-c", "alt": "Midnight navy kurta set from the back" }
       ],
-      "featured": false,
+      "price": null,
+      "featured": true,
       "isNew": true,
-      "addedAt": "2026-03-09"
+      "addedAt": "2026-10-22"
     },
     {
-      "slug": "lavender-pathani-kurta-set",
-      "name": "Lavender Pathani Kurta Set",
+      "slug": "magenta-printed-kurta-set",
+      "name": "Magenta Printed Kurta Set",
       "category": "kurta-pajama",
       "fabric": "Cotton",
-      "fabricNote": "Plain-weave cotton that holds a crease and washes clean.",
-      "description": "A pathani kurta set in a soft lavender cotton, with a short button placket and a matching straight pajama.",
+      "fabricNote": "Breathable printed cotton, comfortable through a long day of functions.",
+      "description": "A magenta kurta with an all-over white wave print, worn with a white pajama. Bright, easy and made for haldi, mehendi and festival days.",
       "details": [
-        "Short button placket",
-        "Mandarin collar",
-        "Matching straight pajama",
-        "Regular fit"
+        "Band collar with concealed placket",
+        "All-over printed body",
+        "Straight hem with side slits",
+        "Matching white pajama"
       ],
-      "care": "Machine wash cold on a gentle cycle. Iron on medium. Dry in shade.",
-      "sizes": [
-        "S",
-        "M",
-        "L",
-        "XL",
-        "XXL"
-      ],
-      "colours": [
-        {
-          "name": "Lavender",
-          "hex": "#D6C6DC"
-        },
-        {
-          "name": "Cream",
-          "hex": "#F1EAD9"
-        },
-        {
-          "name": "Powder Blue",
-          "hex": "#B4C3D1"
-        }
-      ],
+      "care": "Hand wash separately in cold water for the first few washes. Dry in shade.",
+      "sizes": ["S", "M", "L", "XL", "XXL"],
+      "colours": [{ "name": "Magenta", "hex": "#B3274F" }],
       "images": [
-        {
-          "seed": "mob-p17-a",
-          "alt": "Lavender pathani kurta set worn in a studio"
-        },
-        {
-          "seed": "mob-p17-b",
-          "alt": "Cream pathani kurta worn outdoors"
-        },
-        {
-          "seed": "mob-p17-c",
-          "alt": "White kurta worn seated outdoors"
-        }
+        { "seed": "mob-p03-a", "alt": "Magenta printed kurta with white pajama, full length" },
+        { "seed": "mob-p03-b", "alt": "Magenta printed kurta, close up from the waist" }
       ],
-      "featured": false,
-      "isNew": false,
-      "addedAt": "2026-02-27"
+      "price": null,
+      "featured": true,
+      "isNew": true,
+      "addedAt": "2026-10-21"
     },
     {
-      "slug": "sunflower-silk-blend-kurta",
-      "name": "Sunflower Silk-Blend Kurta",
+      "slug": "lemon-yellow-jacquard-kurta-set",
+      "name": "Lemon Yellow Jacquard Kurta Set",
       "category": "kurta-pajama",
-      "fabric": "Silk Blend",
-      "fabricNote": "A silk blend that holds a bright colour without turning shiny under indoor light.",
-      "description": "A sunflower-yellow kurta in a silk blend, cut with a band collar and a straight hem. Bright without being loud.",
+      "fabric": "Jacquard Silk Blend",
+      "fabricNote": "A woven jacquard silk blend with a tonal pattern that catches the light.",
+      "description": "A lemon yellow jacquard kurta with a band collar, worn with an off-white pajama. A classic for haldi and daytime ceremonies.",
       "details": [
         "Band collar",
-        "Straight-cut body",
-        "Soft silk sheen",
-        "Matching pajama"
+        "Tonal woven jacquard pattern",
+        "Side slits",
+        "Matching off-white pajama"
       ],
-      "care": "Dry clean only. Store folded with tissue between wears.",
-      "sizes": [
-        "S",
-        "M",
-        "L",
-        "XL",
-        "XXL"
-      ],
-      "colours": [
-        {
-          "name": "Sunflower",
-          "hex": "#E8C22E"
-        },
-        {
-          "name": "Cream",
-          "hex": "#F1EAD9"
-        },
-        {
-          "name": "Bottle Green",
-          "hex": "#1F3B2E"
-        }
-      ],
+      "care": "Dry clean only.",
+      "sizes": ["S", "M", "L", "XL", "XXL"],
+      "colours": [{ "name": "Lemon Yellow", "hex": "#E8CF5A" }],
       "images": [
-        {
-          "seed": "mob-p18-a",
-          "alt": "Sunflower silk-blend kurta worn on a plain backdrop"
-        },
-        {
-          "seed": "mob-p18-b",
-          "alt": "Two older men in maroon kurtas"
-        },
-        {
-          "seed": "mob-p18-c",
-          "alt": "Two people in traditional Rajasthani dress"
-        }
+        { "seed": "mob-p04-a", "alt": "Lemon yellow jacquard kurta with off-white pajama, front view" },
+        { "seed": "mob-p04-b", "alt": "Lemon yellow jacquard kurta from the back" }
       ],
+      "price": null,
       "featured": true,
       "isNew": false,
-      "addedAt": "2026-01-22"
+      "addedAt": "2026-10-20"
     },
     {
-      "slug": "cream-slub-cotton-kurta",
-      "name": "Cream Slub Cotton Kurta",
-      "category": "kurta-pajama",
-      "fabric": "Slub Cotton",
-      "fabricNote": "Undyed slub cotton, where the irregular yarn gives the surface its texture.",
-      "description": "A cream kurta in undyed slub cotton, cut with a band collar and a straight body. The texture softens rather than pills.",
+      "slug": "plum-cotton-formal-shirt",
+      "name": "Plum Cotton Formal Shirt",
+      "category": "office-casuals",
+      "fabric": "Cotton",
+      "fabricNote": "Smooth cotton with a light stretch, so it moves with you through the day.",
+      "description": "A deep plum formal shirt with a spread collar, worn here with beige trousers. A colour that lifts a plain office wardrobe without shouting.",
       "details": [
-        "Slub cotton, irregular yarn",
-        "Band collar",
-        "Straight-cut body",
-        "Matching pajama"
+        "Spread collar",
+        "Full sleeves with button cuffs",
+        "Slim fit through the body",
+        "Curved hem, made to tuck"
       ],
-      "care": "Machine wash cold, inside out. Do not iron the seams flat. Dry in shade.",
-      "sizes": [
-        "S",
-        "M",
-        "L",
-        "XL",
-        "XXL"
-      ],
-      "colours": [
-        {
-          "name": "Cream",
-          "hex": "#EFE7D5"
-        },
-        {
-          "name": "Clay",
-          "hex": "#A0705C"
-        },
-        {
-          "name": "Ink",
-          "hex": "#2C3138"
-        }
-      ],
+      "care": "Machine wash cold with similar colours. Iron on medium.",
+      "sizes": ["S", "M", "L", "XL", "XXL"],
+      "colours": [{ "name": "Plum", "hex": "#4E1F3D" }],
       "images": [
-        {
-          "seed": "mob-p19-a",
-          "alt": "Two men in teal and brown kurtas at a shop counter"
-        },
-        {
-          "seed": "mob-p19-b",
-          "alt": "Three men in mustard, brown and green kurtas"
-        },
-        {
-          "seed": "mob-p19-c",
-          "alt": "Cream slub cotton kurta worn in a studio"
-        }
+        { "seed": "mob-p05-a", "alt": "Plum cotton shirt tucked into beige trousers, leaning on a wall" },
+        { "seed": "mob-p05-b", "alt": "Plum cotton shirt with beige trousers, front view on white" }
       ],
-      "featured": false,
+      "price": null,
+      "featured": true,
       "isNew": true,
-      "addedAt": "2026-03-15"
+      "addedAt": "2026-10-22"
     },
     {
-      "slug": "cream-cotton-voile-kurta",
-      "name": "Cream Cotton Voile Kurta",
-      "category": "kurta-pajama",
-      "fabric": "Cotton Voile",
-      "fabricNote": "A light, semi-sheer voile that moves in any breeze and stays cool at midday.",
-      "description": "A short kurta in a lightweight cream cotton voile, with a round neckline and piping at the edge.",
+      "slug": "stone-grey-cotton-shirt",
+      "name": "Stone Grey Cotton Shirt",
+      "category": "office-casuals",
+      "fabric": "Cotton",
+      "fabricNote": "Fine cotton with a soft hand, cool enough for an Ahmedabad summer.",
+      "description": "A light stone grey shirt with a spread collar, worn with charcoal trousers. The easiest shirt in the wardrobe, and the one that goes with everything.",
       "details": [
-        "Round neckline with piping",
-        "Short straight hem",
-        "Light semi-sheer voile",
-        "Matching short pajama"
+        "Spread collar",
+        "Full sleeves with button cuffs",
+        "Regular fit",
+        "Curved hem, made to tuck"
       ],
-      "care": "Hand wash cold. Do not wring. Dry flat in shade.",
-      "sizes": [
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
-      "colours": [
-        {
-          "name": "Cream",
-          "hex": "#F0EBDF"
-        },
-        {
-          "name": "Sage",
-          "hex": "#9BA590"
-        },
-        {
-          "name": "Maroon",
-          "hex": "#6E2A44"
-        }
-      ],
+      "care": "Machine wash cold. Iron on medium.",
+      "sizes": ["S", "M", "L", "XL", "XXL"],
+      "colours": [{ "name": "Stone Grey", "hex": "#CFCBC6" }],
       "images": [
-        {
-          "seed": "mob-p20-a",
-          "alt": "Cream cotton voile kurta worn seated outdoors"
-        },
-        {
-          "seed": "mob-p20-b",
-          "alt": "Sage green kurta worn outdoors"
-        },
-        {
-          "seed": "mob-p20-c",
-          "alt": "Maroon cotton voile short kurta"
-        }
+        { "seed": "mob-p06-a", "alt": "Stone grey cotton shirt with charcoal trousers, front view" },
+        { "seed": "mob-p06-b", "alt": "Stone grey cotton shirt, side view with hand in pocket" }
       ],
-      "featured": false,
+      "price": null,
+      "featured": true,
       "isNew": false,
-      "addedAt": "2026-03-21"
+      "addedAt": "2026-10-20"
+    },
+    {
+      "slug": "olive-green-cotton-shirt",
+      "name": "Olive Green Cotton Shirt",
+      "category": "office-casuals",
+      "fabric": "Cotton",
+      "fabricNote": "Medium-weight cotton that keeps its shape, washed for a softer feel.",
+      "description": "A deep olive shirt worn with light grey trousers. Smart enough for a Friday at the office and relaxed enough for the weekend.",
+      "details": [
+        "Spread collar",
+        "Full sleeves, roll them or button them",
+        "Slim fit through the body",
+        "Curved hem, made to tuck"
+      ],
+      "care": "Machine wash cold with dark colours. Iron on medium.",
+      "sizes": ["S", "M", "L", "XL", "XXL"],
+      "colours": [{ "name": "Olive", "hex": "#3E4A2C" }],
+      "images": [
+        { "seed": "mob-p07-a", "alt": "Olive green shirt with light grey trousers, walking on a city street" },
+        { "seed": "mob-p07-b", "alt": "Olive green shirt with light grey trousers, from the back" }
+      ],
+      "price": null,
+      "featured": true,
+      "isNew": false,
+      "addedAt": "2026-10-19"
     }
   ]
 }

@@ -25,8 +25,7 @@ export function orderMessage(
   const parts = [`Hi, I'd like to order ${productName}`];
   if (options?.size) parts.push(`size ${options.size}`);
   if (options?.colour) parts.push(`colour ${options.colour}`);
-  parts.push(".");
-  return parts.join(", ");
+  return `${parts.join(", ")}.`;
 }
 
 /** Used by the contact form fallback when messaging is the easier route. */

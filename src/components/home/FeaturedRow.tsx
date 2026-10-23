@@ -12,7 +12,7 @@ export function FeaturedRow() {
         products={featuredProducts(8)}
         eyebrow="Selected by us"
         title="Picked for you"
-        link={{ href: "/collections/office-casuals", label: "View both collections" }}
+        link={{ href: "/#collections-heading", label: "View both collections" }}
       />
     </section>
   );

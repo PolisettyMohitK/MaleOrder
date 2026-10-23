@@ -4,20 +4,12 @@
  *  Every photograph on the site is requested through `photo()`.
  *  Product images use the `seed` stored in `src/data/products.json`.
  *
- *  THE DEMO (current state)
- *  ------------------------
- *  `seed` values are turned into desaturated placeholder photographs from
- *  picsum.photos so the layout can be judged at pitch quality.
- *
- *  SWAPPING IN THE REAL PHOTOGRAPHS
- *  --------------------------------
- *  1. Drop your files into  `public/photos/`
- *  2. Change the body of `photo()` to:
- *
- *       export function photo(seed: string) { return `/photos/${seed}.jpg` }
- *
- *  3. Rename each file in products.json to match its `seed`, e.g.
- *       public/photos/mob-p01-a.jpg
+ *  ADDING A PRODUCT PHOTOGRAPH
+ *  ---------------------------
+ *  1. Drop the master into `assets/photos/` named after its `seed`, e.g.
+ *       assets/photos/mob-p08-a.jpg
+ *  2. Reference that seed in `src/data/products.json`.
+ *  3. `npm run build` writes the resized copies into `public/photos/`.
  *
  *  Recommended export: 1200x1600px JPEG, quality 80, sRGB, under 250 KB.
  *  A second angle per product is what makes the card hover work, so keep

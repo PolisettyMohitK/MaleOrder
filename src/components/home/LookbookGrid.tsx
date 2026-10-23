@@ -57,7 +57,7 @@ export function LookbookGrid() {
                         {String(index + 1).padStart(2, "0")} —{" "}
                         {categoryName(product.category)}
                       </p>
-                      <p className="truncate text-xs text-neutral-600 transition-colors duration-500 group-hover:text-ink">
+                      <p className="text-right text-xs text-neutral-600 transition-colors duration-500 group-hover:text-ink">
                         {product.name}
                       </p>
                     </div>
