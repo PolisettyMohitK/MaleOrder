@@ -6,7 +6,6 @@ import { AnnouncementBar } from "@/components/layout/AnnouncementBar";
 import { FloatingWhatsApp } from "@/components/layout/FloatingWhatsApp";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
-import { Preloader } from "@/components/layout/Preloader";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import { MotionRoot } from "@/components/motion/MotionRoot";
 import { fullName, placeLine, store } from "@/data/store.config";
@@ -53,7 +52,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport = {
-  themeColor: "#0A0A0A",
+  themeColor: "#FAF7F2",
   colorScheme: "light",
 };
 
@@ -80,7 +79,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
 
         <SmoothScroll />
         <MotionRoot />
-        <Preloader />
 
         <div className="fixed inset-x-0 top-0 z-[70]">
           <AnnouncementBar />

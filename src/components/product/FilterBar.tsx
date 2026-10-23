@@ -52,7 +52,7 @@ export function FilterBar({
   }));
 
   return (
-    <div className="border-y border-silver-500/20 py-6">
+    <div className="border-y border-silver-500/20 py-3">
       <div className="flex flex-wrap items-center justify-between gap-4">
         <p className="label text-muted" aria-live="polite">
           {resultCount === totalCount
@@ -70,31 +70,33 @@ export function FilterBar({
         />
       </div>
 
-      <div className="mt-6 flex flex-wrap items-start gap-3">
-        {groups.map((group) => (
-          <FilterDropdown
-            key={group.key}
-            label={group.label}
-            options={group.values.map<FilterOption>((value) => ({
-              value,
-              label: value,
-              hex: group.key === "colours" ? swatches[value] : undefined,
-            }))}
-            selected={active[group.key]}
-            onToggle={(value) => onToggle(group.key, value)}
-          />
-        ))}
+      {groups.length > 0 ? (
+        <div className="mt-3 flex flex-wrap items-start gap-3">
+          {groups.map((group) => (
+            <FilterDropdown
+              key={group.key}
+              label={group.label}
+              options={group.values.map<FilterOption>((value) => ({
+                value,
+                label: value,
+                hex: group.key === "colours" ? swatches[value] : undefined,
+              }))}
+              selected={active[group.key]}
+              onToggle={(value) => onToggle(group.key, value)}
+            />
+          ))}
 
-        {anyActive ? (
-          <button
-            type="button"
-            onClick={onClear}
-            className="tap label link-draw px-4 py-2.5 text-ink"
-          >
-            Clear all filters ({activeCount})
-          </button>
-        ) : null}
-      </div>
+          {anyActive ? (
+            <button
+              type="button"
+              onClick={onClear}
+              className="tap label link-draw px-4 py-2.5 text-ink"
+            >
+              Clear all filters ({activeCount})
+            </button>
+          ) : null}
+        </div>
+      ) : null}
     </div>
   );
 }

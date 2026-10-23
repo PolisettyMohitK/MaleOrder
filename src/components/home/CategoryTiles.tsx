@@ -1,92 +1,65 @@
 import Image from "next/image";
 import Link from "next/link";
-import { categories, categoryImage } from "@/data/products";
+import { categories, categoryImage, productsByCategory } from "@/data/products";
 import { ArrowRightIcon } from "@/components/ui/Icons";
 
-/** Two tall tiles. Slow zoom on the photograph, silver border draws in on hover. */
+/** Two category tiles: photo, name, piece count, and a Shop button. */
 export function CategoryTiles() {
   return (
-    <section className="section-y bg-bone" aria-labelledby="collections-heading">
+    <section className="bg-bone py-14 md:py-20" aria-labelledby="collections-heading">
       <div className="shell">
-        <div
-          data-reveal="up"
-          className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end"
-        >
-          <div>
-            <p className="label text-muted">The collections</p>
-            <h2
-              id="collections-heading"
-              data-reveal="sheen"
-              data-lines
-              className="t-head type-silver mt-5"
-            >
-              Two collections, kept tight.
-            </h2>
-          </div>
-          <p className="t-body max-w-sm text-neutral-600">
-            We only make and stock what we can sell you properly. That is why
-            there are two collections and not forty.
-          </p>
+        <div data-reveal="up">
+          <p className="eyebrow">Categories</p>
+          <h2 id="collections-heading" className="t-head type-silver mt-3">
+            Shop by category
+          </h2>
         </div>
 
         <div
           data-reveal="up"
           data-reveal-stagger
-          className="mt-14 grid gap-5 md:mt-20 md:grid-cols-2 md:gap-6"
+          className="mt-8 grid grid-cols-2 gap-3 md:mt-10 md:gap-6"
         >
-          {categories.map((category) => (
-            <Link
-              key={category.slug}
-              href={`/collections/${category.slug}`}
-              className="draw-border group relative block overflow-hidden"
-            >
-              <div
-                data-reveal="clip"
-                className="media-frame aspect-[5/7] md:aspect-[4/5]"
+          {categories.map((category) => {
+            const count = productsByCategory(category.slug).length;
+            return (
+              <Link
+                key={category.slug}
+                href={`/collections/${category.slug}`}
+                className="group relative block overflow-hidden rounded-sm"
               >
-                <span className="skeleton" aria-hidden="true" />
-                <Image
-                  src={categoryImage(category)}
-                  alt=""
-                  fill
-                  sizes="(min-width: 768px) 46vw, 92vw"
-                  className="zoom-slow object-cover"
-                />
-                {/* Heavier than the hero scrim, and deliberately shaped. A tile
-                    is a small crop of an arbitrary photograph, and the kurta
-                    tile is a pale pink garment against pale wood — at the old
-                    0.55-0.62 the frost white heading and the body copy
-                    vanished into it. So the bottom 40% is nearly opaque, where
-                    all the text lives, and it only lifts toward the top of the
-                    frame where the photograph is meant to be seen. */}
-                <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(10,10,10,0.96)_0%,rgba(10,10,10,0.93)_40%,rgba(10,10,10,0.58)_74%,rgba(10,10,10,0.38)_100%)]" />
-                {/* Frosted plate behind the caption block. See .scrim-blur. */}
-                <div className="scrim-blur" aria-hidden="true" />
-              </div>
+                <div className="media-frame aspect-[3/4] md:aspect-[4/5]">
+                  <span className="skeleton" aria-hidden="true" />
+                  <Image
+                    src={categoryImage(category)}
+                    alt=""
+                    fill
+                    sizes="(min-width: 768px) 46vw, 48vw"
+                    className="zoom-slow object-cover"
+                  />
+                  {/* Dark only at the bottom, where the text sits. */}
+                  <div className="absolute inset-0 z-[2] bg-[linear-gradient(to_top,rgba(26,26,26,0.85)_0%,rgba(26,26,26,0.35)_38%,transparent_60%)]" />
+                </div>
 
-              <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-9">
-                <div>
-                  <p className="label text-silver-100">
-                    {category.lookbookCaption}
-                  </p>
-                  <h3 className="t-display type-silver-dark mt-4">
+                <div className="absolute inset-x-0 bottom-0 z-[3] p-4 md:p-8">
+                  <h3 className="font-display text-2xl leading-tight font-medium text-paper md:text-4xl">
                     {category.name}
                   </h3>
-                  <p className="t-body mt-3 max-w-sm text-neutral-300">
-                    {category.description}
+                  <p className="mt-1 text-sm text-paper/85">
+                    {count} {count === 1 ? "piece" : "pieces"}
                   </p>
-                  <span className="label mt-7 inline-flex items-center gap-3 text-bone">
-                    Explore
+                  <span className="mt-4 inline-flex items-center gap-2 rounded-full bg-paper px-4 py-2 text-sm font-semibold text-ink transition-colors duration-500 group-hover:bg-bone">
+                    Shop
                     <ArrowRightIcon
-                      width={16}
-                      height={16}
-                      className="transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-1.5"
+                      width={15}
+                      height={15}
+                      className="transition-transform duration-500 group-hover:translate-x-1"
                     />
                   </span>
                 </div>
-              </div>
-            </Link>
-          ))}
+              </Link>
+            );
+          })}
         </div>
       </div>
     </section>

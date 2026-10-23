@@ -225,3 +225,14 @@ export function StoreIcon(props: IconProps) {
     </svg>
   );
 }
+
+/** Thin line icon: a banknote, for pay on delivery. */
+export function CashIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M3 6.5h18v11H3z" />
+      <circle cx="12" cy="12" r="2.5" />
+      <path d="M6 9.5v5M18 9.5v5" />
+    </svg>
+  );
+}

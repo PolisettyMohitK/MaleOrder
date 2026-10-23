@@ -10,12 +10,18 @@ import { placeLine, store } from "@/data/store.config";
 import { lockScroll } from "@/lib/scroll";
 import { orderMessage, waLink } from "@/lib/whatsapp";
 import { surfaceFade, surfaceSlide, withReduce } from "@/components/motion/surface";
-import { CloseIcon, WhatsAppIcon } from "@/components/ui/Icons";
+import {
+  CashIcon,
+  CloseIcon,
+  FitIcon,
+  StoreIcon,
+  WhatsAppIcon,
+} from "@/components/ui/Icons";
 
 /** Shown under the order button, so nobody has to guess what happens next. */
 const ORDER_STEPS = [
-  "Your message opens in WhatsApp with the piece, size and colour already filled in.",
-  "We reply with availability and confirm the size with you.",
+  "WhatsApp opens with this piece, size and colour filled in.",
+  "We reply to confirm stock and size.",
   "Pay on delivery, or collect from the shop.",
 ];
 
@@ -68,11 +74,11 @@ export function ProductOrderPanel({ product }: { product: Product }) {
     <>
       {/* Colour */}
       <fieldset>
-        <legend className="label flex w-full items-baseline justify-between text-muted">
+        <legend className="flex w-full items-baseline justify-between text-sm font-semibold text-ink">
           Colour
-          <span className="text-ink">{colour ?? "Choose one"}</span>
+          <span className="font-normal text-muted">{colour ?? "Choose one"}</span>
         </legend>
-        <ul className="mt-4 flex flex-wrap gap-3">
+        <ul className="mt-3 flex flex-wrap gap-3">
           {product.colours.map((option) => {
             const selected = colour === option.name;
             return (
@@ -100,18 +106,18 @@ export function ProductOrderPanel({ product }: { product: Product }) {
       </fieldset>
 
       {/* Size */}
-      <fieldset className="mt-9">
-        <legend className="label flex w-full items-baseline justify-between text-muted">
+      <fieldset className="mt-7">
+        <legend className="flex w-full items-baseline justify-between text-sm font-semibold text-ink">
           Size
           <button
             type="button"
             onClick={() => setGuideOpen(true)}
-            className="label link-draw text-ink"
+            className="text-sm font-medium text-ink underline underline-offset-4 hover:text-accent"
           >
             Size guide
           </button>
         </legend>
-        <ul className="mt-4 grid grid-cols-5 gap-2 sm:grid-cols-6">
+        <ul className="mt-3 grid grid-cols-5 gap-2 sm:grid-cols-6">
           {product.sizes.map((option) => {
             const selected = size === option;
             return (
@@ -120,10 +126,10 @@ export function ProductOrderPanel({ product }: { product: Product }) {
                   type="button"
                   onClick={() => setSize(option)}
                   aria-pressed={selected}
-                  className={`tap flex w-full items-center justify-center border text-xs tracking-[0.1em] transition-colors duration-500 ${
+                  className={`tap flex h-12 w-full items-center justify-center rounded-sm border text-sm font-medium transition-colors duration-300 ${
                     selected
                       ? "border-ink bg-ink text-paper"
-                      : "border-silver-500/40 text-neutral-600 hover:border-ink hover:text-ink"
+                      : "border-silver-500/50 bg-paper text-ink hover:border-ink"
                   }`}
                 >
                   {option}
@@ -133,22 +139,22 @@ export function ProductOrderPanel({ product }: { product: Product }) {
           })}
         </ul>
         {size === null ? (
-          <p className="label mt-4 text-muted">
-            No size selected — we will confirm your size on WhatsApp.
+          <p className="mt-3 text-sm text-muted">
+            Not sure? Skip it and we will help you on WhatsApp.
           </p>
         ) : null}
       </fieldset>
 
-{/* Actions */}
-      <div className="mt-10 flex flex-col gap-3">
+      {/* Actions */}
+      <div className="mt-8 flex flex-col gap-3">
         <a
           ref={orderRef}
           href={href}
           target="_blank"
           rel="noopener noreferrer"
-          className="btn btn-ink w-full"
+          className="btn btn-wa w-full"
         >
-          <WhatsAppIcon width={16} height={16} />
+          <WhatsAppIcon width={18} height={18} />
           Order on WhatsApp
         </a>
         <Link href="/support#visit" className="btn btn-ghost w-full">
@@ -156,45 +162,37 @@ export function ProductOrderPanel({ product }: { product: Product }) {
         </Link>
       </div>
 
-      {/* The two objections that stop an order, answered where they happen. */}
-      <ul className="mt-7 flex flex-col gap-3">
+      {/* The objections that stop an order, answered where they happen. */}
+      <ul className="mt-6 flex flex-col gap-3 rounded-sm bg-bone p-4">
         {[
-          "Free alterations in store, usually same day",
-          "Message us first — nothing is charged on this site",
-          `Collect in ${placeLine} or have it delivered`,
-        ].map((note) => (
-          <li key={note} className="t-body flex items-start gap-3 text-neutral-600">
-            <span
-              aria-hidden="true"
-              className="mt-2.5 size-1 shrink-0 rounded-full bg-silver-400"
-            />
-            {note}
+          { Icon: FitIcon, text: "Free alterations in store, usually same day" },
+          { Icon: CashIcon, text: "Nothing to pay here — pay on delivery" },
+          { Icon: StoreIcon, text: `Collect in ${placeLine} or get it delivered` },
+        ].map(({ Icon, text }) => (
+          <li key={text} className="flex items-center gap-3 text-sm text-ink">
+            <Icon width={20} height={20} className="shrink-0 text-accent" />
+            {text}
           </li>
         ))}
       </ul>
 
       {/* What actually happens after they tap the button. */}
-      <div className="mt-9 border-t border-silver-500/25 pt-7">
-        <p className="label text-muted">What happens next</p>
-        <ol className="mt-5 flex flex-col gap-3">
+      <div className="mt-8 border-t border-silver-500/25 pt-6">
+        <p className="text-base font-semibold text-ink">What happens next</p>
+        <ol className="mt-4 flex flex-col gap-3">
           {ORDER_STEPS.map((step, index) => (
-            <li key={step} className="t-body flex items-start gap-4 text-neutral-600">
-              <span className="type-silver font-display text-lg leading-none">
+            <li key={step} className="flex items-start gap-3 text-sm text-muted">
+              <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-accent text-xs font-semibold text-paper">
                 {index + 1}
               </span>
-              <span>{step}</span>
+              <span className="pt-0.5">{step}</span>
             </li>
           ))}
         </ol>
-        <p className="t-body mt-6 text-neutral-500">
-          No payment on this site. Message us, we confirm availability and size,
-          and you pay when it reaches you — or when you collect it in{" "}
-          {placeLine}.
-        </p>
       </div>
 
-      {/* Pinned order bar, phones and tablets only. Sits above the floating
-          WhatsApp button, which would otherwise duplicate it. */}
+      {/* Pinned order bar, phones and tablets only. The floating WhatsApp
+          button is hidden on product pages so the two never stack. */}
       <div
         aria-hidden={orderVisible}
         className={`fixed inset-x-0 bottom-0 z-[70] border-t border-black/10 bg-paper/95 px-5 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur-md transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] lg:hidden ${
@@ -203,8 +201,8 @@ export function ProductOrderPanel({ product }: { product: Product }) {
       >
         <div className="flex items-center gap-4">
           <div className="min-w-0 flex-1">
-            <p className="truncate text-sm text-ink">{product.name}</p>
-            <p className="label mt-0.5 text-muted">
+            <p className="truncate text-sm font-medium text-ink">{product.name}</p>
+            <p className="mt-0.5 text-xs text-muted">
               {[size, colour].filter(Boolean).join(" · ") || "Size confirmed on chat"}
             </p>
           </div>
@@ -213,9 +211,9 @@ export function ProductOrderPanel({ product }: { product: Product }) {
             target="_blank"
             rel="noopener noreferrer"
             tabIndex={orderVisible ? -1 : undefined}
-            className="btn btn-ink shrink-0"
+            className="btn btn-wa shrink-0"
           >
-            <WhatsAppIcon width={15} height={15} />
+            <WhatsAppIcon width={17} height={17} />
             Order
           </a>
         </div>
@@ -312,9 +310,9 @@ export function ProductOrderPanel({ product }: { product: Product }) {
                   href={waLink(`Hi, I'd like help with sizing for ${product.name}.`)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn btn-ink mt-9 w-full"
+                  className="btn btn-wa mt-9 w-full"
                 >
-                  <WhatsAppIcon width={15} height={15} />
+                  <WhatsAppIcon width={17} height={17} />
                   Ask about my size
                 </a>
 

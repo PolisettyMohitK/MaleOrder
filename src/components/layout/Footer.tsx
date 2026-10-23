@@ -22,12 +22,12 @@ export function Footer() {
 
   return (
     <footer className="on-dark bg-ink text-bone">
-      <div className="shell pt-20 pb-10 md:pt-28">
+      <div className="shell pt-14 pb-10 md:pt-20">
         <div className="grid gap-14 lg:grid-cols-12 lg:gap-8">
           {/* Brand */}
           <div className="lg:col-span-4" data-reveal="up">
             <Logo tone="silver" size="lg" className="items-start" />
-            <p className="t-body mt-7 max-w-xs text-neutral-300">
+            <p className="t-body mt-6 max-w-xs text-silver-200">
               A menswear shop in {placeLine}, and now the same collection on your
               phone. Message us, we will sort the rest.
             </p>
@@ -35,16 +35,16 @@ export function Footer() {
               href={waLink(GENERAL_ENQUIRY)}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-ghost mt-8"
+              className="btn btn-wa mt-7"
             >
-              <WhatsAppIcon width={15} height={15} />
+              <WhatsAppIcon width={17} height={17} />
               Message on WhatsApp
             </a>
           </div>
 
           {/* Quick links */}
           <nav aria-label="Footer" className="lg:col-span-3" data-reveal="up">
-            <h2 className="label text-silver-200">Shop</h2>
+            <h2 className="text-sm font-semibold text-paper">Shop</h2>
             <ul className="mt-6 flex flex-col gap-4">
               {categories.map((category) => (
                 <li key={category.slug}>
@@ -71,7 +71,7 @@ export function Footer() {
 
           {/* Contact */}
           <div className="lg:col-span-3" data-reveal="up">
-            <h2 className="label text-silver-200">Visit</h2>
+            <h2 className="text-sm font-semibold text-paper">Visit</h2>
             <ul className="mt-6 flex flex-col gap-5 text-sm text-neutral-300">
               <li className="flex gap-3">
                 <PinIcon
@@ -118,7 +118,7 @@ export function Footer() {
 
           {/* Hours */}
           <div className="lg:col-span-2" data-reveal="up">
-            <h2 className="label text-silver-200">Open</h2>
+            <h2 className="text-sm font-semibold text-paper">Open</h2>
             <ul className="mt-6 flex flex-col gap-4 text-sm">
               {store.hours.map((slot) => (
                 <li key={slot.days} className="leading-relaxed">

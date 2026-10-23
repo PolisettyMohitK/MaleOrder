@@ -35,6 +35,10 @@ export function ProductCard({
 
   const muted = tone === "dark" ? "text-silver-300" : "text-muted";
   const name = tone === "dark" ? "text-bone" : "text-ink";
+  const sizeRange =
+    product.sizes.length > 1
+      ? `${product.sizes[0]}–${product.sizes[product.sizes.length - 1]}`
+      : product.sizes[0];
 
   return (
     <Link
@@ -69,13 +73,7 @@ export function ProductCard({
         ) : null}
 
         {product.isNew ? (
-          <span
-            className={`label absolute top-3 left-3 z-[2] border px-2.5 py-1.5 backdrop-blur-sm ${
-              tone === "dark"
-                ? "border-white/25 bg-ink/55 text-bone"
-                : "border-black/10 bg-paper/85 text-ink"
-            }`}
-          >
+          <span className="absolute top-2.5 left-2.5 z-[2] rounded-sm bg-accent px-2 py-1 text-xs font-semibold text-paper">
             New
           </span>
         ) : null}
@@ -89,15 +87,23 @@ export function ProductCard({
           name instead of competing for the same line, and the name clamps to
           two lines so long names stay readable without letting one card grow
           taller than the grid around it. */}
-      <div className="mt-4">
+      <div className="mt-3">
         {caption ? <p className={`label ${muted}`}>{caption}</p> : null}
         <h3
-          className={`mt-0.5 text-sm leading-snug font-normal tracking-[0.01em] transition-colors duration-500 group-hover:text-muted [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2] overflow-hidden ${name}`}
+          className={`mt-0.5 text-[0.9375rem] leading-snug font-medium transition-colors duration-500 group-hover:text-accent [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2] overflow-hidden ${name}`}
         >
           {product.name}
         </h3>
-        <p className={`label mt-1.5 ${muted}`}>{product.fabric}</p>
-        <p className={`mt-1.5 text-sm ${name}`}>{formatPrice(product)}</p>
+        <p className={`mt-1 text-sm ${muted}`}>
+          {product.fabric} · {sizeRange}
+        </p>
+        <p
+          className={`mt-1.5 text-[0.9375rem] font-semibold ${
+            tone === "dark" ? "text-bone" : "text-accent"
+          }`}
+        >
+          {formatPrice(product)}
+        </p>
       </div>
     </Link>
   );

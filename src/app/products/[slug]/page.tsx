@@ -54,8 +54,9 @@ export default async function ProductPage(props: PageProps<"/products/[slug]">) 
   return (
     <PageTransition>
     <div className="pt-[100px] md:pt-[108px]">
-      <div className="shell pt-10 md:pt-14">
-        {/* Breadcrumb */}
+      <div className="shell pt-5 md:pt-10">
+        {/* Breadcrumb. The product name is the h1 just below, so phones skip
+            it here and the trail stays on one line. */}
         <nav aria-label="Breadcrumb" className="label text-muted">
           <Link href="/" className="hover:text-ink">
             Home
@@ -66,13 +67,13 @@ export default async function ProductPage(props: PageProps<"/products/[slug]">) 
           <Link href={collection} className="hover:text-ink">
             {categoryName(product.category)}
           </Link>
-          <span aria-hidden="true" className="px-2">
+          <span aria-hidden="true" className="hidden px-2 sm:inline">
             /
           </span>
-          <span className="text-ink">{product.name}</span>
+          <span className="hidden text-ink sm:inline">{product.name}</span>
         </nav>
 
-        <div className="mt-10 grid gap-12 lg:grid-cols-12 lg:gap-16">
+        <div className="mt-5 grid gap-8 md:mt-8 lg:grid-cols-12 lg:gap-16">
           {/* Gallery */}
           {/* Sticky too, so the left column is not left empty while the
               longer details column scrolls past it. */}
@@ -86,42 +87,42 @@ export default async function ProductPage(props: PageProps<"/products/[slug]">) 
           <div className="min-w-0 lg:col-span-5">
             <div className="lg:sticky lg:top-32">
               <div data-reveal="up">
-                <p className="label text-muted">
+                <p className="eyebrow">
                   {categoryName(product.category)}
-                  {product.isNew ? " · New in" : ""}
+                  {product.isNew ? " · New" : ""}
                 </p>
-                <h1 className="t-head shine mt-5">{product.name}</h1>
-                <p className="mt-4 text-lg text-ink">{formatPrice(product)}</p>
-                <p className="label mt-4 text-muted">{product.fabric}</p>
-                <p className="t-body mt-6 max-w-lg text-neutral-600">
+                <h1 className="t-head type-silver mt-2">{product.name}</h1>
+                <p className="mt-3 text-xl font-semibold text-accent">{formatPrice(product)}</p>
+                <p className="mt-1 text-sm text-muted">{product.fabric}</p>
+                <p className="t-body mt-5 max-w-lg text-muted">
                   {product.description}
                 </p>
               </div>
 
               <div data-reveal="up">
-                <div className="mt-9">
+                <div className="mt-7">
                   <ProductOrderPanel product={product} />
                 </div>
               </div>
 
               {/* Fabric, details, care */}
               <div data-reveal="up">
-                <div className="mt-12 border-t border-silver-500/20 pt-8">
-                  <h2 className="label text-muted">Fabric</h2>
-                  <p className="t-body mt-3 text-neutral-600">{product.fabricNote}</p>
+                <div className="mt-10 border-t border-silver-500/20 pt-6">
+                  <h2 className="text-base font-semibold text-ink">Fabric</h2>
+                  <p className="t-body mt-2 text-muted">{product.fabricNote}</p>
                 </div>
 
-                <div className="mt-8 border-t border-silver-500/20 pt-8">
-                  <h2 className="label text-muted">Details</h2>
-                  <ul className="mt-4 flex flex-col gap-3">
+                <div className="mt-6 border-t border-silver-500/20 pt-6">
+                  <h2 className="text-base font-semibold text-ink">Details</h2>
+                  <ul className="mt-3 flex flex-col gap-2">
                     {product.details.map((detail) => (
                       <li
                         key={detail}
-                        className="t-body flex gap-3 text-neutral-600"
+                        className="t-body flex gap-3 text-muted"
                       >
                         <span
                           aria-hidden="true"
-                          className="mt-2.5 size-1 shrink-0 rounded-full bg-silver-400"
+                          className="mt-2.5 size-1.5 shrink-0 rounded-full bg-accent"
                         />
                         {detail}
                       </li>
@@ -129,9 +130,9 @@ export default async function ProductPage(props: PageProps<"/products/[slug]">) 
                   </ul>
                 </div>
 
-                <div className="mt-8 border-t border-silver-500/20 pt-8">
-                  <h2 className="label text-muted">Care</h2>
-                  <p className="t-body mt-3 text-neutral-600">{product.care}</p>
+                <div className="mt-6 border-t border-silver-500/20 pt-6">
+                  <h2 className="text-base font-semibold text-ink">Care</h2>
+                  <p className="t-body mt-2 text-muted">{product.care}</p>
                 </div>
               </div>
             </div>
@@ -140,16 +141,15 @@ export default async function ProductPage(props: PageProps<"/products/[slug]">) 
       </div>
 
       {/* You may also like */}
-      <section className="on-dark mt-24 overflow-hidden bg-ink py-20 md:mt-32 md:py-28">
+      <section className="mt-16 overflow-hidden bg-bone py-14 md:mt-24 md:py-20">
         <h2 id="also-like" className="sr-only">
           You may also like
         </h2>
         <ProductRail
           products={related}
-          eyebrow="You may also like"
-          title="Goes well with this"
-          tone="dark"
-          link={{ href: collection, label: `More ${categoryName(product.category)}` }}
+          eyebrow="More to see"
+          title="You may also like"
+          link={{ href: collection, label: `All ${categoryName(product.category)}` }}
         />
       </section>
       </div>

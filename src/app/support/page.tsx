@@ -24,7 +24,7 @@ const FAQ = [
   {
     question: "How do I order?",
     answer:
-      "There is no basket on this site. Find a piece you like, choose a size and a colour if you know them, then tap Order on WhatsApp. The message is written out for you. We confirm availability and size, and that is it.",
+      "Pick a piece, choose a size if you know it, and tap Order on WhatsApp. The message is written for you. We reply to confirm stock and size, and you pay on delivery.",
   },
   {
     question: "I am between two sizes. What should I do?",
@@ -44,7 +44,7 @@ const FAQ = [
   {
     question: "Can I visit the store?",
     answer:
-      "Please do. Everything on this site is on the rail in store, so trying a fabric on is always better than looking at a screen. Opening hours are on this page and on the footer of every page.",
+      "Please do. Everything here is in the shop, and trying it on beats a screen. Our hours are on this page and in the footer.",
   },
 ];
 

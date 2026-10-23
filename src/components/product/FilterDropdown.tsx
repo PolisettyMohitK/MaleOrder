@@ -150,7 +150,9 @@ export function FilterDropdown({
   useEffect(() => () => window.clearTimeout(grace.current), []);
 
   const activeCount = selected.length;
-  const currentLabel = single ? selected[0] : undefined;
+  const currentLabel = single
+    ? (options.find((option) => option.value === selected[0])?.label ?? selected[0])
+    : undefined;
 
   const triggerClasses = [
     "tap label inline-flex items-center gap-2 rounded-full border px-4 py-2.5 transition-colors duration-300",

@@ -13,8 +13,8 @@ interface ProductRailProps {
 }
 
 /**
- * Horizontal, swipeable rail of product cards. Used for the home page
- * "Picked for you" row and the "Complete the look" strip.
+ * Horizontal, swipeable rail of product cards. Used for the "You may also
+ * like" strips on collection and product pages.
  */
 export function ProductRail({
   products,
@@ -24,17 +24,16 @@ export function ProductRail({
   tone = "light",
 }: ProductRailProps) {
   const dark = tone === "dark";
-  const eyebrowTone = dark ? "text-silver-400" : "text-muted";
 
   return (
     <div>
       <div className="shell">
         <div data-reveal="up" className="flex flex-wrap items-end justify-between gap-6">
           <div>
-            <p className={`label ${eyebrowTone}`}>{eyebrow}</p>
+            <p className="eyebrow">{eyebrow}</p>
             <h2
               data-reveal="sheen"
-              className={`t-head mt-5 ${dark ? "type-silver-dark" : "type-silver"}`}
+              className={`t-head mt-3 ${dark ? "type-silver-dark" : "type-silver"}`}
             >
               {title}
             </h2>
@@ -56,7 +55,7 @@ export function ProductRail({
       <ul
         data-reveal="up"
         data-reveal-stagger
-        className="mt-12 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-4 [scrollbar-width:none] md:mt-16 md:gap-6 md:px-10 lg:px-14 [&::-webkit-scrollbar]:hidden"
+        className="mt-8 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-4 [scrollbar-width:none] md:mt-16 md:gap-6 md:px-10 lg:px-14 [&::-webkit-scrollbar]:hidden"
       >
         {products.map((product, index) => (
           <li

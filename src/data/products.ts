@@ -97,7 +97,7 @@ export function productsByCategory(slug: string): Product[] {
   return products.filter((p) => p.category === slug);
 }
 
-/** The eight products in the home page "Picked for you" row. */
+/** Featured products, used for the home page hero slides. */
 export function featuredProducts(limit = 8): Product[] {
   return products.filter((p) => p.featured).slice(0, limit);
 }

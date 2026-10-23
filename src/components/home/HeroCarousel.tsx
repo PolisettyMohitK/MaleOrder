@@ -4,15 +4,17 @@ import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 
-import { categories, featuredProducts } from "@/data/products";
-import { placeLine } from "@/data/store.config";
+import { featuredProducts } from "@/data/products";
+import { store } from "@/data/store.config";
 import { CROP, photo } from "@/lib/images";
+import { GENERAL_ENQUIRY, waLink } from "@/lib/whatsapp";
 import { DURATION, EASE, gsap, useGSAP } from "@/components/motion/gsap";
 import {
   ArrowRightIcon,
   ArrowUpRightIcon,
   PauseIcon,
   PlayIcon,
+  WhatsAppIcon,
 } from "@/components/ui/Icons";
 
 /** How long each slide holds before the next one. */
@@ -169,41 +171,45 @@ export function HeroCarousel() {
         />
       </div>
 
-      {/* Brand greeting */}
-      <div className="relative z-[3] flex min-h-dvh flex-col justify-center px-5 pt-28 pb-40 text-center sm:px-8">
-        <div className="relative mx-auto w-full max-w-4xl">
+      {/* Greeting. Short enough that the shop starts just below the fold. */}
+      <div className="relative z-[3] flex min-h-[78svh] flex-col justify-center px-5 pt-28 pb-36 text-center sm:px-8 lg:min-h-[88svh]">
+        <div className="relative mx-auto w-full max-w-3xl max-sm:[text-shadow:0_1px_14px_rgba(0,0,0,0.55)]">
           {/* Frosted plate behind the greeting only. It used to fill the whole
-              hero, which blurred the garment the slide is there to show. */}
-          <div className="scrim-blur -inset-x-6 -inset-y-12 -z-10" aria-hidden="true" />
-          <p className="label text-silver-200">
-            {categories.map((category) => category.shortName).join(" · ")} ·{" "}
-            {placeLine}
-          </p>
+              hero, which blurred the garment the slide is there to show. On
+              phones the greeting covers most of the hero, so the plate is
+              dropped there and a text shadow carries the contrast instead. */}
+          <div className="scrim-blur -inset-x-6 -inset-y-12 -z-10 max-sm:hidden" aria-hidden="true" />
+          <p className="eyebrow text-bone/90">Shirts · Kurta sets · {store.city}</p>
 
-          <h1 className="type-silver-dark t-display mt-7">
-            <span className="block">Welcome to</span>
-            <span className="mt-1 block sm:mt-2">Male Order Erise</span>
+          <h1 className="type-silver-dark t-display mt-5">
+            Shirts and kurta sets, ready to wear.
           </h1>
 
-          <p className="t-body mx-auto mt-7 max-w-md text-bone/85">
-            Tailored for work. Made for celebrations.
+          <p className="t-body mx-auto mt-5 max-w-md text-bone/90">
+            From our shop in {store.city}. Order on WhatsApp, pay on delivery.
           </p>
 
-          <div className="mt-11 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Link href="/collections/office-casuals" className="btn btn-paper w-full sm:w-auto">
-              Shop Office Casuals
-              <ArrowRightIcon width={15} height={15} />
+          <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <Link href="/#shop" className="btn btn-paper w-full [text-shadow:none] sm:w-auto">
+              Shop now
+              <ArrowRightIcon width={16} height={16} />
             </Link>
-            <Link href="/collections/kurta-pajama" className="btn btn-ghost w-full sm:w-auto">
-              Shop Kurta Pajama
-            </Link>
+            <a
+              href={waLink(GENERAL_ENQUIRY)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-wa w-full [text-shadow:none] sm:w-auto"
+            >
+              <WhatsAppIcon width={17} height={17} />
+              Order on WhatsApp
+            </a>
           </div>
         </div>
       </div>
 
-      {/* Slide caption. Sits higher on small screens so it clears the
-          floating WhatsApp button. */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-44 z-[4] px-5 sm:bottom-28 sm:px-8">
+      {/* Slide caption. On phones it sits just above the floating WhatsApp
+          button, which is in the bottom-right corner. */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-20 z-[4] px-5 sm:bottom-24 sm:px-8">
         <div className="mx-auto flex max-w-6xl justify-center sm:justify-start">
           <Link
             key={current.slug}
@@ -211,8 +217,8 @@ export function HeroCarousel() {
             className="pointer-events-auto flex items-center gap-4 transition-opacity duration-700"
           >
             <span className="block text-left">
-              <span className="label hidden text-silver-200 sm:block">{current.fabric}</span>
-              <span className="block font-display text-lg leading-tight text-bone sm:mt-1">
+              <span className="label hidden text-bone/80 sm:block">{current.fabric}</span>
+              <span className="block text-sm font-medium leading-tight text-bone sm:mt-1 sm:text-base">
                 {current.name}
               </span>
             </span>
@@ -230,18 +236,18 @@ export function HeroCarousel() {
         </div>
       </div>
 
-      {/* Controls. Raised on small screens and padded on large ones, so the
-          pause control can never end up underneath the floating
-          WhatsApp button. */}
-      <div className="absolute inset-x-0 bottom-24 z-[4] px-5 sm:bottom-6 sm:px-8">
+      {/* Controls. Centred and narrow on phones, so they stay clear of the
+          floating WhatsApp button in the corner; padded away from it on
+          larger screens. */}
+      <div className="absolute inset-x-0 bottom-5 z-[4] px-5 sm:bottom-6 sm:px-8">
         <div className="mx-auto flex max-w-6xl items-center justify-center gap-4 sm:justify-between sm:pr-24 lg:pr-28">
           {/* Phones get the counter instead of the dots: six 44px dot targets
               plus the pause button are wider than a 375px screen. */}
-          <p className="label text-silver-300">
+          <p className="label text-bone/80">
             <span className="tabular-nums">
               {String(index + 1).padStart(2, "0")}
             </span>
-            <span className="px-2 text-silver-500">/</span>
+            <span className="px-2 text-bone/50">/</span>
             <span className="tabular-nums">
               {String(slides.length).padStart(2, "0")}
             </span>
@@ -268,18 +274,18 @@ export function HeroCarousel() {
               ))}
             </ul>
 
+            {/* Icon only, but kept: WCAG 2.2.2 needs a way to stop autoplay. */}
             <button
               type="button"
               onClick={() => setPlaying((value) => !value)}
               aria-label={playing ? "Pause slideshow" : "Play slideshow"}
-              className="tap flex items-center gap-2 rounded-full border border-white/25 px-4 py-2 text-bone transition-colors duration-500 hover:border-white/60"
+              className="tap flex items-center justify-center rounded-full text-bone/80 transition-colors duration-500 hover:text-bone"
             >
               {playing ? (
-                <PauseIcon width={13} height={13} />
+                <PauseIcon width={14} height={14} />
               ) : (
-                <PlayIcon width={13} height={13} />
+                <PlayIcon width={14} height={14} />
               )}
-              <span className="label">{playing ? "Pause" : "Play"}</span>
             </button>
           </div>
         </div>

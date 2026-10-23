@@ -20,6 +20,9 @@ const GROUP_LABELS: Record<keyof ActiveFilters, string> = {
   fabrics: "Fabric",
 };
 
+/** At or below this many pieces, the filter dropdowns are hidden. */
+const FILTER_THRESHOLD = 6;
+
 export function CollectionBrowser({
   products,
   currentSlug,
@@ -33,14 +36,18 @@ export function CollectionBrowser({
 
   const options = useMemo(() => filterOptionsFor(currentSlug), [currentSlug]);
 
+  /* Filters only earn their space once there is something to narrow down.
+     A handful of pieces fits on one screen, so it gets the count and sort. */
   const groups = useMemo(
     () =>
-      (Object.keys(GROUP_LABELS) as (keyof ActiveFilters)[]).map((key) => ({
-        key,
-        label: GROUP_LABELS[key],
-        values: options[key],
-      })),
-    [options],
+      products.length <= FILTER_THRESHOLD
+        ? []
+        : (Object.keys(GROUP_LABELS) as (keyof ActiveFilters)[]).map((key) => ({
+            key,
+            label: GROUP_LABELS[key],
+            values: options[key],
+          })),
+    [options, products.length],
   );
 
   // Colour name to hex, so a colour filter shows the colour it filters on.
@@ -98,7 +105,7 @@ const visible = useMemo(
           </button>
         </div>
       ) : (
-        <ul className="mt-12 grid grid-cols-2 gap-x-5 gap-y-12 md:mt-16 md:grid-cols-3 md:gap-x-6 md:gap-y-16 lg:grid-cols-4">
+        <ul className="mt-6 grid grid-cols-2 gap-x-3 gap-y-8 md:mt-8 md:grid-cols-3 md:gap-x-6 md:gap-y-12 lg:grid-cols-4">
           <AnimatePresence mode="popLayout" initial={false}>
             {visible.map((product, index) => (
               <motion.li

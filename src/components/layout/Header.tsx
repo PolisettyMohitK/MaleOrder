@@ -42,16 +42,18 @@ function NavLinks({ items, pathname, transparent }: { items: typeof NAV; pathnam
             <Link
               href={item.href}
               aria-current={active ? "page" : undefined}
-              className={`label relative py-2 transition-colors duration-500 ${
+              className={`relative py-2 text-sm font-medium transition-colors duration-500 ${
                 transparent
-                  ? "text-bone/75 hover:text-bone"
-                  : "text-neutral-500 hover:text-ink"
+                  ? "text-bone/85 hover:text-bone"
+                  : "text-ink/75 hover:text-ink"
               }`}
             >
               {item.label}
               <span
                 aria-hidden="true"
-                className={`absolute -bottom-0.5 left-0 h-px w-full origin-left silver-underline transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                className={`absolute -bottom-0.5 left-0 h-0.5 w-full origin-left transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                  transparent ? "bg-bone" : "bg-accent"
+                } ${
                   active ? "scale-x-100" : "scale-x-0"
                 }`}
               />
@@ -120,7 +122,7 @@ export function Header() {
           className={`h-16 transition-[background-color,box-shadow,border-color] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] md:h-[72px] ${
             transparent
               ? "border-b border-transparent bg-transparent"
-              : "border-b border-black/8 bg-white/92 backdrop-blur-md shadow-[0_2px_28px_-18px_rgba(0,0,0,0.35)]"
+              : "border-b border-black/8 bg-paper/95 backdrop-blur-md shadow-[0_2px_28px_-18px_rgba(0,0,0,0.35)]"
           }`}
         >
           {/* Three equal tracks, the middle one sized to the logo.
