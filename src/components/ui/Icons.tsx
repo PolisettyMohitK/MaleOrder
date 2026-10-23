@@ -18,37 +18,22 @@ const base = {
 /* -------------------------------------------------- WhatsApp (official mark) */
 
 /**
- * The official WhatsApp mark, on the standard 24x24 grid: a solid speech
- * bubble with the telephone handset knocked out of the middle.
- *
- * The version this replaces was the Simple Icons *outline* variant — a thin
- * bubble ring drawn separately from the handset. Rendered as a ladder from
- * 16px to 96px, that ring breaks up and goes visibly jagged at the two sizes
- * this site actually uses (16px in the order buttons, 20px in the header).
- *
- * A filled shape with one hole holds together at any size, because there is no
- * hairline stroke to alias: at 16px the knocked-out handset still reads as a
- * handset. `fill-rule="evenodd"` is what punches the hole — with the default
- * nonzero winding the handset subpath would just fill back in.
- *
- * Still single-colour `currentColor`, so it stays monochrome across the ink,
- * paper and silver states. The official brand asset is green-on-white, which
- * would have been a coloured square in the middle of a greyscale site.
+ * The official WhatsApp logo (Simple Icons, CC0): the bubble ring with its
+ * tail and the handset inside. Single colour `currentColor`, so it is black
+ * on light surfaces and white on dark ones, as the brand allows.
  */
 export function WhatsAppIcon(props: IconProps) {
   return (
     <svg
       viewBox="0 0 24 24"
       fill="currentColor"
-      fillRule="evenodd"
-      clipRule="evenodd"
       width={20}
       height={20}
       aria-hidden
       focusable="false"
       {...props}
     >
-      <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 2.09.547 4.142 1.588 5.945L2 22l5.25-1.652a9.9 9.9 0 0 0 5.048 1.36h.004c5.455 0 9.89-5.335 9.89-11.892 0-3.18-1.24-6.165-3.495-8.41A11.82 11.82 0 0 0 12.04 2Zm5.52 12.53c-.24.68-1.4 1.3-1.94 1.36-.5.06-1.15.1-1.86-.12-.43-.13-.98-.32-1.69-.63-2.97-1.28-4.9-4.28-5.05-4.48-.15-.2-1.2-1.6-1.2-3.05 0-1.45.76-2.16 1.03-2.46.27-.3.59-.37.79-.37.2 0 .4 0 .57.01.19.01.44-.07.68.52.24.58.81 2 .88 2.15.07.14.12.31.02.5-.1.2-.15.31-.29.48-.15.17-.31.38-.44.51-.15.14-.3.29-.13.57.17.29.75 1.24 1.61 2.01 1.11 1 2.04 1.31 2.33 1.45.29.15.46.12.63-.07.17-.2.72-.84.91-1.13.2-.29.39-.24.65-.14.26.09 1.66.78 1.94.92.29.15.48.22.55.34.07.12.07.7-.17 1.38Z" />
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z" />
     </svg>
   );
 }
@@ -222,6 +207,16 @@ export function StoreIcon(props: IconProps) {
       <path d="M4 9.5h16v11H4z" />
       <path d="M3 9.5 5 4h14l2 5.5" />
       <path d="M9.5 20.5v-6h5v6" />
+    </svg>
+  );
+}
+
+/** Thin line icon: a shopping bag. */
+export function BagIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M5 8h14l-1 12.5H6L5 8Z" />
+      <path d="M9 10V6.5a3 3 0 0 1 6 0V10" />
     </svg>
   );
 }

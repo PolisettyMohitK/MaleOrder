@@ -2,15 +2,17 @@
 
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 import type { Product } from "@/data/products";
 import { sizeGuide, sizeGuideNotes } from "@/data/size-guide";
 import { placeLine, store } from "@/data/store.config";
+import { addToBag } from "@/lib/bag";
 import { lockScroll } from "@/lib/scroll";
-import { orderMessage, waLink } from "@/lib/whatsapp";
+import { orderMessage, sizeHelpMessage, waLink } from "@/lib/whatsapp";
 import { surfaceFade, surfaceSlide, withReduce } from "@/components/motion/surface";
 import {
+  BagIcon,
   CashIcon,
   CloseIcon,
   FitIcon,
@@ -53,22 +55,8 @@ export function ProductOrderPanel({ product }: { product: Product }) {
     return () => window.removeEventListener("keydown", onKey);
   }, [guideOpen]);
 
-  /* Phones: the order button sits below the gallery, swatches and sizes, so a
-     bar pinned to the bottom carries it whenever the real one is off screen. */
-  const orderRef = useRef<HTMLAnchorElement>(null);
-  const [orderVisible, setOrderVisible] = useState(true);
-
-  useEffect(() => {
-    const node = orderRef.current;
-    if (!node) return;
-    const observer = new IntersectionObserver(([entry]) =>
-      setOrderVisible(entry.isIntersecting),
-    );
-    observer.observe(node);
-    return () => observer.disconnect();
-  }, []);
-
-  const href = waLink(orderMessage(product.name, { size, colour }));
+  const href = waLink(orderMessage({ product, size, colour, qty: 1 }));
+  const add = () => addToBag({ slug: product.slug, size, colour });
 
   return (
     <>
@@ -148,7 +136,6 @@ export function ProductOrderPanel({ product }: { product: Product }) {
       {/* Actions */}
       <div className="mt-8 flex flex-col gap-3">
         <a
-          ref={orderRef}
           href={href}
           target="_blank"
           rel="noopener noreferrer"
@@ -157,9 +144,19 @@ export function ProductOrderPanel({ product }: { product: Product }) {
           <WhatsAppIcon width={18} height={18} />
           Order on WhatsApp
         </a>
-        <Link href="/support#visit" className="btn btn-ghost w-full">
-          Visit the store
-        </Link>
+        <button type="button" onClick={add} className="btn btn-ghost w-full">
+          <BagIcon width={18} height={18} />
+          Add to bag
+        </button>
+        <p className="text-center text-sm text-muted">
+          Want to try it first?{" "}
+          <Link
+            href="/support#visit"
+            className="font-medium text-ink underline underline-offset-4"
+          >
+            Visit the store
+          </Link>
+        </p>
       </div>
 
       {/* The objections that stop an order, answered where they happen. */}
@@ -191,27 +188,32 @@ export function ProductOrderPanel({ product }: { product: Product }) {
         </ol>
       </div>
 
-      {/* Pinned order bar, phones and tablets only. The floating WhatsApp
-          button is hidden on product pages so the two never stack. */}
-      <div
-        aria-hidden={orderVisible}
-        className={`fixed inset-x-0 bottom-0 z-[70] border-t border-black/10 bg-paper/95 px-5 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur-md transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] lg:hidden ${
-          orderVisible ? "pointer-events-none translate-y-full" : "translate-y-0"
-        }`}
-      >
-        <div className="flex items-center gap-4">
+      {/* Pinned order bar, phones and tablets only. Always shown and never
+          animated: sliding it in and out as the main button scrolled past
+          made it jump up and down. The floating WhatsApp button is hidden on
+          product pages so the two never stack. */}
+      <div className="fixed inset-x-0 bottom-0 z-[70] border-t border-black/10 bg-paper/95 px-5 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur-md lg:hidden">
+        <div className="flex items-center gap-3">
           <div className="min-w-0 flex-1">
             <p className="truncate text-sm font-medium text-ink">{product.name}</p>
             <p className="mt-0.5 text-xs text-muted">
-              {[size, colour].filter(Boolean).join(" · ") || "Size confirmed on chat"}
+              {[size && `Size ${size}`, colour].filter(Boolean).join(" · ") ||
+                "Size confirmed on chat"}
             </p>
           </div>
+          <button
+            type="button"
+            onClick={add}
+            aria-label="Add to bag"
+            className="flex size-12 shrink-0 items-center justify-center rounded-full border border-silver-500/50 text-ink"
+          >
+            <BagIcon width={20} height={20} />
+          </button>
           <a
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            tabIndex={orderVisible ? -1 : undefined}
-            className="btn btn-wa shrink-0"
+            className="btn btn-wa shrink-0 px-5"
           >
             <WhatsAppIcon width={17} height={17} />
             Order
@@ -223,7 +225,7 @@ export function ProductOrderPanel({ product }: { product: Product }) {
       <AnimatePresence>
         {guideOpen && (
           <motion.div
-            className="on-dark fixed inset-0 z-[110] flex justify-end bg-ink/60 backdrop-blur-sm"
+            className="fixed inset-0 z-[110] flex justify-end bg-ink/60 backdrop-blur-sm"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -231,7 +233,8 @@ export function ProductOrderPanel({ product }: { product: Product }) {
             onClick={() => setGuideOpen(false)}
           >
             <motion.div
-              className="flex h-full w-full max-w-md flex-col overflow-y-auto bg-paper"
+              data-lenis-prevent
+              className="flex h-full w-full max-w-md flex-col overflow-y-auto overscroll-contain bg-paper"
               role="dialog"
               aria-modal="true"
               aria-label="Size guide"
@@ -307,7 +310,7 @@ export function ProductOrderPanel({ product }: { product: Product }) {
                 </ul>
 
                 <a
-                  href={waLink(`Hi, I'd like help with sizing for ${product.name}.`)}
+                  href={waLink(sizeHelpMessage(product, size))}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn btn-wa mt-9 w-full"

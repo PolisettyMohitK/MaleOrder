@@ -6,11 +6,12 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { categories } from "@/data/products";
 import { store } from "@/data/store.config";
+import { bagCount, setBagOpen, useBag } from "@/lib/bag";
 import { lockScroll } from "@/lib/scroll";
 import { GENERAL_ENQUIRY, waLink } from "@/lib/whatsapp";
 import { Logo } from "@/components/ui/Logo";
 import { FloatingMenu } from "@/components/ui/FloatingMenu";
-import { SearchIcon, WhatsAppIcon } from "@/components/ui/Icons";
+import { BagIcon, SearchIcon, WhatsAppIcon } from "@/components/ui/Icons";
 import { SearchOverlay } from "./SearchOverlay";
 
 const NAV = [
@@ -67,6 +68,7 @@ function NavLinks({ items, pathname, transparent }: { items: typeof NAV; pathnam
 
 export function Header() {
   const pathname = usePathname();
+  const count = bagCount(useBag().items);
 
   const [scrolled, setScrolled] = useState(false);
 
@@ -200,15 +202,34 @@ export function Header() {
                 >
                   <SearchIcon width={20} height={20} />
                 </button>
+                {/* Phones have the floating WhatsApp button, and the header
+                    track is too narrow for three icons beside the logo. */}
                 <a
                   href={waLink(GENERAL_ENQUIRY)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="Order on WhatsApp"
-                  className={`tap -mr-2 flex items-center transition-colors duration-500 ${inkClass} hover:text-silver-400`}
+                  aria-label="Message us on WhatsApp"
+                  className={`tap -mr-2 hidden items-center justify-center transition-colors duration-500 sm:flex ${inkClass} hover:text-silver-400`}
                 >
                   <WhatsAppIcon width={20} height={20} />
                 </a>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setMenuOpen(false);
+                    closeSearch();
+                    setBagOpen(true);
+                  }}
+                  aria-label={`Open bag, ${count} ${count === 1 ? "piece" : "pieces"}`}
+                  className={`tap relative -mr-2 flex items-center justify-center transition-colors duration-500 ${inkClass} hover:text-silver-400`}
+                >
+                  <BagIcon width={22} height={22} />
+                  {count > 0 ? (
+                    <span className="absolute top-1.5 right-1 flex min-w-[1.125rem] items-center justify-center rounded-full bg-accent px-1 text-[0.625rem] leading-[1.125rem] font-semibold text-paper">
+                      {count}
+                    </span>
+                  ) : null}
+                </button>
               </div>
             </div>
           </div>

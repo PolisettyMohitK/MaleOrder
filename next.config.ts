@@ -37,7 +37,7 @@ const nextConfig: NextConfig = {
     /* Only widths the build actually emits. This is what stops the browser
        asking for a file that does not exist, and keeping 320 out of
        imageSizes avoids a duplicated entry in the generated srcset. */
-    deviceSizes: [320, 480, 640, 800, 1024, 1200],
+    deviceSizes: [320, 480, 640, 800, 1024, 1200, 1600, 2048],
     imageSizes: [200],
 
     qualities: [75],

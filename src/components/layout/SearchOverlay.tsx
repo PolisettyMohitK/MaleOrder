@@ -133,7 +133,7 @@ export function SearchOverlay({ onClose }: { onClose: () => void }) {
         </motion.div>
       </motion.div>
 
-      <div className="shell mt-8 flex-1 overflow-y-auto pb-10">
+      <div data-lenis-prevent className="shell mt-8 flex-1 overflow-y-auto pb-10">
         {query.trim() && results.length === 0 ? (
           <p className="t-body max-w-md text-silver-400">
             Nothing matches “{query.trim()}”. Try a fabric like linen, or browse

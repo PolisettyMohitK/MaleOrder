@@ -3,13 +3,14 @@ import { Cormorant_Garamond, Inter } from "next/font/google";
 import "./globals.css";
 
 import { AnnouncementBar } from "@/components/layout/AnnouncementBar";
+import { BagDrawer } from "@/components/layout/BagDrawer";
 import { FloatingWhatsApp } from "@/components/layout/FloatingWhatsApp";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
+import { Preloader } from "@/components/layout/Preloader";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import { MotionRoot } from "@/components/motion/MotionRoot";
 import { fullName, placeLine, store } from "@/data/store.config";
-import { GENERAL_ENQUIRY } from "@/lib/whatsapp";
 
 /* Serif for headlines, sans for everything else. Both self-hosted by
    next/font, so there is no render-blocking request to Google. */
@@ -79,6 +80,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
 
         <SmoothScroll />
         <MotionRoot />
+        <Preloader />
 
         <div className="fixed inset-x-0 top-0 z-[70]">
           <AnnouncementBar />
@@ -90,7 +92,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </main>
 
         <Footer />
-        <FloatingWhatsApp message={GENERAL_ENQUIRY} />
+        <FloatingWhatsApp />
+        {/* Outside the fixed header, whose z-index would cap the panel's. */}
+        <BagDrawer />
       </body>
     </html>
   );

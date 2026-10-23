@@ -15,10 +15,6 @@
   --color-accent: #7a1f2b;
   --color-accent-soft: #f3e6e3;
 
-  /* WhatsApp green, darkened so white text passes 4.5:1. Order buttons only. */
-  --color-wa: #1a7f45;
-  --color-wa-dark: #146637;
-
   /* Warm taupe ramp. Kept under the old "silver" names so every border,
      rule and icon picks up the warm palette without touching the markup. */
   --color-silver-100: #ece6dc;
@@ -282,55 +278,6 @@
 
   /* ---------- surfaces ---------- */
 
-  /* A blurred plate for text that sits on top of a photograph.
-     The hero and the category tiles both put a heading, an eyebrow and body
-     copy directly over imagery, where the only separation was a flat gradient
-     scrim. That kept the words legible but flattened the picture behind them.
-     This blurs the photograph under the text instead, so the type reads as
-     being behind frosted glass and the image still reads as a photograph.
-
-     The mask feathers the edges so there is no visible panel boundary, and the
-     tint is deliberately light: the existing gradient scrim underneath is what
-     guarantees contrast, so this only has to take the edge off.
-
-     Used twice, on purpose. backdrop-filter is the most expensive thing in the
-     stylesheet — one full-bleed instance on a mid-range Android costs real
-     frames — so it is not spread further than the two places that need it.
-
-     Declared unprefixed only. Writing the -webkit- prefix alongside it made
-     Lightning CSS treat the pair as a duplicate and keep the prefixed one,
-     which modern Chrome does not match at all (CSS.supports reports false for
-     -webkit-backdrop-filter), so the blur silently rendered nowhere. One
-     declaration lets the build add prefixes if a target actually needs one. */
-  .scrim-blur {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    backdrop-filter: blur(14px) saturate(0.85);
-    background: rgba(10, 10, 10, 0.28);
-    -webkit-mask-image: radial-gradient(
-      ellipse 78% 62% at 50% 50%,
-      #000 0%,
-      #000 42%,
-      transparent 100%
-    );
-    mask-image: radial-gradient(
-      ellipse 78% 62% at 50% 50%,
-      #000 0%,
-      #000 42%,
-      transparent 100%
-    );
-  }
-
-  /* Reduced motion does not affect the blur, but on a low-power device the
-     filter is the first thing worth dropping. */
-  @media (prefers-reduced-transparency: reduce) {
-    .scrim-blur {
-      backdrop-filter: none;
-      background: rgba(10, 10, 10, 0.62);
-    }
-  }
-
   .paper-grain {
     background-color: var(--color-bone);
   }
@@ -391,16 +338,30 @@
     border-color: var(--color-bone);
   }
 
-  /* Order on WhatsApp. Green so it reads as WhatsApp at a glance. */
+  /* Order on WhatsApp. Black with the white WhatsApp logo; the logo does the
+     recognising, so the button can stay in the site's own palette. */
   .btn-wa {
-    background-color: var(--color-wa);
-    color: #ffffff;
-    border-color: var(--color-wa);
+    background-color: var(--color-ink);
+    color: var(--color-paper);
+    border-color: var(--color-ink);
   }
 
   .btn-wa:hover {
-    background-color: var(--color-wa-dark);
-    border-color: var(--color-wa-dark);
+    background-color: #3a3633;
+    border-color: #3a3633;
+  }
+
+  /* Over a photograph a black button disappears, so it turns to glass. */
+  .on-dark .btn-wa {
+    background-color: rgba(26, 26, 26, 0.55);
+    color: var(--color-paper);
+    border-color: rgba(250, 247, 242, 0.6);
+    backdrop-filter: blur(6px);
+  }
+
+  .on-dark .btn-wa:hover {
+    background-color: rgba(26, 26, 26, 0.75);
+    border-color: var(--color-paper);
   }
 
   /* Quiet / secondary */

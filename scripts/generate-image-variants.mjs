@@ -42,13 +42,13 @@ const OUTPUT = path.join(projectRoot, "public", "photos");
  *
  * The site is a mobile-first storefront: content is `shell` minus its inline
  * padding, so ~372 CSS px on a 412px phone and ~1544 CSS px on a desktop.
- * A 2x phone therefore needs about 744 real pixels, and a 2x desktop about
- * 3088 — which we cannot serve, so the master at 1200 is the ceiling.
+ * 1600 and 2048 exist for the full-bleed hero and the category tiles, whose
+ * stock masters are 2400px wide. Product masters are 1200px or less.
  *
  * These must stay in step with `deviceSizes` / `imageSizes` in next.config.ts.
  * A width declared to Next but not generated here is a 404 in production.
  */
-const WIDTHS = [200, 320, 480, 640, 800, 1024, 1200];
+const WIDTHS = [200, 320, 480, 640, 800, 1024, 1200, 1600, 2048];
 
 /** Match the quality the default Next optimiser would have produced. */
 const QUALITY = 74;
@@ -90,13 +90,13 @@ async function build() {
     const image = sharp(input, { failOn: "none" });
     const { width: sourceWidth } = await image.metadata();
 
-    // Never upscale. A 800px master should not produce a fake 1200px copy.
-    const widths = WIDTHS.filter((width) => width <= sourceWidth);
-
-    for (const width of widths) {
+    // Every width gets a file, because the browser may ask for any of them,
+    // but nothing is upscaled: a width above the master is written at the
+    // master's own size. A 1200px master answers a 2048 request with 1200px.
+    for (const width of WIDTHS) {
       const out = path.join(OUTPUT, `${stem}@${width}.jpg`);
       await sharp(input, { failOn: "none" })
-        .resize({ width, withoutEnlargement: true })
+        .resize({ width: Math.min(width, sourceWidth), withoutEnlargement: true })
         .toFormat("jpeg", { quality: QUALITY, mozjpeg: true })
         .toFile(out);
       outputBytes += fs.statSync(out).size;

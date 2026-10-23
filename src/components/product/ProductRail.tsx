@@ -13,7 +13,7 @@ interface ProductRailProps {
 }
 
 /**
- * Horizontal, swipeable rail of product cards. Used for the "You may also
+ * Heading plus a small grid of product cards. Used for the "You may also
  * like" strips on collection and product pages.
  */
 export function ProductRail({
@@ -52,26 +52,22 @@ export function ProductRail({
         </div>
       </div>
 
+      {/* A grid, not a swipe rail. The rail snapped cards flush against the
+          screen edge on phones; four pieces sit evenly in two columns. */}
       <ul
         data-reveal="up"
         data-reveal-stagger
-        className="mt-8 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-4 [scrollbar-width:none] md:mt-16 md:gap-6 md:px-10 lg:px-14 [&::-webkit-scrollbar]:hidden"
+        className="shell mt-8 grid grid-cols-2 gap-x-3 gap-y-8 md:mt-10 md:gap-x-6 lg:grid-cols-4"
       >
-        {products.map((product, index) => (
-          <li
-            key={product.slug}
-            className="w-[74vw] shrink-0 snap-start sm:w-[46vw] lg:w-[calc((100%-2.5rem*3)/4)]"
-          >
+        {products.map((product) => (
+          <li key={product.slug}>
             <ProductCard
               product={product}
               tone={tone}
-              preload={index < 2}
-              sizes="(min-width: 1024px) 22vw, (min-width: 640px) 46vw, 74vw"
+              sizes="(min-width: 1024px) 22vw, 46vw"
             />
           </li>
         ))}
-        {/* Balances the rail padding on wide screens. */}
-        <li aria-hidden="true" className="hidden shrink-0 lg:block lg:w-0" />
       </ul>
     </div>
   );

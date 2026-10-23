@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 
-import { featuredProducts } from "@/data/products";
 import { store } from "@/data/store.config";
 import { CROP, photo } from "@/lib/images";
 import { GENERAL_ENQUIRY, waLink } from "@/lib/whatsapp";
@@ -21,7 +20,21 @@ import {
 const INTERVAL = 6;
 
 /**
- * The hero: a slow, moving carousel of apparel from the two collections, with
+ * Hero backgrounds. Free Unsplash photographs, not our products: the hero is
+ * full-bleed, and the shop's own photos are too small to be stretched that
+ * wide. Each slide links to the collection it resembles, never to a product.
+ */
+const SLIDES = [
+  { seed: "stock-hero-1", name: "Kurta Pajama", note: "For haldi and day ceremonies", href: "/collections/kurta-pajama" },
+  { seed: "stock-hero-5", name: "Office Casuals", note: "Crisp cotton for the work week", href: "/collections/office-casuals" },
+  { seed: "stock-hero-2", name: "Kurta Pajama", note: "Rich colours for festive evenings", href: "/collections/kurta-pajama" },
+  { seed: "stock-hero-6", name: "Office Casuals", note: "Smart shirts, easy fits", href: "/collections/office-casuals" },
+  { seed: "stock-hero-3", name: "Kurta Pajama", note: "Dark sets for night functions", href: "/collections/kurta-pajama" },
+  { seed: "stock-hero-4", name: "Kurta Pajama", note: "Printed cotton for every day", href: "/collections/kurta-pajama" },
+];
+
+/**
+ * The hero: a slow, moving carousel of looks from the two collections, with
  * the brand greeting held over the top.
  *
  * Accessibility notes, because an auto-advancing carousel is easy to get wrong:
@@ -37,7 +50,7 @@ const INTERVAL = 6;
  * element on the first photograph.
  */
 export function HeroCarousel() {
-  const slides = featuredProducts(6);
+  const slides = SLIDES;
   const [index, setIndex] = useState(0);
   const [playing, setPlaying] = useState(true);
 
@@ -100,7 +113,7 @@ export function HeroCarousel() {
       className="on-dark relative isolate bg-ink"
       role="region"
       aria-roledescription="carousel"
-      aria-label={`${current.name} and other pieces from the collection`}
+      aria-label={`${current.name}, and other looks from the collection`}
       tabIndex={-1}
       onKeyDown={(event) => {
         if (event.key === "ArrowRight") {
@@ -130,12 +143,12 @@ export function HeroCarousel() {
         aria-live={playing ? "off" : "polite"}
         aria-atomic="true"
       >
-        {slides.map((product, i) => {
+        {slides.map((slide, i) => {
           const rendered = i <= index + 1;
 
           return (
           <div
-            key={product.slug}
+            key={slide.seed}
             ref={(node) => {
               slidesRef.current[i] = node;
             }}
@@ -149,13 +162,13 @@ export function HeroCarousel() {
             <span className="skeleton" aria-hidden="true" />
             {rendered ? (
               <Image
-                src={photo(product.images[0].seed, CROP.slide.w, CROP.slide.h)}
+                src={photo(slide.seed, CROP.slide.w, CROP.slide.h)}
                 alt=""
                 fill
                 preload={i === 0}
                 loading={i === 0 ? undefined : "lazy"}
                 sizes="100vw"
-                className="object-cover"
+                className="object-cover blur-[3px]"
               />
             ) : null}
           </div>
@@ -163,8 +176,9 @@ export function HeroCarousel() {
         })}
 
         {/* Scrim. Dark at the top for the header and at the bottom for the
-            controls, light through the middle so the garment is visible. The
-            greeting gets its own frosted plate below. */}
+            controls, light through the middle. The photographs themselves
+            carry a slight blur, so they set the mood without pulling focus
+            from the greeting. */}
         <div
           aria-hidden="true"
           className="absolute inset-0 z-[2] bg-[linear-gradient(to_bottom,rgba(10,10,10,0.6)_0%,rgba(10,10,10,0.2)_30%,rgba(10,10,10,0.25)_62%,rgba(10,10,10,0.85)_100%)]"
@@ -173,12 +187,7 @@ export function HeroCarousel() {
 
       {/* Greeting. Short enough that the shop starts just below the fold. */}
       <div className="relative z-[3] flex min-h-[78svh] flex-col justify-center px-5 pt-28 pb-36 text-center sm:px-8 lg:min-h-[88svh]">
-        <div className="relative mx-auto w-full max-w-3xl max-sm:[text-shadow:0_1px_14px_rgba(0,0,0,0.55)]">
-          {/* Frosted plate behind the greeting only. It used to fill the whole
-              hero, which blurred the garment the slide is there to show. On
-              phones the greeting covers most of the hero, so the plate is
-              dropped there and a text shadow carries the contrast instead. */}
-          <div className="scrim-blur -inset-x-6 -inset-y-12 -z-10 max-sm:hidden" aria-hidden="true" />
+        <div className="relative mx-auto w-full max-w-3xl [text-shadow:0_1px_14px_rgba(0,0,0,0.55)]">
           <p className="eyebrow text-bone/90">Shirts · Kurta sets · {store.city}</p>
 
           <h1 className="type-silver-dark t-display mt-5">
@@ -212,12 +221,12 @@ export function HeroCarousel() {
       <div className="pointer-events-none absolute inset-x-0 bottom-20 z-[4] px-5 sm:bottom-24 sm:px-8">
         <div className="mx-auto flex max-w-6xl justify-center sm:justify-start">
           <Link
-            key={current.slug}
-            href={`/products/${current.slug}`}
+            key={current.seed}
+            href={current.href}
             className="pointer-events-auto flex items-center gap-4 transition-opacity duration-700"
           >
             <span className="block text-left">
-              <span className="label hidden text-bone/80 sm:block">{current.fabric}</span>
+              <span className="label hidden text-bone/80 sm:block">{current.note}</span>
               <span className="block text-sm font-medium leading-tight text-bone sm:mt-1 sm:text-base">
                 {current.name}
               </span>
@@ -255,12 +264,12 @@ export function HeroCarousel() {
 
           <div className="flex items-center gap-3">
             <ul className="hidden items-center gap-2 sm:flex">
-              {slides.map((product, i) => (
-                <li key={product.slug}>
+              {slides.map((slide, i) => (
+                <li key={slide.seed}>
                   <button
                     type="button"
                     onClick={() => setIndex(i)}
-                    aria-label={`Show slide ${i + 1}: ${product.name}`}
+                    aria-label={`Show slide ${i + 1}: ${slide.name}`}
                     aria-current={i === index}
                     className="tap flex h-8 w-5 items-center justify-center"
                   >

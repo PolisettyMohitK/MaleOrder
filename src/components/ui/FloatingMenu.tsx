@@ -143,6 +143,7 @@ export function FloatingMenu({
         aria-label="Site menu"
         tabIndex={-1}
         style={anchor ? { left: anchor.left, top: anchor.top } : undefined}
+        data-lenis-prevent
         className="on-dark fixed z-[96] max-h-[calc(100dvh-6rem)] w-[min(21rem,calc(100vw-1.5rem))] origin-top-left overflow-y-auto rounded-[18px] border border-white/12 bg-ink/97 p-5 shadow-[0_34px_90px_-28px_rgba(0,0,0,0.85)] outline-none"
         initial={{ opacity: 0, scale: reduce ? 1 : 0.9, y: reduce ? 0 : -10 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}

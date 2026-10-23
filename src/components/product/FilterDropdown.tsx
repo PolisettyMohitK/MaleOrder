@@ -215,6 +215,7 @@ export function FilterDropdown({
             exit={{ opacity: 0, scale: reduce ? 1 : 0.97, y: reduce ? 0 : -4 }}
             transition={withReduce(reduce, surfaceSpring)}
             style={{ transformOrigin: flip ? "bottom left" : "top left" }}
+            data-lenis-prevent
             className={`on-dark absolute left-0 z-50 max-h-[min(22rem,55vh)] min-w-[13rem] overflow-y-auto rounded-[18px] border border-white/12 bg-ink/97 p-2 shadow-[0_34px_90px_-28px_rgba(0,0,0,0.85)] ${
               flip ? "bottom-[calc(100%+0.5rem)]" : "top-[calc(100%+0.5rem)]"
             }`}

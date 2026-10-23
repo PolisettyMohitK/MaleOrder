@@ -152,6 +152,8 @@ export default async function ProductPage(props: PageProps<"/products/[slug]">) 
           link={{ href: collection, label: `All ${categoryName(product.category)}` }}
         />
       </section>
+      {/* Room for the pinned order bar on phones, so it never covers content. */}
+      <div aria-hidden="true" className="h-20 lg:hidden" />
       </div>
     </PageTransition>
   );
