@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { store } from "@/data/store.config";
 import { CROP, photo } from "@/lib/images";
@@ -11,8 +11,6 @@ import { DURATION, EASE, gsap, useGSAP } from "@/components/motion/gsap";
 import {
   ArrowRightIcon,
   ArrowUpRightIcon,
-  PauseIcon,
-  PlayIcon,
   WhatsAppIcon,
 } from "@/components/ui/Icons";
 
@@ -34,17 +32,10 @@ const SLIDES = [
 ];
 
 /**
- * The hero: a slow, moving carousel of looks from the two collections, with
- * the brand greeting held over the top.
- *
- * Accessibility notes, because an auto-advancing carousel is easy to get wrong:
- *   - WCAG 2.2.2 requires moving content that starts by itself to be
- *     pausable, so there is an explicit pause control.
- *   - Nothing is announced while it is moving. Once paused, slide changes are
- *     announced politely.
- *   - Arrow keys move between slides when the region has focus.
- *   - Visitors who have asked for reduced motion get no autoplay and no
- *     crossfade; the dots still work.
+ * The hero: a slow slideshow of looks from the two collections, looping
+ * endlessly behind the greeting. The photographs are softly blurred
+ * backdrops rather than content, so there are no slide controls; visitors
+ * who ask for reduced motion get the first slide, still.
  *
  * Only the first slide is preloaded. The rest are lazy, which keeps the LCP
  * element on the first photograph.
@@ -52,7 +43,6 @@ const SLIDES = [
 export function HeroCarousel() {
   const slides = SLIDES;
   const [index, setIndex] = useState(0);
-  const [playing, setPlaying] = useState(true);
 
   const slidesRef = useRef<(HTMLDivElement | null)[]>([]);
   const reduceMotion = useRef(false);
@@ -61,7 +51,6 @@ export function HeroCarousel() {
     reduceMotion.current = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;
-    if (reduceMotion.current) setPlaying(false);
   }, []);
 
   /* Crossfade and settle the incoming slide. */
@@ -88,44 +77,22 @@ export function HeroCarousel() {
     { dependencies: [index] },
   );
 
-  /* Autoplay, on GSAP's ticker so it pauses cleanly and respects the loop. */
+  /* Autoplay forever, on GSAP's ticker. */
   useEffect(() => {
-    if (!playing || reduceMotion.current) return;
+    if (reduceMotion.current) return;
     const call = gsap.delayedCall(INTERVAL, () => {
       setIndex((current) => (current + 1) % slides.length);
     });
     return () => {
       call.kill();
     };
-  }, [playing, index, slides.length]);
+  }, [index, slides.length]);
 
-  const step = useCallback(
-    (delta: number) => {
-      setIndex((current) => (current + delta + slides.length) % slides.length);
-    },
-    [slides.length],
-  );
 
   const current = slides[index];
 
   return (
-    <section
-      className="on-dark relative isolate bg-ink"
-      role="region"
-      aria-roledescription="carousel"
-      aria-label={`${current.name}, and other looks from the collection`}
-      tabIndex={-1}
-      onKeyDown={(event) => {
-        if (event.key === "ArrowRight") {
-          event.preventDefault();
-          step(1);
-        }
-        if (event.key === "ArrowLeft") {
-          event.preventDefault();
-          step(-1);
-        }
-      }}
-    >
+    <section className="on-dark relative isolate bg-ink" aria-label="Welcome">
       {/* Slides
 
           Only the current slide and the next one are actually rendered. Every
@@ -140,8 +107,7 @@ export function HeroCarousel() {
           so a transition never waits on the network. */}
       <div
         className="absolute inset-0"
-        aria-live={playing ? "off" : "polite"}
-        aria-atomic="true"
+        aria-hidden="true"
       >
         {slides.map((slide, i) => {
           const rendered = i <= index + 1;
@@ -154,10 +120,6 @@ export function HeroCarousel() {
             }}
             className="media-frame absolute inset-0"
             style={{ opacity: i === 0 ? 1 : 0 }}
-            aria-hidden={i !== index}
-            role="group"
-            aria-roledescription="slide"
-            aria-label={`${i + 1} of ${slides.length}`}
           >
             <span className="skeleton" aria-hidden="true" />
             {rendered ? (
@@ -207,18 +169,19 @@ export function HeroCarousel() {
               href={waLink(GENERAL_ENQUIRY)}
               target="_blank"
               rel="noopener noreferrer"
+              data-wa-hero
               className="btn btn-wa w-full [text-shadow:none] sm:w-auto"
             >
-              <WhatsAppIcon width={17} height={17} />
-              Order on WhatsApp
+              <WhatsAppIcon width={20} height={20} />
+              <span data-wa-label>Order on WhatsApp</span>
             </a>
           </div>
         </div>
       </div>
 
-      {/* Slide caption. On phones it sits just above the floating WhatsApp
-          button, which is in the bottom-right corner. */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-20 z-[4] px-5 sm:bottom-24 sm:px-8">
+      {/* Slide caption. The corner WhatsApp button is hidden in the hero,
+          so nothing competes with it down here. */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-6 z-[4] px-5 sm:bottom-8 sm:px-8">
         <div className="mx-auto flex max-w-6xl justify-center sm:justify-start">
           <Link
             key={current.seed}
@@ -245,60 +208,6 @@ export function HeroCarousel() {
         </div>
       </div>
 
-      {/* Controls. Centred and narrow on phones, so they stay clear of the
-          floating WhatsApp button in the corner; padded away from it on
-          larger screens. */}
-      <div className="absolute inset-x-0 bottom-5 z-[4] px-5 sm:bottom-6 sm:px-8">
-        <div className="mx-auto flex max-w-6xl items-center justify-center gap-4 sm:justify-between sm:pr-24 lg:pr-28">
-          {/* Phones get the counter instead of the dots: six 44px dot targets
-              plus the pause button are wider than a 375px screen. */}
-          <p className="label text-bone/80">
-            <span className="tabular-nums">
-              {String(index + 1).padStart(2, "0")}
-            </span>
-            <span className="px-2 text-bone/50">/</span>
-            <span className="tabular-nums">
-              {String(slides.length).padStart(2, "0")}
-            </span>
-          </p>
-
-          <div className="flex items-center gap-3">
-            <ul className="hidden items-center gap-2 sm:flex">
-              {slides.map((slide, i) => (
-                <li key={slide.seed}>
-                  <button
-                    type="button"
-                    onClick={() => setIndex(i)}
-                    aria-label={`Show slide ${i + 1}: ${slide.name}`}
-                    aria-current={i === index}
-                    className="tap flex h-8 w-5 items-center justify-center"
-                  >
-                    <span
-                      className={`block h-px w-full transition-colors duration-500 ${
-                        i === index ? "bg-bone" : "bg-white/35"
-                      }`}
-                    />
-                  </button>
-                </li>
-              ))}
-            </ul>
-
-            {/* Icon only, but kept: WCAG 2.2.2 needs a way to stop autoplay. */}
-            <button
-              type="button"
-              onClick={() => setPlaying((value) => !value)}
-              aria-label={playing ? "Pause slideshow" : "Play slideshow"}
-              className="tap flex items-center justify-center rounded-full text-bone/80 transition-colors duration-500 hover:text-bone"
-            >
-              {playing ? (
-                <PauseIcon width={14} height={14} />
-              ) : (
-                <PlayIcon width={14} height={14} />
-              )}
-            </button>
-          </div>
-        </div>
-      </div>
     </section>
   );
 }

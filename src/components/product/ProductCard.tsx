@@ -97,13 +97,15 @@ export function ProductCard({
         <p className={`mt-1 text-sm ${muted}`}>
           {product.fabric} · {sizeRange}
         </p>
-        <p
-          className={`mt-1.5 text-[0.9375rem] font-semibold ${
-            tone === "dark" ? "text-bone" : "text-accent"
-          }`}
-        >
-          {formatPrice(product)}
-        </p>
+        {formatPrice(product) ? (
+          <p
+            className={`mt-1.5 text-[0.9375rem] font-semibold ${
+              tone === "dark" ? "text-bone" : "text-accent"
+            }`}
+          >
+            {formatPrice(product)}
+          </p>
+        ) : null}
       </div>
     </Link>
   );

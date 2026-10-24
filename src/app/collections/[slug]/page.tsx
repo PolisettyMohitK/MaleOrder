@@ -6,6 +6,7 @@ import { notFound } from "next/navigation";
 import { CollectionBrowser } from "@/components/product/CollectionBrowser";
 import { ProductRail } from "@/components/product/ProductRail";
 import {
+  BAG_NOTE,
   categories,
   completeTheLook,
   getCategory,
@@ -60,6 +61,7 @@ export default async function CollectionPage(props: PageProps<"/collections/[slu
             {category.name}
           </h1>
           <p className="t-body mt-2 max-w-xl text-muted">{category.bannerLine}</p>
+          <p className="mt-2 max-w-xl text-sm text-accent">{BAG_NOTE}</p>
 
           {/* Jump between categories without going back home. */}
           <nav aria-label="Categories" className="mt-5 flex flex-wrap gap-2">

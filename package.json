@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "images": "node scripts/generate-image-variants.mjs",
-    "build": "node scripts/generate-image-variants.mjs && next build",
+    "build": "node scripts/generate-image-variants.mjs && next build && node scripts/fix-export-segments.mjs",
     "lint": "eslint",
     "preview": "npx --yes serve out -l 3000",
     "deploy": "npx --yes wrangler@4 pages deploy out --project-name male-order",

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { categories, products } from "@/data/products";
+import { BAG_NOTE, categories, products } from "@/data/products";
 import { ProductCard } from "@/components/product/ProductCard";
 
 /** Every piece on the home page, as a plain grid. "Shop now" lands here. */
@@ -17,6 +17,7 @@ export function FeaturedRow() {
             <h2 id="shop-heading" className="t-head type-silver mt-3">
               All pieces
             </h2>
+            <p className="t-body mt-2 max-w-xl text-muted">{BAG_NOTE}</p>
           </div>
           <nav aria-label="Shop by category" className="flex flex-wrap gap-2">
             <span className="rounded-full bg-ink px-4 py-2 text-sm font-medium text-paper">

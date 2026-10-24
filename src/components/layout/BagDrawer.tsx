@@ -117,9 +117,11 @@ export function BagDrawer() {
                           Size {line.size ?? "to confirm"}
                           {line.colour ? ` · ${line.colour}` : ""}
                         </p>
-                        <p className="mt-1 text-sm font-semibold text-accent">
-                          {formatPrice(line.product)}
-                        </p>
+                        {formatPrice(line.product) ? (
+                          <p className="mt-1 text-sm font-semibold text-accent">
+                            {formatPrice(line.product)}
+                          </p>
+                        ) : null}
                         <div className="mt-3 flex items-center justify-between">
                           <div className="flex items-center rounded-full border border-silver-500/40">
                             <button

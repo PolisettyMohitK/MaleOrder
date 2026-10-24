@@ -11,7 +11,6 @@ import {
 } from "@/components/ui/Icons";
 import { fullName, placeLine, store } from "@/data/store.config";
 import { sitePhotos } from "@/lib/images";
-import { waLink } from "@/lib/whatsapp";
 
 export const metadata: Metadata = {
   title: "Our Story",
@@ -142,16 +141,12 @@ export default function StoryPage() {
             </div>
 
             <div data-reveal="up">
-              <a
-                href={waLink(
-                  "Hi, I read your story on the website. I'd like to know more about the shop.",
-                )}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href="/support#visit"
                 className="btn btn-ink mt-11"
               >
                 Come and say hello
-              </a>
+              </Link>
             </div>
           </div>
 

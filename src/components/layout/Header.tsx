@@ -8,10 +8,9 @@ import { categories } from "@/data/products";
 import { store } from "@/data/store.config";
 import { bagCount, setBagOpen, useBag } from "@/lib/bag";
 import { lockScroll } from "@/lib/scroll";
-import { GENERAL_ENQUIRY, waLink } from "@/lib/whatsapp";
 import { Logo } from "@/components/ui/Logo";
 import { FloatingMenu } from "@/components/ui/FloatingMenu";
-import { BagIcon, SearchIcon, WhatsAppIcon } from "@/components/ui/Icons";
+import { BagIcon, SearchIcon } from "@/components/ui/Icons";
 import { SearchOverlay } from "./SearchOverlay";
 
 const NAV = [
@@ -157,30 +156,19 @@ export function Header() {
               className="lg:hidden"
               primaryLinks={NAV}
               secondaryLinks={[{ href: "/support", label: "Support" }]}
-              socialLinks={[
-                ...store.social.map((social) => ({
-                  label: social.label,
-                  href: social.url,
-                  external: true,
-                })),
-                {
-                  label: "WhatsApp",
-                  href: waLink(GENERAL_ENQUIRY),
-                  external: true,
-                },
-              ]}
+              socialLinks={store.social.map((social) => ({
+                label: social.label,
+                href: social.url,
+                external: true,
+              }))}
             />
             </div>
 
-            {/* Centre: the logo, centred because it owns its own grid track.
-                It has to invert when the bar is transparent over the hero. */}
-            <Logo
-              size="sm"
-              tone={transparent ? "silver" : "ink"}
-              className="justify-self-center"
-            />
+            {/* Centre: the round badge, centred because it owns its own grid
+                track. It is taller than the bar and hangs below it. */}
+            <Logo size="sm" className="justify-self-center translate-y-4 md:translate-y-5" />
 
-            {/* Right: the other half of the nav, then search and WhatsApp. */}
+            {/* Right: the other half of the nav, then search and the bag. */}
             <div className="flex items-center justify-end gap-1">
               <nav
                 aria-label="Collections"
@@ -202,17 +190,6 @@ export function Header() {
                 >
                   <SearchIcon width={20} height={20} />
                 </button>
-                {/* Phones have the floating WhatsApp button, and the header
-                    track is too narrow for three icons beside the logo. */}
-                <a
-                  href={waLink(GENERAL_ENQUIRY)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Message us on WhatsApp"
-                  className={`tap -mr-2 hidden items-center justify-center transition-colors duration-500 sm:flex ${inkClass} hover:text-silver-400`}
-                >
-                  <WhatsAppIcon width={20} height={20} />
-                </a>
                 <button
                   type="button"
                   onClick={() => {

@@ -139,11 +139,12 @@ export function ProductOrderPanel({ product }: { product: Product }) {
           href={href}
           target="_blank"
           rel="noopener noreferrer"
-          className="btn btn-wa w-full"
+          className="btn btn-wa hidden w-full lg:inline-flex"
         >
           <WhatsAppIcon width={18} height={18} />
           Order on WhatsApp
         </a>
+        {/* Phones order from the pinned bar, so the WhatsApp button above is desktop only. */}
         <button type="button" onClick={add} className="btn btn-ghost w-full">
           <BagIcon width={18} height={18} />
           Add to bag

@@ -2,15 +2,15 @@
 
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useCallback, useEffect, useState, useSyncExternalStore } from "react";
-import { Logo } from "@/components/ui/Logo";
+import { LogoMark } from "@/components/ui/LogoMark";
 import { fullName } from "@/data/store.config";
 import { lockScroll } from "@/lib/scroll";
 
 /** The intro plays once per browser session, not on every page. */
 const SESSION_KEY = "mob-intro-seen";
 
-/** How long the mark sits on screen before the panel lifts away. */
-const HOLD_MS = 820;
+/** How long the logo builds and holds before the panel lifts away. */
+const HOLD_MS = 2600;
 const LIFT_MS = 700;
 
 /* The stored value never changes within a session, so there is nothing to
@@ -82,20 +82,14 @@ export function Preloader() {
           role="status"
           aria-label={`Loading ${fullName}`}
         >
-          <motion.div
-            className="px-6"
-            initial={{ opacity: 0, clipPath: "inset(0 100% 0 0)" }}
-            animate={{ opacity: 1, clipPath: "inset(0% 0% 0% 0%)" }}
-            transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <Logo tone="ink" size="lg" />
-          </motion.div>
+          {/* The badge draws itself round, then the words settle in. */}
+          <LogoMark circle animate className="size-60 sm:size-72" />
 
           <motion.span
             className="label absolute bottom-10 left-1/2 -translate-x-1/2 text-muted"
             initial={{ opacity: 0 }}
             animate={{ opacity: [0, 1, 1, 0] }}
-            transition={{ duration: 1.4, times: [0, 0.2, 0.7, 1] }}
+            transition={{ duration: 2.4, times: [0, 0.15, 0.8, 1] }}
           >
             Tap to skip
           </motion.span>

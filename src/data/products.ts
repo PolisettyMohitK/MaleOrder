@@ -25,7 +25,7 @@ export interface Product {
   sizes: string[];
   colours: Colour[];
   images: ProductImage[];
-  /** Rupees. null shows "Price on WhatsApp" instead of a number. */
+  /** Rupees. null hides the price; the shop quotes it on WhatsApp. */
   price: number | null;
   featured: boolean;
   isNew: boolean;
@@ -85,11 +85,14 @@ export function categoryImage(category: Category): string {
   return photo(category.imageSeed, CROP.tile.w, CROP.tile.h);
 }
 
-export function formatPrice(product: Product): string {
-  return product.price === null
-    ? "Price on WhatsApp"
-    : `₹${product.price.toLocaleString("en-IN")}`;
+/** The price as text, or null when the shop quotes it on WhatsApp. */
+export function formatPrice(product: Product): string | null {
+  return product.price === null ? null : `₹${product.price.toLocaleString("en-IN")}`;
 }
+
+/** Said once per page instead of "Price on WhatsApp" under every piece. */
+export const BAG_NOTE =
+  "Add the pieces you like to your bag and send them to us in one WhatsApp message. We reply with prices, sizes and delivery.";
 
 /* ------------------------------------------------------------ collections */
 

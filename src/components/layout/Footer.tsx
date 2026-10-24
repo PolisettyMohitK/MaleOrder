@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { categories } from "@/data/products";
 import { addressLines, fullName, placeLine, store } from "@/data/store.config";
-import { GENERAL_ENQUIRY, waLink } from "@/lib/whatsapp";
 import { Logo } from "@/components/ui/Logo";
 import {
   FacebookIcon,
@@ -9,7 +8,6 @@ import {
   MailIcon,
   PhoneIcon,
   PinIcon,
-  WhatsAppIcon,
 } from "@/components/ui/Icons";
 
 const QUICK_LINKS = [
@@ -26,20 +24,11 @@ export function Footer() {
         <div className="grid gap-14 lg:grid-cols-12 lg:gap-8">
           {/* Brand */}
           <div className="lg:col-span-4" data-reveal="up">
-            <Logo tone="silver" size="lg" className="items-start" />
+            <Logo tone="silver" size="lg" badge={false} />
             <p className="t-body mt-6 max-w-xs text-silver-200">
               A menswear shop in {placeLine}, and now the same collection on your
               phone. Message us, we will sort the rest.
             </p>
-            <a
-              href={waLink(GENERAL_ENQUIRY)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-wa mt-7"
-            >
-              <WhatsAppIcon width={17} height={17} />
-              Message on WhatsApp
-            </a>
           </div>
 
           {/* Quick links */}

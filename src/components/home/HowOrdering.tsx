@@ -1,10 +1,8 @@
 import { store } from "@/data/store.config";
-import { GENERAL_ENQUIRY, waLink } from "@/lib/whatsapp";
-import { WhatsAppIcon } from "@/components/ui/Icons";
 
 const STEPS = [
-  { title: "Pick a piece and size", body: "Not sure of your size? Skip it, we will help on chat." },
-  { title: "Tap Order on WhatsApp", body: "The message is written for you. Just press send." },
+  { title: "Add pieces to your bag", body: "Pick a size, or skip it and we will help you choose." },
+  { title: "Send your bag on WhatsApp", body: "Every piece, size and colour is written out for you. Just press send." },
   { title: "We confirm, you receive", body: "We deliver and you pay on delivery, or collect from the shop." },
 ];
 
@@ -17,20 +15,11 @@ export function HowOrdering() {
           className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end"
         >
           <div>
-            <p className="eyebrow">No cart, no card</p>
+            <p className="eyebrow">Three easy steps</p>
             <h2 id="how-heading" className="t-head type-silver mt-3">
               How to order
             </h2>
           </div>
-          <a
-            href={waLink(GENERAL_ENQUIRY)}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn-wa shrink-0"
-          >
-            <WhatsAppIcon width={17} height={17} />
-            Message us
-          </a>
         </div>
 
         <ol

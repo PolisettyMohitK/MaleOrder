@@ -92,7 +92,13 @@ export default async function ProductPage(props: PageProps<"/products/[slug]">) 
                   {product.isNew ? " · New" : ""}
                 </p>
                 <h1 className="t-head type-silver mt-2">{product.name}</h1>
-                <p className="mt-3 text-xl font-semibold text-accent">{formatPrice(product)}</p>
+                {formatPrice(product) ? (
+                  <p className="mt-3 text-xl font-semibold text-accent">{formatPrice(product)}</p>
+                ) : (
+                  <p className="mt-3 text-sm text-accent">
+                    Add it to your bag and we will confirm the price on WhatsApp.
+                  </p>
+                )}
                 <p className="mt-1 text-sm text-muted">{product.fabric}</p>
                 <p className="t-body mt-5 max-w-lg text-muted">
                   {product.description}
